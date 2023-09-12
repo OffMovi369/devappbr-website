@@ -1,7 +1,6 @@
 <script>
     import "../app.css"
     import logo from "$lib/assets/logo.svg"
-    import Scrollbar from 'smooth-scrollbar';
 
 </script>
 
@@ -14,22 +13,20 @@
 <header>
     <div class="header_content">
         <div class="">
-            <a href="#"><img src="{ logo }" alt=""></a>
+            <a href="#" draggable="false"><img src="{ logo }" alt="" draggable="false"></a >
         </div>
         <div class="nav_menu">
-            <a href="#" class="nav_link">О нас</a>
-            <a href="#" class="nav_link">Этапы </a>
-            <a href="#" class="nav_link">Проекты</a>
-            <a href="#" class="nav_link">Команда</a>
+            <a href="" class="nav_link">О нас</a>
+            <a href="" class="nav_link">Этапы </a>
+            <a href="" class="nav_link">Проекты</a>
+            <a href="" class="nav_link">Команда</a>
         </div>
         <div class="calc">
             <button class="main_wt_btn">Калькулятор продаж</button>
         </div>
     </div>
 </header>
-<body>
-    <slot />
-</body>
+<slot />
  
 
 

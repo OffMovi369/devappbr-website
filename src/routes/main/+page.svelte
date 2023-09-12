@@ -4,16 +4,32 @@
     import owners from "$lib/assets/owners.png"
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
+    import stars from "$lib/assets/stars.png"
+    import dna_bg from "$lib/assets/dna_bg.png"
+    import core_value_bg from "$lib/assets/core_value.png"
+    import process from "$lib/assets/process.png"
+    import designer_bg from "$lib/assets/designer.png"
+    import verst_bg from "$lib/assets/verst.png"
+    import function_bg from "$lib/assets/function.png"
+    import test_bg from "$lib/assets/test.png"
     
     let mapContainer;
 	let map_offset;
     let oh;
     let flag= false
-    let offset
     let innerHeight
+
+    let devContainer;
+    let dev;
+    let flag2 = false
+    let flag3 = false
+
     afterUpdate(() => {
 		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
+        dev = (devContainer.offsetTop - innerHeight / 2) - 100;
+
 	});
+
     $:{
         if(  map_offset <= oh){
             flag = true
@@ -21,7 +37,22 @@
         else{
             flag = false
         }
-        console.log(oh,map_offset)
+    }
+
+    $:{
+        console.log(dev,oh,flag2)
+        if(  dev <= oh ){
+            flag2 = true
+        }
+        else{
+            flag2 = false
+        }
+        if ( (dev + 600) <= oh){
+            flag3 = true
+        }
+        else{
+            flag3 = false
+        }
     }
     
 
@@ -45,7 +76,7 @@
             </div>
         </div>
         <div class="">
-            <img src="{ block_bg }" alt="">
+            <img src="{ block_bg }" alt="" draggable="false">
         </div>
     </section>
     <section>
@@ -101,13 +132,13 @@
                 </div>
             </div>
             <div class="owners">
-                <img   src="{ owners }" alt="">
+                <img   src="{ owners }" alt="" draggable="false">
             </div>
         </div>
     </section>
-    <section bind:offsetHeight={offset} bind:this={mapContainer}>
+    <section  bind:this={mapContainer}>
         <div class="fourth_block">
-            <div class="">
+            <div class="fourth_block_title">
                 <p class="title">Средняя оценка наших приложений – 4.7</p>
                 <p class="main_sm">Более 200 пользователей оценили наши приложения в App Store и Google Play</p>
                 <div class="">
@@ -121,7 +152,28 @@
                 <div class="row" >
                     {#if flag}
                         <div class="comment" transition:fly={{ y: -200, duration: 1000 }}>
+                            <div class="comment_title">
+                                <div class="ava">
 
+                                </div>
+                                <div class="comment_main">
+                                    <div class="comment_text">
+                                        <p class="comment_name">Анна</p>
+                                    </div>
+                                    
+                                    <div class="comment_stats">
+                                        <img src="{ stars }" alt="" draggable="false">
+                                        <p class="gr_sm">9 августа 2023 г.</p>
+                                        <span>
+                                            <div class="point"></div>
+                                            <p class="gr_sm">Bibiptrip</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment_text">
+                                <p>Регулярно пользуюсь этим сервисом. Очень удобно, что можно самостоятельно создавать поездки. Также я выбираю сама места в авто. Приложение не тормозит в процессе использования.</p>
+                            </div>
                         </div>
                     {/if}
                     
@@ -129,16 +181,196 @@
                 <div class="row">
                     {#if flag}
                         <div class="comment" transition:fly={{ x: -200, duration: 1000 }}>
+                            <div class="comment_title">
+                                <div class="ava">
 
+                                </div>
+                                <div class="comment_main">
+                                    <div class="comment_text">
+                                        <p class="comment_name">Ирина</p>
+                                    </div>
+                                    
+                                    <div class="comment_stats">
+                                        <img src="{ stars }" alt="" draggable="false">
+                                        <p class="gr_sm">9 августа 2023 г.</p>
+                                        <span>
+                                            <div class="point"></div>
+                                            <p class="gr_sm">BeLoved</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment_text">
+                                <p>Удобное приложение для двоих. Напоминания, множество целей и совместный архив. Много интересных фишек)</p>
+                            </div>
                         </div>
                     {/if}
                 </div>
                 <div class="row">
                     {#if flag}
                         <div class="comment" transition:fly={{ y: 200, duration: 1000 }}>
+                            <div class="comment_title">
+                                <div class="ava">
 
+                                </div>
+                                <div class="comment_main">
+                                    <div class="comment_text">
+                                        <p class="comment_name">Ирина</p>
+                                    </div>
+                                    
+                                    <div class="comment_stats">
+                                        <img src="{ stars }" alt="" draggable="false">
+                                        <p class="gr_sm">9 августа 2023 г.</p>
+                                        <span>
+                                            <div class="point"></div>
+                                            <p class="gr_sm">Bibiptrip</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment_text">
+                                <p>Неоднократно пользовалась услугами этого через это приложение и остались только положительные впечатления. Водители адекватные, вежливые, не навязчивые. Я всем довольна.</p>
+                            </div>
                         </div>
                     {/if}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+
+    </section>
+    <section>
+        <div class="nda">
+            <div class="nda_block"
+            style="
+            display: flex;
+            justify-content: space-between;
+            padding: 32px;
+            flex-direction:column;
+            border-radius: 36px;
+            border: 2px solid var(--brightgray-color);
+            background-image: url({dna_bg});
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height:401px;
+
+            ">
+                <div class="" style="width: 59%;">
+                    <p class="title">Мы заботимся о безопасности вашей идеи</p>
+                    <p class="main_sm">Поэтому готовы подписать договор о неразглашении (NDA), только после этого приступим к созданию тестового варианта и приложения в целом</p>
+                </div>
+                <div class="">
+                    <button class="main_wt_btn">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="core_values">
+            <p class="title gray_abs">Ключевые ценности</p>
+            <div class="core_values_info">
+                <div class="">
+                    <p class="title">Держим в курсе процесса разработки</p>
+                    <p class="main_sm">В начале каждого рабочего дня заказчик по желанию может получать план работ по проекту на день</p>
+                </div>
+                <div class="">
+                    <p class="title">Помощь в презентации проекта</p>
+                    <p class="main_sm">Мы готовы присутствовать на встречах с инвесторами наших клиентов, чтобы донести ценность задумки приложения</p>
+                </div>
+            </div>
+            <div class="core_values_image">
+                <img src="{ core_value_bg }" alt="">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="development_process">
+            <p class="title">Процесс разработки продукта</p>
+            <div class="dev_process_block">
+                <img src="{ process }" alt="">
+            </div>
+        </div>
+    </section>
+    <section  bind:this={devContainer}>
+        <div class="development_stages">
+            <p class="title">Этапы разработки</p>
+            <div class="blocks">
+                <div class="stages_row">
+                    {#if flag2}
+                        <div class="column_block" transition:fly={{ y: 200, duration: 1000 }}>
+                            <div class="column_block_img">
+                                <img src="{ designer_bg }" alt="">
+                            </div>        
+                            <div class="column_info">
+                                <div class="">
+                                    <p class="title">Дизайн</p>
+                                    <ul>
+                                        <li class="main_sm">— Сбор информации о проекте</li>
+                                        <li class="main_sm">— Генерация сценария взаимодействия с продуктом</li>
+                                        <li class="main_sm">— Разработка прототипа</li>
+                                        <li class="main_sm">— Отрисовка дизайн-макета в Figma</li>
+                                    </ul>
+                                </div>
+                                <button class="main_gr_btn">Срок от 10 дней</button>
+                            </div>                
+                        </div>
+                        <div class="column_block" transition:fly={{ y: 200, duration: 1500 }}>
+                            <div class="column_block_img">
+                                <img src="{ verst_bg  }" alt="">
+                            </div>        
+                            <div class="column_info">
+                                <div class="">
+                                    <p class="title">Вёрстка</p>
+                                    <ul>
+                                        <li class="main_sm">— Оживляем приложение на основе дизайн-проекта</li>
+                                        <li class="main_sm">— Оптимизируем интерфейс</li>
+                                        <li class="main_sm">— Подготавливаем приложение к серверной части</li>
+                                    </ul>
+                                </div>
+                                <button class="main_gr_btn">Срок от 10 дней</button>
+                            </div>                
+                        </div>
+                        <div class="column_block" transition:fly={{ y: 200, duration: 2000 }}>
+                            <div class="column_block_img">
+                                <img src="{ function_bg }" alt="">
+                            </div>        
+                            <div class="column_info">
+                                <div class="">
+                                    <p class="title">Функционал</p>
+                                    <ul>
+                                        <li class="main_sm">— Применяем архитектуру с возможностью масштабирования</li>
+                                        <li class="main_sm">— Используем уже протестированные решения, ускоряя разработку и повышая качество приложения</li>
+                                    </ul>
+                                </div>
+                                <button class="main_gr_btn">Срок от 10 дней</button>
+                            </div>                
+                        </div>
+                    {/if}
+                    
+                </div>
+                <div class="stages_column">
+                    {#if flag3}
+                        <div class="row_block" transition:fly={{ y: 200, duration: 1000 }}>
+                            <div class="row_block_content">
+                                <div class="test_img">
+                                    <img src="{ test_bg }" alt="">
+                                </div>
+                                <div class="stages_test_text">
+                                    <p class="title">Тестирование</p>
+                                    <ul>
+                                        <li class="main_sm">— Вносим правки и исправляем ошибки</li>
+                                        <li class="main_sm">— Решаем любые проблемы, связанные с публикацией: шифрование и подозрение в рекламе, возрастной цензор</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="test_btn">
+                                <button class="main_gr_btn">Срок от 10 дней</button>
+                            </div>
+                        </div>
+                    {/if}
+                    
                 </div>
             </div>
         </div>
@@ -260,7 +492,7 @@
         justify-content: space-between;
         margin: 200px 0;
     }
-    .fourth_block div:not(.row):first-child{
+    .fourth_block_title{
         max-width: 470px;
         display: flex;
         flex-direction: column;
@@ -268,11 +500,13 @@
         justify-content: center;
     }
     .comment{
-        padding: 30px;
+        padding: 32px;
         border: 1px solid var(--brightgray-color);
         border-radius: 36px;
         width: 445px;
-        height: 208px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
     }
     .feedback{
         width: 550px;
@@ -294,5 +528,162 @@
     .feedback .row:nth-child(2){
         justify-content: start;
         align-items: start;
+    }
+    .comment_text{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        color: var(--whitegay-color);
+    }
+    .ava{
+        width: 56px;
+        height: 56px;
+        border: 1px solid var(--brightgray-color);
+        border-radius: 50px;
+    }
+    .comment_title{
+        display: flex;
+        column-gap: 12px;
+
+    }
+    .comment_stats{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10px;
+    }
+    .comment_main{
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+    .gr_sm{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        color: var(--graywhite-color);
+    }
+    .point{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content: "";
+        width: 3px;
+        height: 3px;
+        border-radius: 30px;
+        background-color: var(--graywhite-color);
+    }
+    .comment_stats span{
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+    .nda{
+        padding: 200px 0;
+    }
+    .core_values_image{
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+    .core_values{
+        display: flex;
+        position: relative;
+        column-gap: 150px;
+        margin-bottom: 200px;
+    }
+    .gray_abs{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--darkgray-color);
+    }
+    .core_values_info{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 30px;
+    }
+    .dev_process_block{
+        overflow: hidden;
+        border-radius: 36px;
+        border: 1px solid var(--brightgray-color);
+        
+    }
+    .development_process{
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        margin-bottom: 200px;
+    }
+    .column_block_img{
+        max-width: 360px;
+        max-height: 350px;
+    }
+    .column_block{
+        border: 2px solid var(--brightgray-color);
+        max-width: fit-content;
+        border-radius: 36px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .column_info{
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: space-between;
+        height: 100%;
+        row-gap: 30px;
+    }
+    li{
+        margin-bottom: 15px;
+    }
+    li:first-child{
+        margin-top: 15px;
+    }
+    .column_info div:first-child{
+        max-width: 300px;
+    }
+    .stages_row{
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .blocks{
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .row_block{
+        border-radius: 36px;
+        border: 2px solid var(--brightgray-color);
+        display: flex;
+        flex-direction: column;
+    }
+    .row_block_content{
+        display: flex;
+    }
+    .stages_test_text{
+        padding: 30px 30px 30px 0;
+        width: 50%;
+    }
+    .test_img{
+        width: 100%;
+    }
+    .test_img img{
+        width: 100%;
+    }
+    .test_btn{
+        margin: 0 30px 30px 30px;
+    }
+    .development_stages{
+        margin-bottom: 200px;
     }
 </style>

@@ -234,3 +234,26 @@ legend {
 	background: var(--white-color);
 	color: var(--black-color);
 }
+.main_gr_btn{
+	border: 2px solid var(--brightgray-color);
+	background: none;
+	color: var(--brightgray-color);
+	border-radius: 100px;
+	padding: 8px 24px;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 25px;
+	letter-spacing: 0em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	column-gap: 15px;
+	transition: all .2s ease-out;
+	width: 100%;
+	justify-content: center;
+}
+.main_gr_btn:hover{
+	border: 2px solid var(--white-color);
+	color: var(--white-color);
+	
+}
