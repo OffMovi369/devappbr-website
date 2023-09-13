@@ -12,6 +12,11 @@
     import verst_bg from "$lib/assets/verst.png"
     import function_bg from "$lib/assets/function.png"
     import test_bg from "$lib/assets/test.png"
+    import mini_logo from "$lib/assets/mini_logo.png"
+
+    import person_test from "$lib/assets/personal_test.png"
+
+    import Project from './project.svelte';
     
     let mapContainer;
 	let map_offset;
@@ -24,10 +29,15 @@
     let flag2 = false
     let flag3 = false
 
+    let miniHeaderContainer;
+    let visib;
+    let miniHeaderFlag = false
+    let hhh;
+
     afterUpdate(() => {
 		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
         dev = (devContainer.offsetTop - innerHeight / 2) - 100;
-
+        visib = (miniHeaderContainer.offsetTop - innerHeight / 2 + (hhh / 2)  + 100);
 	});
 
     $:{
@@ -54,12 +64,92 @@
             flag3 = false
         }
     }
+
+    $:{
+        if (visib <= oh){
+            miniHeaderFlag = true
+        }
+        else{
+            miniHeaderFlag = false
+        }
+    }
+    let personal = [
+        {
+            id:1,
+            name:"Павел Калашников",
+            func:"Сооснователь DA&BR, Коммерческий директор",
+            sity:"г.Москва, Россия"
+            
+        },
+        {
+            id:2,
+            name:"Максим Яковлев",
+            func:"Сооснователь DA&BR,Технический директор",
+            sity:"г.Будва, Черногория"
+        },
+        {
+            id:3,
+            name:"Иван Киселев",
+            func:"Front-end разработчик",
+            sity:"г.Москва, Россия"
+        },
+        {
+            id:4,
+            name:"Виталий Яковлев",
+            func:"Front-end разработчик",
+            sity:"Калифорния, США"
+        },
+        {
+            id:5,
+            name:"Олег Бочко",
+            func:"Front-end разработчик",
+            sity:"г.Волковыск, Беларусь"
+        },
+        {
+            id:6,
+            name:"Валерий Степаненко",
+            func:"Back-end разработчик",
+            sity:"г.Санкт-Петербург, Россия"
+        },
+        {
+            id:7,
+            name:"Никита Корчагин",
+            func:"Продуктовый дизайнер",
+            sity:"г.Сланцы, Россия"
+        },
+        {
+            id:8,
+            name:"Дамир Багжанов",
+            func:"Project-manager",
+            sity:"г.Москва, Россия"
+        },
+
+    ]
     
 
     
 </script>
 <svelte:window bind:scrollY={oh} bind:innerHeight/>
 <div class="main_content">
+    {#if miniHeaderFlag}
+        <div class="mini_header" transition:fly={{ y: 100, duration: 500 }}>
+            <div class="mini_header_content">
+                <div>
+                    <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false"></a>
+                </div>
+                <div class="nav_menu">
+                    <a href="" class="nav_link">О нас</a>
+                    <a href="" class="nav_link">Этапы </a>
+                    <a href="" class="nav_link">Проекты</a>
+                    <a href="" class="nav_link">Команда</a>
+                </div>
+                <div class="">
+                    <button class="main_wt_btn">Разработать MVP</button>
+                </div>
+            </div>
+        </div>
+    {/if}
+    
     <section>
         <div class="first_block">
             <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 2 месяца</p>
@@ -79,7 +169,8 @@
             <img src="{ block_bg }" alt="" draggable="false">
         </div>
     </section>
-    <section>
+    <section bind:this={miniHeaderContainer}>
+        
         <div class="second_block">
             <div class="">
                 <div class="info_block">
@@ -136,7 +227,7 @@
             </div>
         </div>
     </section>
-    <section  bind:this={mapContainer}>
+    <section  bind:this={mapContainer} bind:clientHeight={ hhh }>
         <div class="fourth_block">
             <div class="fourth_block_title">
                 <p class="title">Средняя оценка наших приложений – 4.7</p>
@@ -238,7 +329,7 @@
         </div>
     </section>
     <section>
-
+        <Project />
     </section>
     <section>
         <div class="nda">
@@ -375,12 +466,62 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="comrads">
+            <p class="title">Команда</p>
+            <div class="command">
+                {#each personal as  person (person.id)}
+                    <div class="person_card">
+                        <img src="{ person_test  }" alt="">
+                        <div class="personinfo">
+                            <p class="main_sm">{ person.name }</p>
+                            <p class="main_sm_thin">{ person.func }</p>
+                            <p class="main_sm_thin">{ person.sity }</p>
+                        </div>
+                    </div>
+                {/each}
+                
+
+            </div>
+        </div>
+    </section>
 </div>
 
 <style>
+    .mini_header{
+        position: fixed;
+        bottom: 25px;
+        max-width: 1120px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 64px;
+        z-index: 1;
+    }
+    .mini_header_content{
+        width: 100%;
+        max-width: 780px;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 36px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+    .mini_logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .main_content{
         max-width: 1120px;
         margin: auto;
+        overflow: hidden;
     }
     .big_title{
         font-size: 56px;
@@ -389,13 +530,7 @@
         letter-spacing: 0em;
         color: var(--white-color);
     }
-    .main_sm{
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 25px;
-        letter-spacing: 0em;
-        color: var(--white-color);
-    }
+    
     .main_sm_gray{
         font-size: 18px;
         font-weight: 500;
@@ -435,13 +570,7 @@
         display: flex;
         column-gap: 20px;
     }
-    .title{
-        font-size: 28px;
-        font-weight: 700;
-        line-height: 38px;
-        letter-spacing: -0.01em;
-        color: var(--white-color);
-    }
+    
     .info_block{
         padding: 40px;
         border-radius: 36px;
@@ -479,7 +608,7 @@
         align-items: center;
         height: 550px;
         position: relative;
-        margin-top: 277px;
+        margin: 277px 0px;
     }
     .third_block div:first-child{
         display: flex;
@@ -660,6 +789,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 20px;
+        height: 1080px;
     }
     .row_block{
         border-radius: 36px;
@@ -685,5 +815,35 @@
     }
     .development_stages{
         margin-bottom: 200px;
+    }
+    .comrads{
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        margin-bottom: 200px;
+    }
+    .command{
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(265px, 265px));
+        align-items: center;
+        justify-content: space-between;
+        row-gap: 30px;
+    }
+    .person_card{
+        max-width: 300px;
+        height: 365px;
+        position: relative;
+    }
+    .person_card img{
+        height: 100%;
+    }
+    .personinfo{
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        padding: 20px;
     }
 </style>
