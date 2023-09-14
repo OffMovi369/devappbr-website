@@ -598,10 +598,6 @@
     .mini_header_content{
         width: 100%;
         max-width: 780px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 36px;
         backdrop-filter: blur(10px);
