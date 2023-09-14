@@ -13,10 +13,26 @@
     import function_bg from "$lib/assets/function.png"
     import test_bg from "$lib/assets/test.png"
     import mini_logo from "$lib/assets/mini_logo.png"
+    import apl_bg from "$lib/assets/apl_bg.png"
 
     import person_test from "$lib/assets/personal_test.png"
 
     import Project from './project.svelte';
+    import Slider from './slider.svelte';
+
+    import { imask } from '@imask/svelte';
+
+
+    function accept({ detail: maskRef }) {
+        value = maskRef.value;
+    }
+    const options = { 
+		mask: '+{0}(000)000-00-00',
+        lazy: true,
+	};
+    let tel = '';
+
+
     
     let mapContainer;
 	let map_offset;
@@ -34,10 +50,14 @@
     let miniHeaderFlag = false
     let hhh;
 
+    let devlast;
+    let miniClose;
+
     afterUpdate(() => {
 		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
         dev = (devContainer.offsetTop - innerHeight / 2) - 100;
         visib = (miniHeaderContainer.offsetTop - innerHeight / 2 + (hhh / 2)  + 100);
+        miniClose = devlast.offsetTop - innerHeight / 2  + 300;
 	});
 
     $:{
@@ -50,7 +70,6 @@
     }
 
     $:{
-        console.log(dev,oh,flag2)
         if(  dev <= oh ){
             flag2 = true
         }
@@ -69,7 +88,7 @@
         if (visib <= oh){
             miniHeaderFlag = true
         }
-        else{
+        if ( visib > oh  || miniClose <= oh ){
             miniHeaderFlag = false
         }
     }
@@ -179,7 +198,6 @@
                     <div class="">
                         <button class="main_tr_btn" >
                             Сертификат AppsFlyer
-                            <Icon icon="ep:right" color="white" width="22" height="22"/>
                         </button>
                     </div>
                     
@@ -190,7 +208,6 @@
                     <div class="">
                         <button class="main_tr_btn">
                             Калькулятор продаж
-                            <Icon icon="ep:right" color="white" width="22" height="22"/>
                         </button>
                     </div>
                     
@@ -203,7 +220,6 @@
                     <div class="">
                         <button class="main_tr_btn">
                             Рассчитать стоимость
-                            <Icon icon="ep:right" color="white" width="22" height="22"/>
                         </button>
                     </div>
                 </div>
@@ -218,7 +234,6 @@
                 <div class="">
                     <button class="main_wt_btn">
                         Смотреть интервью
-                        <Icon icon="ep:right" color="black" width="22" height="22"/>
                     </button>
                 </div>
             </div>
@@ -235,7 +250,6 @@
                 <div class="">
                     <button class="main_tr_btn">
                         Читать отзывы
-                        <Icon icon="ep:right" color="white" width="22" height="22"/>
                     </button>
                 </div>
             </div>
@@ -420,7 +434,7 @@
                                         <li class="main_sm">— Подготавливаем приложение к серверной части</li>
                                     </ul>
                                 </div>
-                                <button class="main_gr_btn">Срок от 10 дней</button>
+                                <button class="main_gr_btn">Срок от 15 дней</button>
                             </div>                
                         </div>
                         <div class="column_block" transition:fly={{ y: 200, duration: 2000 }}>
@@ -435,7 +449,7 @@
                                         <li class="main_sm">— Используем уже протестированные решения, ускоряя разработку и повышая качество приложения</li>
                                     </ul>
                                 </div>
-                                <button class="main_gr_btn">Срок от 10 дней</button>
+                                <button class="main_gr_btn">Срок от 15 дней</button>
                             </div>                
                         </div>
                     {/if}
@@ -457,7 +471,7 @@
                                 </div>
                             </div>
                             <div class="test_btn">
-                                <button class="main_gr_btn">Срок от 10 дней</button>
+                                <button class="main_gr_btn">Срок от 5 дней</button>
                             </div>
                         </div>
                     {/if}
@@ -485,9 +499,92 @@
             </div>
         </div>
     </section>
+    <section>
+        <Slider />
+    </section>
+    <section bind:this={devlast} >
+        <div class="application">
+            <div class="application_main">
+                <div class="apl_title">
+                    <p class="title">Разработаем приложение с минимальным функционалом бесплатно</p>
+                    <p class="main_sm">Вы сможете ознакомиться с интерфейсом или презентовать его инвесторам</p>
+                </div>
+                <form action="" class="apl_form">
+                    <label for="" class="input_row">
+                        <p class="main_sm">Имя Фамилия</p>
+                        <input type="text" required placeholder="Введите имя">
+                    </label>
+                    <label for="" class="input_row">
+                        <p class="main_sm">Номер телефона</p>
+                        <input type="tel" required {tel}
+                        use:imask={options}
+                        on:accept={accept} placeholder="+7 000 00 00 ">
+                    </label>
+                    <button class="main_wt_btn">Разработать тестовый вариант</button>
+                    <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
+                </form>
+            </div>
+            <div class="application_img">
+                <img src="{ apl_bg }" alt="">
+            </div>
+        </div>
+    </section>
 </div>
 
 <style>
+    .apl_form .main_wt_btn{
+        justify-content: center;
+    }
+    .apl_agr{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: var(--graywhite-color);
+    }
+    .apl_agr a{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: var(--graywhite-color);
+        text-decoration: underline;
+    }
+    .apl_form{
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+    }
+    .input_row input{
+        height: 50px;
+        border-radius: 36px ;
+        border: 2px solid var(--brightgray-color);
+        color: var(--white-color);
+        width: 100%;
+        padding: 10px 25px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0em;
+    }
+    .input_row{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .application{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 200px;
+    }
+    .application_main{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+    }
     .mini_header{
         position: fixed;
         bottom: 25px;
@@ -496,7 +593,7 @@
         display: flex;
         justify-content: center;
         height: 64px;
-        z-index: 1;
+        z-index: 99;
     }
     .mini_header_content{
         width: 100%;
