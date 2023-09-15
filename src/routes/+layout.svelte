@@ -46,7 +46,7 @@
 
 <header>
     <div class="header_content">
-        <div class="">
+        <div class="header_logo">
             <a href="#" draggable="false"><img src="{ logo }" alt="" draggable="false"></a >
         </div>
         <div class="nav_menu">
@@ -115,10 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div class="contacts">
-
-            </div>
-        </div>'
+        </div>
     </div>
     <div class="ft_block_2">
         <div class="contacts">
@@ -330,4 +327,127 @@
     .contants{
         height: 100px;
     }
+    @media(max-width:1180px){
+        .header_content{
+            padding: 20px;
+        }
+    }
+    @media(max-width:1000px){
+        .ft_block_1{
+            padding: 0  100px;
+        }
+        .links_block{
+            flex-direction: column-reverse;
+            row-gap: 32px;
+        }
+        .sns{
+            row-gap: 12px;
+        }
+        .contacts{
+            padding: 20px;
+        }
+    
+    }
+    @media(max-width:850px){
+        header .nav_menu{
+            display: none;
+        }
+    }
+    @media(max-width:800px){
+        .header_content{
+            padding: 20px;
+        }
+        .contacts{
+            flex-direction: column;
+            row-gap: 20px;
+            
+        }
+    }
+    
+    @media(max-width:600px){
+        .sns{
+            width: 100%;
+        }
+    }
+    @media(max-width:550px){
+        .map{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        .ft_block_1{
+            padding: 0  32px;
+        }
+        .header_content{
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        header .nav_menu{
+            display: flex;
+        }
+        .header_logo{
+            margin-top: 40px;
+        }
+    }
+    @media(max-width:428px){
+        
+        .header_content{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        
+        .contacts{
+            flex-direction: column;
+        }
+        .links_block{
+            flex-direction: column-reverse;
+            row-gap: 32px;
+        }
+        .map{
+            flex-wrap: wrap;
+            row-gap: 32px;
+            column-gap: 15px;
+        }
+        .end_content{
+            padding: 32px;
+        }
+        .mao_ul{
+            max-width: unset;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .sns{
+            width: 100%;
+            row-gap: 12px;
+        }
+        .contacts{
+            row-gap: 32px;
+        }
+        
+        
+    }
+    @media(max-width:400px){
+        .quest_link{
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .own_contact{
+            flex-direction: column;
+            row-gap: 12px;
+        }
+        .own_contact_div{
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .contact_link{
+            text-align: center;
+            width: 100%;
+        }
+        .contact_name{
+            text-align: center;
+        }
+        .nav_menu{
+            column-gap: 10px;
+        }
+    }
+    
 </style>

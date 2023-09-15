@@ -53,6 +53,8 @@
     let devlast;
     let miniClose;
 
+    let innerWidth;
+
     afterUpdate(() => {
 		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
         dev = (devContainer.offsetTop - innerHeight / 2) - 100;
@@ -145,10 +147,11 @@
 
     ]
     
+    
 
     
 </script>
-<svelte:window bind:scrollY={oh} bind:innerHeight/>
+<svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth/>
 <div class="main_content">
     {#if miniHeaderFlag}
         <div class="mini_header" transition:fly={{ y: 100, duration: 500 }}>
@@ -176,15 +179,15 @@
             <div class="">
                 <div class="">
                     <button class="main_wt_btn">Разработать тестовый вариант</button>
-                    <a href="#"><Icon icon="mdi:youtube" color="white" width="25" height="25"/></a>
-                    <a href="#"><Icon icon="mingcute:telegram-fill" color="white" width="25" height="25"  /></a>
+                    <a href="#" class="seti"><Icon icon="mdi:youtube" color="white" width="25" height="25"/></a>
+                    <a href="#" class="seti"><Icon icon="mingcute:telegram-fill" color="white" width="25" height="25"  /></a>
                 </div>
                 <div class="">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
                 </div>
             </div>
         </div>
-        <div class="">
+        <div class="first_img">
             <img src="{ block_bg }" alt="" draggable="false">
         </div>
     </section>
@@ -349,20 +352,12 @@
         <div class="nda">
             <div class="nda_block"
             style="
-            display: flex;
-            justify-content: space-between;
-            padding: 32px;
-            flex-direction:column;
-            border-radius: 36px;
-            border: 2px solid var(--brightgray-color);
             background-image: url({dna_bg});
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            height:401px;
-
             ">
-                <div class="" style="width: 59%;">
+                <div class="">
                     <p class="title">Мы заботимся о безопасности вашей идеи</p>
                     <p class="main_sm">Поэтому готовы подписать договор о неразглашении (NDA), только после этого приступим к созданию тестового варианта и приложения в целом</p>
                 </div>
@@ -532,6 +527,15 @@
 </div>
 
 <style>
+    .nda_block{
+        display: flex;
+        justify-content: space-between;
+        padding: 32px;
+        flex-direction:column;
+        border-radius: 36px;
+        border: 2px solid var(--brightgray-color);
+        height:401px;
+    }
     .apl_form .main_wt_btn{
         justify-content: center;
     }
@@ -915,6 +919,12 @@
         row-gap: 32px;
         margin-bottom: 200px;
     }
+    .test_img{
+        overflow: hidden;
+    }
+    .row_block{
+        overflow: hidden;
+    }
     .command{
         display: grid;
         align-items: center;
@@ -938,5 +948,343 @@
         flex-direction: column;
         row-gap: 5px;
         padding: 20px;
+    }
+    @media(max-width:1180px){
+        section{
+            margin: 0 32px;
+        }
+        .stages_row{
+            column-gap: 12px;
+        }
+    }
+    @media(max-width:1080px){
+        .fourth_block_title{
+            max-width: 40%;
+        }
+        .big_title{
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 66px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+        .test{
+            height: 400px;
+        }
+        .feedback .row:nth-child(2){
+            justify-content: end;
+            align-items: end;
+        }
+    }
+    @media(max-width:1000px){
+       .application_img{
+            display: none;
+       }
+       .application{
+        justify-content: center;
+       }
+        .application_main{
+            row-gap: 32px;
+            width: 70%;
+        }
+        .third_block{
+            flex-direction: column;
+            margin-top: 100px;
+        }
+        .owners{
+            position: unset;
+            display: flex;
+            justify-content: center;
+        }
+        .third_block div:first-child{
+            width: 70%;
+        }
+        .fourth_block{
+            padding-top: 200px;
+        }
+    }
+    @media(max-width:900px){
+        .core_values{
+            column-gap: 32px;
+        }
+        .command{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .fourth_block{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        .feedback{
+            width: 100%;
+        }
+        .feedback .row:nth-child(2){
+            align-items: baseline;
+            justify-content: start;
+        }
+        .row_block_content{
+            flex-direction: column;
+        }
+        .stages_test_text{
+            padding: 32px;
+            width: 100%;
+        }
+        .blocks{
+            height: 2680px;
+        }
+        .stages_row{
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+        }
+        .fourth_block_title{
+            max-width: 100%;
+        }
+    }
+    @media(max-width:850px){
+        .seti{
+            display: none;
+        }
+    }
+    @media(max-width:800px){
+        .mini_header_content{
+            margin: 0 32px;
+        }
+        .first_block div:last-child{
+            flex-direction: column;
+            row-gap: 32px;
+            align-items: baseline;
+        }
+        .core_values{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        .core_values_info{
+            margin-top: 60px;
+            justify-content: center;
+            width: 100%;
+        }
+        .core_values_image{
+            width: 100%;
+            justify-content: center;
+        }
+        .second_block div:first-child{
+            flex-direction: column;
+            row-gap: 20px;
+        }
+    }
+    @media(max-width:700px){
+        .mini_header_content .nav_menu{
+            column-gap: 10px;
+        }
+        .mini_logo{
+            display: none;
+        }
+        .big_title{
+            font-size: 34px;
+            line-height: 38.25px;
+        }
+        .nda_block div:first-child{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .nda_block{
+            height: 500px;
+        }
+    }
+    @media(max-width:600px){
+        .application_main{
+            row-gap: 32px;
+            width: 100%;
+        }
+        .mini_logo{
+            display: flex;
+        }
+        .mini_header_content .nav_menu{
+            display: none;
+        }
+        .fourth_block{
+            margin-top: 0;
+            padding-top: 0;
+            row-gap: 60px;
+        }
+        .fourth_block_title{
+            max-width: 100%;
+        }
+    }
+    @media(max-width:428px){
+        .second_block{
+            flex-direction: column-reverse;
+            row-gap: 20px;
+        }
+        .second_block div:not(.info_block){
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .first_img{
+            display: none;
+        }
+        .third_block{
+            display: none;
+        }
+        .fourth_block{
+            flex-direction: column;
+            row-gap: 120px;
+            margin-bottom: 60px;
+        }
+        .feedback{
+            width: 100%;
+            height: 100%;
+            row-gap: 20px;
+        }
+        .core_values{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        .blocks{
+            height: 2900px;
+        }
+        .stages_row{
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .row_block_content{
+            flex-direction: column;
+        }
+        .column_block{
+            max-width: unset;
+            
+        }
+        .column_block_img{
+            max-width: unset;
+        }
+        .column_block_img img{
+            width: 100%;
+        }
+        .person_card{
+            width: 100%;
+            max-width: unset;
+        }
+        .command{
+            display: flex;
+            flex-direction: column;
+        }
+        .person_card img{
+            width: 365px;
+            height: 365px;
+        }
+        .big_title{
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 38px;
+            letter-spacing: 0em;
+
+        }
+        .first_block div:last-child{
+            flex-direction: column;
+            row-gap: 32px;
+        }
+        .seti{
+            display: none;
+        }
+        .row{
+            height: fit-content;
+        }
+        .comment_main{
+            width: 80%;
+        }
+        .nda_block{
+            height: unset;
+        }
+        .core_values_info{
+            margin-top: 60px;
+            width: 100%;
+        }
+        .core_values_info div{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .development_process{
+            display: none;
+        }
+        .development_stages{
+            margin-bottom: 0;
+        }
+        .stages_test_text{
+            padding: 30px;
+            width: 100%;
+        }
+        .test_img{
+            height: 235px;
+        }
+        .test_img img{
+           height: 100%;
+           object-fit: cover;
+        }
+        .application_img{
+            display: none;
+        }
+        .application{
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .application_main{
+            width: 100%;
+            row-gap: 60px;
+        }
+        .apl_title{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        .apl_title .title{
+            font-size: 24px;
+        }
+        .mini_header{
+            padding: 0 32px;
+        }
+        .mini_header .nav_menu{
+            display: none;
+        }
+        .fourth_block{
+            margin-top: 60px;
+        }
+        .nda_block{
+            height: 500px;
+        }
+        .nda_block .main_wt_btn{
+            display: inline;
+        }
+        .comment{
+            padding: 25px;
+        }
+        
+    }
+    @media(max-width:400px){
+        .comrads{
+            margin-top: 200px;
+        }
+        .comment_main{
+            width: 70%;
+        }
+        .info_block{
+            padding: 25px;
+        }
+        .nda{
+            padding-bottom: 20px;
+        }
+        .mini_header{
+            padding: 0;
+        }
+        
+    }
+    @media(max-width:350px){
+        .core_values_info{
+            margin-top: 100px;
+        }
     }
 </style>

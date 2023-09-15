@@ -296,3 +296,36 @@ legend {
 .nav_link:hover{
 	color: var(--gray-color);
 }
+@media(max-width:1180px){
+	.main_sm{
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 25px;
+		letter-spacing: 0em;
+		text-align: left;
+
+	}
+}
+@media(max-width:428px){
+	.main_wt_btn{
+		font-size: 15px;
+		font-weight: 700;
+		line-height: 25px;
+		letter-spacing: 0em;
+		width: 100%;
+		
+	}
+	.title{
+		font-size: 28px;
+		font-weight: 700;
+		line-height: 38px;
+		letter-spacing: 0em;
+		text-align: left;
+	}
+	.main_sm{
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 25px;
+		letter-spacing: 0em;
+	}
+}
