@@ -30,7 +30,6 @@
             name:"Название проекта",
             disc:"Описание проекта",
         },
-
     ]
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'

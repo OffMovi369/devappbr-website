@@ -296,6 +296,7 @@ legend {
 .nav_link:hover{
 	color: var(--gray-color);
 }
+
 @media(max-width:1180px){
 	.main_sm{
 		font-size: 18px;
@@ -313,7 +314,22 @@ legend {
 		line-height: 25px;
 		letter-spacing: 0em;
 		width: 100%;
-		
+	}
+	.main_tr_btn{
+		font-size: 15px;
+		font-weight: 700;
+		line-height: 25px;
+		letter-spacing: 0em;
+		width: 100%;
+		justify-content: center;
+	}
+	.main_gr_btn{
+		font-size: 15px;
+		font-weight: 700;
+		line-height: 25px;
+		letter-spacing: 0em;
+		width: 100%;
+		justify-content: center;
 	}
 	.title{
 		font-size: 28px;
@@ -328,4 +344,17 @@ legend {
 		line-height: 25px;
 		letter-spacing: 0em;
 	}
+}
+@media(max-width:400px){
+	.main_wt_btn{
+		padding: 8px 14px;
+		
+	}
+	.main_gr_btn{
+		padding: 8px 14px;
+	}
+	.main_tr_btn{
+		padding: 8px 14px;
+	}
+
 }

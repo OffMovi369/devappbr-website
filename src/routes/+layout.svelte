@@ -3,9 +3,11 @@
     import logo from "$lib/assets/logo.svg"
     import Icon from '@iconify/svelte';
 
-
     import own_sm_1 from "$lib/assets/own_sm_1.png"
     import own_sm_2 from "$lib/assets/own_sm_2.png"
+
+    import modalsStore from "$lib/client/modalsStore";
+    import CalcModalWindow from "./main/CalcModalWindow.svelte";
 
     let tube_hover = false
     let tg_hover = false
@@ -35,6 +37,12 @@
 
 </script>
 
+{#if $modalsStore.modalWindow}
+	<svelte:component this={$modalsStore.modalWindow}/>
+{/if}
+
+
+
 <svelte:head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +64,7 @@
             <a href="" class="nav_link">Команда</a>
         </div>
         <div class="calc">
-            <button class="main_wt_btn">Калькулятор продаж</button>
+            <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = CalcModalWindow ; $modalsStore.showModal=true}}}>Калькулятор продаж</button>
         </div>
     </div>
 </header>

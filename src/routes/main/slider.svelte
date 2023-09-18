@@ -35,6 +35,9 @@
         else if(innerWidth <= 300 && innerWidth > 280 ){
             countSlide = 1
         }
+        else{
+            countSlide = 3
+        }
 
     }
 
@@ -187,6 +190,13 @@
     @media(max-width:428px){
         .slider{
             margin-bottom: 100px;
+        }
+    }
+    @media(max-width:360px){
+        .slider_info{
+            flex-direction: column;
+            row-gap: 20px;
+            align-items: baseline;
         }
     }
 </style>

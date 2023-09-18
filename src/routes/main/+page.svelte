@@ -15,6 +15,10 @@
     import mini_logo from "$lib/assets/mini_logo.png"
     import apl_bg from "$lib/assets/apl_bg.png"
 
+    import modalsStore from "$lib/client/modalsStore";
+    import AplicModalWindow from './AplicModalWindow.svelte';
+    
+
     import person_test from "$lib/assets/personal_test.png"
 
     import Project from './project.svelte';
@@ -166,7 +170,7 @@
                     <a href="" class="nav_link">Команда</a>
                 </div>
                 <div class="">
-                    <button class="main_wt_btn">Разработать MVP</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать MVP</button>
                 </div>
             </div>
         </div>
@@ -178,7 +182,7 @@
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
             <div class="">
                 <div class="">
-                    <button class="main_wt_btn">Разработать тестовый вариант</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать тестовый вариант</button>
                     <a href="#" class="seti"><Icon icon="mdi:youtube" color="white" width="25" height="25"/></a>
                     <a href="#" class="seti"><Icon icon="mingcute:telegram-fill" color="white" width="25" height="25"  /></a>
                 </div>
@@ -1262,6 +1266,16 @@
         .comment{
             padding: 25px;
         }
+        .info_block{
+            height: fit-content;
+        }
+        .comment_title{
+            align-items: center;
+        }
+        .nda_block{
+            row-gap: 52px;
+            height: fit-content;
+        }
         
     }
     @media(max-width:400px){
@@ -1285,6 +1299,17 @@
     @media(max-width:350px){
         .core_values_info{
             margin-top: 100px;
+        }
+        .mini_header_content{
+            margin: 0 12px;
+        }
+    }
+    @media(max-width:330px){
+        .info_block{
+            height: fit-content;
+        }
+        .comrads{
+            margin-top: 360px;
         }
     }
 </style>
