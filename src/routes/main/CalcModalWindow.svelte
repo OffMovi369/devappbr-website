@@ -1,7 +1,10 @@
 <script>
     import BaseModal from "$lib/client/BaseModal.svelte";
+    import { priceFormat } from "$lib/client/priceFormat.js"
 
-
+    let clients = 0;
+    let sales = 0;
+    let receipt = 0;
 
     let swap =false
     let backSwap = false
@@ -17,15 +20,15 @@
                 <div class="input_block">
                     <label for="" class="input_row">
                         <p class="main_sm">Постоянные клиенты</p>
-                        <input type="number" required placeholder="Среднее кол-во">
+                        <input type="number" required placeholder="Среднее кол-во" bind:value={clients}>
                     </label>
                     <label for="" class="input_row">
                         <p class="main_sm">Повторные продажи</p>
-                        <input type="number" required placeholder="Среднее кол-во">
+                        <input type="number" required placeholder="Среднее кол-во" bind:value={sales}>
                     </label>
                     <label for="" class="input_row">
                         <p class="main_sm">Средний чек за сделку</p>
-                        <input type="number" required placeholder="Среднее кол-во">
+                        <input type="number" required placeholder="Среднее кол-во" bind:value={receipt}>
                     </label>
                 </div>
                 <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false  )}>Рассчитать</button>
@@ -42,7 +45,7 @@
                     </div>
                     <div class="">
                         <p class="sm_sm">Повторные продажи на</p>
-                        <div class="ressult_div">60.000</div>
+                        <div class="ressult_div">{priceFormat(clients * sales * receipt * 1)}</div>
                     </div>
                 </div>
                 <div class="result">
@@ -51,7 +54,7 @@
                     </div>
                     <div class="">
                         <p class="sm_sm">Повторные продажи на</p>
-                        <div class="ressult_div">120.000</div>
+                        <div class="ressult_div">{priceFormat(clients * sales * receipt * 2)}</div>
                     </div>
                 </div>
                 <div class="result">
@@ -60,7 +63,7 @@
                     </div>
                     <div class="">
                         <p class="sm_sm">Повторные продажи на</p>
-                        <div class="ressult_div">180.000</div>
+                        <div class="ressult_div">{priceFormat(clients * sales * receipt * 3)}</div>
                     </div>
                 </div>
                 <div class="result">
@@ -69,7 +72,7 @@
                     </div>
                     <div class="">
                         <p class="sm_sm">Повторные продажи на</p>
-                        <div class="ressult_div">240.000</div>
+                        <div class="ressult_div">{priceFormat(clients * sales * receipt * 4)}</div>
                     </div>
                 </div>
                 <div class="result">
@@ -78,7 +81,7 @@
                     </div>
                     <div class="">
                         <p class="sm_sm">Повторные продажи на</p>
-                        <div class="ressult_div">300.000</div>
+                        <div class="ressult_div">{priceFormat(clients * sales * receipt * 5)}</div>
                     </div>
                 </div>
             </div>
