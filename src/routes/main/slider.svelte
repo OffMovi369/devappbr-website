@@ -3,39 +3,47 @@
     import { Swiper, SwiperSlide } from 'swiper/svelte';
     import 'swiper/css';
 
-    import slide_bg_1 from "$lib/assets/slide_bg_1.png"
-    import slide_bg_2 from "$lib/assets/slide_bg_2.png"
+    import slide_bg_1 from "$lib/assets/slide_bg_1.png";
+    import slide_bg_2 from "$lib/assets/slide_bg_2.png";
 
     let innerWidth;
     let countSlide;
-    let space = 20 
+    let space = 20;
+    let flag = false
     $:{
+        
         if( innerWidth > 1180){
-            space = 20
+            space = 20 
             countSlide = 3
+            flag = true;
         }
         else if(innerWidth <= 1180 && innerWidth > 1080){
-            space = 40
-            countSlide = 3
+            space = 40;
+            countSlide = 3;
+            flag = true;
         }
         else if(innerWidth <= 1080 && innerWidth > 900 ){
-            space = 20
-            countSlide = 3
+            space = 20;
+            countSlide = 3;
+            flag = true;
         }
         else if(innerWidth <= 900 && innerWidth > 700 ){
-            countSlide = 2
+            countSlide = 2;
+            flag = true;
         }
         else if(innerWidth <= 700 && innerWidth > 500 ){
-            countSlide = 2
+            countSlide = 2;
+            flag = true;
         }
         else if(innerWidth <= 500 && innerWidth > 300 ){
-            countSlide = 1
+            countSlide = 1;
+            flag = true;
         }
         else if(innerWidth <= 300 && innerWidth > 280 ){
-            countSlide = 1
+            countSlide = 1;
+            flag = true;
         }
-        console.log(innerWidth,countSlide)
-
+        
     }
 
     let news = [
@@ -93,45 +101,51 @@
             <button class="next"><div class="arrow "></div></button>  
         </div>
     </div>
-    <Swiper
-    modules={[Navigation, Pagination, Scrollbar, A11y,FreeMode]}
-    spaceBetween={ space }
-    slidesPerView={ countSlide }
-    navigation = {
-        {nextEl: '.next',
-        prevEl: ".prev",}
-    }
-    freeMode
-    >
-        {#each news as slid (slid.id)}
-            <SwiperSlide>
-                <div class="slider_content"
-                style="
-                background-color: aliceblue;
-                max-width: 360px;
-                height: 202px;
-                background-image: url({slid.url});
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                overflow:hidden;
-                border-radius:36px;
-                padding:16px;
-                display:flex;
-                flex-direction: column;
-                justify-content: end;
-                "
-                >
-                    <div class="slide_text">
-                        <p class="main_sm size_14">{ slid.disc }</p>
+    {#if flag }
+        <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y,FreeMode]}
+        spaceBetween={ space }
+        slidesPerView={ countSlide }
+        navigation = {
+            {nextEl: '.next',
+            prevEl: ".prev",}
+        }
+        freeMode
+        >
+            {#each news as slid (slid.id)}
+                <SwiperSlide>
+                    <div class="slider_content"
+                    style="
+                    background-color: aliceblue;
+                    max-width: 360px;
+                    height: 202px;
+                    background-image: url({slid.url});
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    overflow:hidden;
+                    border-radius:36px;
+                    padding:16px;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: end;
+                    "
+                    >
+                        <div class="slide_text">
+                            <p class="main_sm size_14">{ slid.disc }</p>
+                        </div>
                     </div>
-                </div>
-            </SwiperSlide>
-        {/each}
-        
-        
-        
-    </Swiper>
+                </SwiperSlide>
+            {/each}
+            
+            
+            
+        </Swiper>
+    {/if}
+    
+    
+    
+    <!-- тут захерачить иф (конец) -->
 </div>
 
 <style>

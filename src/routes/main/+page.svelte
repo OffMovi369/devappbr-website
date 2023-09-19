@@ -1171,14 +1171,17 @@
         .person_card{
             width: 100%;
             max-width: unset;
+            display: flex;
+            justify-content: center;
+            object-fit: cover;
         }
         .command{
             display: flex;
             flex-direction: column;
         }
         .person_card img{
-            width: 365px;
             height: 365px;
+            object-fit: fill;
         }
         .big_title{
             font-size: 28px;
