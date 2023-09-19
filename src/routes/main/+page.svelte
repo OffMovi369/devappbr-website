@@ -17,7 +17,7 @@
 
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
-    
+    import CalcModalWindow from './CalcModalWindow.svelte';
 
     import person_test from "$lib/assets/personal_test.png"
 
@@ -213,7 +213,7 @@
                     <p class="title">Прогноз выручки от внедрения приложения в Ваш бизнес</p>
                     <p class="main_sm">Подставьте данные в таблицу и узнайте прогноз для приложения</p>
                     <div class="">
-                        <button class="main_tr_btn">
+                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = CalcModalWindow ; $modalsStore.showModal=true}}}>
                             Калькулятор продаж
                         </button>
                     </div>

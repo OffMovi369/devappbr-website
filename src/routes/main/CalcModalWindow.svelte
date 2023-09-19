@@ -4,10 +4,11 @@
 
 
     let swap =false
+    let backSwap = false
 </script>
 <BaseModal title="Настройка платежной системы">
     <div class="calc">
-        <form action="" class:swap_complete_lt={swap === true }  class="apl_form" >
+        <form action="" class:swap_complete_lt={swap === true }  class="apl_form"  class:swap_backcomplete_lt={backSwap === true } >
             <div class="block_left" >
                 <div class="title_block">
                     <p class="title">Калькулятор повторных продаж</p>
@@ -27,10 +28,10 @@
                         <input type="number" required placeholder="Среднее кол-во">
                     </label>
                 </div>
-                <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true )}>Оставить заявку</button>
+                <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false  )}>Рассчитать</button>
             </div>
         </form>
-        <div class="block_right" class:swap_complete_rt={swap === true }>
+        <div class="block_right" class:swap_complete_rt={swap === true } class:swap_backcomplete_rt={backSwap === true } >
             <div class="title_block">
                 <p class="title">Прогноз</p>
             </div>
@@ -81,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <button class="main_wt_btn" type="submit">Оставить заявку</button>
+            <button class="main_wt_btn" type="submit" on:click={ ()=>(swap=false, backSwap=true )} >Рассчитать снова</button>
         </div>
     </div>
 </BaseModal>
@@ -93,6 +94,12 @@
     .swap_complete_rt{
         transform: translateX(-140%);
     }
+    .swap_backcomplete_lt{
+        transform: translateX(0);
+    }
+    .swap_backcomplete_rt{
+        transform: translateX(0);
+    }
     .title_block{
         display: flex;
         flex-direction: column;
@@ -101,10 +108,10 @@
     .block_left{
         display: flex;
         flex-direction: column;
-        row-gap: 32px;
         transition: all .2s ease-out;
         width: 100%;
         max-width: 323px;
+        justify-content: space-between;
     }
     .apl_form{
         display: flex;
@@ -119,10 +126,10 @@
     .block_right{
         display: flex;
         flex-direction: column;
-        row-gap: 32px;
         transition: all .2s ease-out;
         width: 100%;
         max-width: 323px;
+        justify-content: space-between;
     }
     .input_block{
         display: flex;
@@ -184,6 +191,11 @@
         display: flex;
         flex-direction: column;
         row-gap: 5px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
     @media(max-width:400px){
         .block_right{

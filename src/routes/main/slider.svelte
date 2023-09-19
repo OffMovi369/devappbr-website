@@ -10,7 +10,6 @@
     let countSlide;
     let space = 20 
     $:{
-        console.log(innerWidth)
         if( innerWidth > 1180){
             space = 20
             countSlide = 3
@@ -35,9 +34,7 @@
         else if(innerWidth <= 300 && innerWidth > 280 ){
             countSlide = 1
         }
-        else{
-            countSlide = 3
-        }
+        console.log(innerWidth,countSlide)
 
     }
 
