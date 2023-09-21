@@ -14,7 +14,8 @@
     import test_bg from "$lib/assets/test.png"
     import mini_logo from "$lib/assets/mini_logo.png"
     import apl_bg from "$lib/assets/apl_bg.png"
-
+    import ImageCompare from 'svelte-image-compare';
+    
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
     import CalcModalWindow from './CalcModalWindow.svelte';
@@ -25,6 +26,8 @@
     import Slider from './slider.svelte';
 
     import { imask } from '@imask/svelte';
+    import slide_img_1 from "$lib/assets/slide_img_1.png"
+    import slide_img_2 from "$lib/assets/slide_img_2.png"
 
 
     function accept({ detail: maskRef }) {
@@ -151,6 +154,7 @@
 
     ]
     
+    let hh = 0.3;
     
 
     
@@ -393,7 +397,13 @@
         <div class="development_process">
             <p class="title">Процесс разработки продукта</p>
             <div class="dev_process_block">
-                <img src="{ process }" alt="">
+                <ImageCompare 
+                    before="{slide_img_2}"
+                    after="{slide_img_1}"
+                    contain={true},
+                    offset={ 0.3 }
+                >
+                </ImageCompare>
             </div>
         </div>
     </section>
@@ -841,6 +851,7 @@
         overflow: hidden;
         border-radius: 36px;
         border: 1px solid var(--brightgray-color);
+        height: 550px;
         
     }
     .development_process{
@@ -953,6 +964,7 @@
         row-gap: 5px;
         padding: 20px;
     }
+
     @media(max-width:1180px){
         section{
             margin: 0 32px;

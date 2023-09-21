@@ -296,6 +296,18 @@ legend {
 .nav_link:hover{
 	color: var(--gray-color);
 }
+.arrow-left{
+	left: 3px !important;
+	top: 7px  !important;
+}
+.arrow-right{
+	left: 19px !important;
+	top: -13px  !important;
+
+}
+.handle{
+	margin-left: 0 !important;
+}
 
 @media(max-width:1180px){
 	.main_sm{

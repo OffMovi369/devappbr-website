@@ -15,21 +15,9 @@
             name:"Название проекта",
             disc:"Описание проекта",
         },
-        {
-            id:4,
-            name:"Название проекта",
-            disc:"Описание проекта",
-        },
-        {
-            id:5,
-            name:"Название проекта",
-            disc:"Описание проекта",
-        },
-        {
-            id:6,
-            name:"Название проекта",
-            disc:"Описание проекта",
-        },
+
+
+
     ]
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
@@ -93,12 +81,10 @@
 <style>
     .project_list{
         display: grid;
-        align-items: center;
         grid-template-columns: repeat(auto-fit, minmax(360px, 360px));
-        align-items: center;
-        justify-content: space-between;
         row-gap: 30px;
-        height: 924px;
+        height: fit-content;
+        justify-content: space-between;
     }
     .project_img{
         width: 100%;
@@ -140,6 +126,7 @@
         .project_list{
             height: unset;
             grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+            justify-content: space-around;
         }
         .project_card{
             width: 300px;
