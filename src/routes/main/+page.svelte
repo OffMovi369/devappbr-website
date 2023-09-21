@@ -101,6 +101,14 @@
             miniHeaderFlag = false
         }
     }
+    let hh = false
+    setTimeout(() => {
+        setTimeout(() => {
+            hh = true
+        }, "200");
+
+    }, "200");
+    
     let personal = [
         {
             id:1,
@@ -154,7 +162,6 @@
 
     ]
     
-    let hh = 0.3;
     
 
     
@@ -397,13 +404,16 @@
         <div class="development_process">
             <p class="title">Процесс разработки продукта</p>
             <div class="dev_process_block">
-                <ImageCompare 
+                {#if hh }
+                    <ImageCompare 
                     before="{slide_img_2}"
                     after="{slide_img_1}"
-                    contain={true},
+                    contain={true}
                     offset={ 0.3 }
-                >
-                </ImageCompare>
+                    >
+                    </ImageCompare>
+                {/if}
+                
             </div>
         </div>
     </section>
