@@ -8,6 +8,36 @@
 
     let swap =false
     let backSwap = false
+
+    let graph = false
+    import ToolTip from "./toolTip.svelte";
+
+
+    import { scaleLinear } from 'd3-scale';
+	import points from '$lib/client/data.js';
+	const yTicks = [0, 60.000, 120.000, 240.000, 680.000];
+	const xTicks = [0 ,1, 2, 3, 4, 5];
+	const padding = { top: 20, right: 15, bottom: 20, left: 25 };
+
+	let width = 500;
+	let height = 200;
+    let hoverData;
+
+	$: xScale = scaleLinear()
+		.domain([minX, maxX])
+		.range([padding.left, width - padding.right]);
+
+	$: yScale = scaleLinear()
+		.domain([Math.min.apply(null, yTicks), Math.max.apply(null, yTicks)])
+		.range([height - padding.bottom, padding.top]);
+
+	$: minX = points[0].x;
+	$: maxX = points[points.length - 1].x;
+	$: path = `M${points.map((p) => `${xScale(p.x)},${yScale(p.y)}`).join('L')}`;
+
+	function formatMobile(tick) {
+		return "'" + tick.toString().slice(-2);
+	}
 </script>
 <BaseModal title="Настройка платежной системы">
     <div class="calc">
@@ -31,7 +61,7 @@
                         <input type="number" required placeholder="Среднее кол-во" bind:value={receipt}>
                     </label>
                 </div>
-                <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false  )}>Рассчитать</button>
+                <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false,graph=true )}>Рассчитать</button>
             </div>
         </form>
         <div class="block_right" class:swap_complete_rt={swap === true } class:swap_backcomplete_rt={backSwap === true } >
@@ -85,8 +115,47 @@
                     </div>
                 </div>
             </div>
-            <button class="main_wt_btn" type="submit" on:click={ ()=>(swap=false, backSwap=true )} >Рассчитать снова</button>
+            {#if  graph }
+                <div class="chart" bind:clientWidth={width} bind:clientHeight={height} on:mouseleave={()=>{hoverData=null}}>
+                    <svg>
+                        <g class="axis y-axis" transform="translate(0, {padding.top})" >
+                            {#each yTicks as tick}
+                                <g class="tick tick-{tick}" transform="translate(0, {yScale(tick) - padding.bottom})" >
+                                    <line x2="100%" />
+                                </g>
+                            {/each}
+                        </g>
+            
+                        <g class="axis x-axis" >
+                            {#each xTicks as tick}
+                                <g class="tick tick-{tick}" transform="translate({xScale(tick)},{height})">
+                                    <line y1="-{height}" y2="-{padding.bottom}" x1="0" x2="0" />
+                                    <text y="-2" >{width > 380 ? tick : formatMobile(tick)}</text>
+                                </g>
+                            {/each}
+                        </g>
+                        {#each points as point}
+                            <circle 
+                            cx={xScale(point.x)} 
+                            cy={yScale(point.y)} 
+                            r="6"
+                            on:mouseenter={()=>{ hoverData= point }}
+                            
+                            ></circle>
+                            
+                        {/each}
+                        <path class="path-line" d={path} />
+                        
+                    </svg>
+                    {#if hoverData}
+                        <ToolTip points={hoverData} {xScale} {yScale}></ToolTip>
+                    {/if}
+                </div>
+            {/if}
+
+            <button class="main_wt_btn" type="submit" on:click={ ()=>(swap=false, backSwap=true ,graph=false)} >Рассчитать снова</button>
         </div>
+        
     </div>
 </BaseModal>
 
@@ -133,6 +202,7 @@
         width: 100%;
         max-width: 323px;
         justify-content: space-between;
+        row-gap: 12px;
     }
     .input_block{
         display: flex;
@@ -200,6 +270,56 @@
         -webkit-appearance: none;
         margin: 0;
     }
+     .chart,
+	h2,
+
+	svg {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		overflow: visible;
+	}
+
+	.tick {
+		font-size: 0.725em;
+		font-weight: 200;
+
+	}
+
+	.tick line:not(.bottom_line){
+		stroke: #888;
+		stroke-dasharray: 2;
+	}
+	.tick text {
+		fill: #888;
+		text-anchor: start;
+        
+	}
+
+	.tick.tick-0 line {
+		stroke-dasharray: 0;
+	}
+
+	.x-axis .tick text {
+		text-anchor: middle;
+	}
+
+	.path-line {
+		fill: none;
+		stroke: rgba(4, 201, 106, 1);
+		stroke-linejoin: round;
+		stroke-linecap: round;
+		stroke-width: 2;
+	}
+    circle {
+		fill: rgba(5, 198, 106, 1);
+		fill-opacity: 1;
+		stroke: rgba(5, 198, 106, 1);
+        transition: all .2s ease-out;
+        position: relative;
+        cursor: pointer;
+
+	}
     @media(max-width:400px){
         .block_right{
             max-width: 300px;

@@ -37,7 +37,7 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        
+
     }
     dialog::backdrop {
         background: rgba(0, 0, 0, 0.3);
@@ -74,14 +74,13 @@
     }
     #dilog_content{
         background-color: var(--black-color);
-        padding: 30px 40px 60px 40px;
+        padding: 40px 40px 60px 40px;
         border-radius: 36px;
         border: 2px solid var(--brightgray-color);
         width: 100%;
         max-width: 400px;
-        height: fit-content;
-        
-        overflow: hidden;
+        max-height: fit-content;
+        overflow-x: hidden;
     }
     .back{
         margin-bottom: 18px;

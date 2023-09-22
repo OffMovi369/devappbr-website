@@ -187,11 +187,15 @@
             behavior: 'smooth'
         });
     }
+
     
+
+
+
 
     
 </script>
-<svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth/>
+<svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
 <div class="main_content">
     {#if miniHeaderFlag}
         <div class="mini_header" transition:fly={{ y: 100, duration: 500 }}>
@@ -232,7 +236,6 @@
         </div>
     </section >
     <section bind:this={miniHeaderContainer} >
-        
         <div class="second_block">
             <div class="blocks_w">
                 <div class="info_block">
@@ -582,6 +585,15 @@
 </div>
 
 <style>
+   
+
+
+
+
+
+
+
+
     .nda_block{
         display: flex;
         justify-content: space-between;
