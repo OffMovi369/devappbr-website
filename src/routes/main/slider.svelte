@@ -95,7 +95,7 @@
 <svelte:window bind:innerWidth/>
 <div class="slider">
     <div class="slider_info">
-        <p class="title">Блог DA&BRБлог DA&BR</p>
+        <p class="title">Блог DA&BR</p>
         <div class="slide_btn">
             <button class=" prev"><div class="arrow prev"></div></button>
             <button class="next"><div class="arrow "></div></button>  
@@ -203,7 +203,7 @@
             margin-bottom: 100px;
         }
     }
-    @media(max-width:360px){
+    @media(max-width:300px){
         .slider_info{
             flex-direction: column;
             row-gap: 20px;

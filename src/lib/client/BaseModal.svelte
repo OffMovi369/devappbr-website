@@ -1,6 +1,7 @@
 <script>
     import modalsStore from "$lib/client/modalsStore";
     export let dialog;
+    import arrow_back from "$lib/assets/arrow_back.svg"
     
     function onModalClose () {
         dialog.close()
@@ -20,7 +21,8 @@
     <div id="dilog_content">
         <div class="back">
             <a id="back" href="/" class="main_sm" on:click|preventDefault= {onModalClose}>
-                Назад
+                <img class="back" src="{arrow_back}" alt="">
+                <span>Назад </span> 
             </a>
         </div>
         <slot />
@@ -82,8 +84,23 @@
         overflow: hidden;
     }
     .back{
-        margin-bottom: 12px;
-    }  
+        margin-bottom: 18px;
+        
+    } 
+    #back{
+        display: flex;
+        padding-left: 12px;
+        column-gap: 4px;
+        max-width: 40%;
+    }
+    #back img{
+        height: 24px;
+        width: 24px;
+        transition: all .2s ease-out;
+    }
+    #back:hover img{
+        transform: translateX(-12px);
+    }
     @media(max-width:350px){
         #dilog_content{
             padding: 30px 30px 30px 30px;

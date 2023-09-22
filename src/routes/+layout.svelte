@@ -395,6 +395,13 @@
         .header_logo{
             margin-top: 40px;
         }
+        .calc{
+            width: 100%;
+        }
+        .calc .main_wt_btn{
+            width: 100%;
+            justify-content: center;
+        }
     }
     @media(max-width:428px){
         

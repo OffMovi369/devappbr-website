@@ -15,7 +15,9 @@
     import mini_logo from "$lib/assets/mini_logo.png"
     import apl_bg from "$lib/assets/apl_bg.png"
     import ImageCompare from 'svelte-image-compare';
-    
+    import test_bg_sm from "$lib/assets/test_bg_sm.png"
+    import test_sm from "$lib/assets/test_sm.png"
+
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
     import CalcModalWindow from './CalcModalWindow.svelte';
@@ -38,8 +40,24 @@
         lazy: true,
 	};
     let tel = '';
-
-
+    let test_bg_value;
+    let test_value;
+    $:{
+        if(innerWidth<600){
+            test_bg_value = test_bg_sm
+        }
+        else{
+            test_bg_value = dna_bg
+        }
+    }
+    $:{
+        if(innerWidth<428){
+            test_value = test_bg_sm
+        }
+        else{
+            test_bg_value = test_sm
+        }
+    }
     
     let mapContainer;
 	let map_offset;
@@ -187,7 +205,7 @@
         </div>
     {/if}
     
-    <section>
+    <section class="first_sec">
         <div class="first_block">
             <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 2 месяца</p>
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
@@ -197,7 +215,7 @@
                     <a href="#" class="seti"><Icon icon="mdi:youtube" color="white" width="25" height="25"/></a>
                     <a href="#" class="seti"><Icon icon="mingcute:telegram-fill" color="white" width="25" height="25"  /></a>
                 </div>
-                <div class="">
+                <div class="dop_info">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
                 </div>
             </div>
@@ -209,7 +227,7 @@
     <section bind:this={miniHeaderContainer}>
         
         <div class="second_block">
-            <div class="">
+            <div class="blocks_w">
                 <div class="info_block">
                     <p class="title">Мы создаем продукты, которые эффективны для продвижения</p>
                     <p class="main_sm">Наши специалисты сертифицированы израильской компанией AppsFlyer</p>
@@ -257,6 +275,12 @@
             </div>
             <div class="owners">
                 <img   src="{ owners }" alt="" draggable="false">
+                <div class="owners_info">
+                    <div class="">
+                        <p class="owner_info_txt">Основатели</p>
+                        <p class="owner_info_txt">Павел Калашников и Максим Яковлев</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -367,7 +391,7 @@
         <div class="nda">
             <div class="nda_block"
             style="
-            background-image: url({dna_bg});
+            background-image: url({test_bg_value});
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -642,7 +666,6 @@
     .main_content{
         max-width: 1120px;
         margin: auto;
-        overflow: hidden;
     }
     .big_title{
         font-size: 56px;
@@ -663,20 +686,21 @@
         margin-top: 64px;
         display: flex;
         flex-direction: column;
-        row-gap: 20px;
+        row-gap: 8px;
     }
     .first_block div:last-child{
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 12px;
     }
     .first_block div:last-child div:first-child{
         display: flex;
         align-items: center;
         column-gap: 16px;
     }
-    .main_content section:first-child{
+    .first_sec{
         display: flex;
         flex-direction: column;
         row-gap: 32px;
@@ -698,7 +722,10 @@
         border: 1px solid var(--brightgray-color);
         display: flex;
         flex-direction: column;
-        row-gap: 15px;
+        row-gap: 4px;
+    }
+    .info_block .main_tr_btn{
+        margin-top: 16px;
     }
     .test{
         height: 600px;
@@ -716,12 +743,45 @@
     .test p{
         text-align: center;
     }
-    .owners{
-        position: absolute;
-        right: -140px;
-    }
     .owners img{
-        width: 800px;
+        width: 100%;
+        object-fit: cover;
+
+    }
+    .owners{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding-left: 100px;
+        flex-direction: column;
+    }
+    .owners_info{
+        position: relative;
+        width: 530px;
+        height: 35px;
+    }
+    .owners_info div{
+        position: absolute;
+        top: -130px;
+        background-color: rgba(0, 0, 0, 0.25);
+        width: 530px;
+        height: 35px;
+        border: 2px solid var(--brightgray-color);
+        border-radius: 36px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 32px;
+    }
+    .owner_info_txt{
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 19px;
+        letter-spacing: 0em;
+        color: var(--white-color);
 
     }
     .third_block{
@@ -730,12 +790,16 @@
         height: 550px;
         position: relative;
         margin: 277px 0px;
+        justify-content: space-between;
     }
-    .third_block div:first-child{
+    .third_block div:first-child:not(.owners_info div){
         display: flex;
         flex-direction: column;
-        row-gap: 15px;
+        row-gap: 12px;
         width: 40%;
+    }
+    .third_block .main_wt_btn{
+        margin-top: 12px;
     }
     .fourth_block{
         display: flex;
@@ -746,8 +810,21 @@
         max-width: 470px;
         display: flex;
         flex-direction: column;
-        row-gap: 15px;
+        row-gap: 12px;
         justify-content: center;
+    }
+    .fourth_block .main_tr_btn{
+        margin-top: 12px;
+    }
+    .apl_title{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+    }
+    .core_values_info div{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
     }
     .comment{
         padding: 32px;
@@ -855,7 +932,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        row-gap: 30px;
+        row-gap: 32px;
     }
     .dev_process_block{
         overflow: hidden;
@@ -994,9 +1071,6 @@
             letter-spacing: 0em;
             text-align: left;
         }
-        .test{
-            height: 400px;
-        }
         .feedback .row:nth-child(2){
             justify-content: end;
             align-items: end;
@@ -1016,18 +1090,25 @@
         .third_block{
             flex-direction: column;
             margin-top: 100px;
+            row-gap: 120px;
+        }
+        .owners_info div{
+            width: 100%;
+            top: -150px;
         }
         .owners{
             position: unset;
             display: flex;
             justify-content: center;
+            padding-left: 0;
         }
-        .third_block div:first-child{
+        .third_block div:first-child:not(.owners_info div){
             width: 70%;
         }
         .fourth_block{
             padding-top: 200px;
         }
+
     }
     @media(max-width:900px){
         .core_values{
@@ -1077,6 +1158,9 @@
         .mini_header_content{
             margin: 0 32px;
         }
+        .owners_info div{
+            width: 500px;
+        }
         .first_block div:last-child{
             flex-direction: column;
             row-gap: 32px;
@@ -1087,7 +1171,7 @@
             row-gap: 32px;
         }
         .core_values_info{
-            margin-top: 60px;
+            margin-top: 80px;
             justify-content: center;
             width: 100%;
         }
@@ -1095,7 +1179,7 @@
             width: 100%;
             justify-content: center;
         }
-        .second_block div:first-child{
+        .blocks_w{
             flex-direction: column;
             row-gap: 20px;
         }
@@ -1115,10 +1199,15 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            row-gap: 20px;
+            row-gap: 12px;
         }
         .nda_block{
             height: 500px;
+        }
+        .third_block{
+            flex-direction: column;
+            margin-top: 100px;
+            row-gap: 20px;
         }
     }
     @media(max-width:600px){
@@ -1140,6 +1229,21 @@
         .fourth_block_title{
             max-width: 100%;
         }
+        .owners_info div{
+            width: 100%;
+            top: -110px;
+        }
+        .owners_info{
+            width: 100%;
+        }
+        .owners{
+            display: none;
+        }
+        .third_block{
+            height: fit-content;
+            margin-bottom: 100px;
+            align-items: baseline;
+        }
     }
     @media(max-width:428px){
         .second_block{
@@ -1150,6 +1254,7 @@
             flex-direction: column;
             row-gap: 20px;
         }
+        
         .first_img{
             display: none;
         }
@@ -1191,15 +1296,15 @@
             width: 100%;
         }
         .person_card{
-            width: 100%;
+
             max-width: unset;
             display: flex;
-            justify-content: center;
             object-fit: cover;
         }
         .command{
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
         .person_card img{
             height: 365px;
@@ -1212,9 +1317,13 @@
             letter-spacing: 0em;
 
         }
-        .first_block div:last-child{
+        .first_block div:last-child:not(.dop_info){
             flex-direction: column;
-            row-gap: 32px;
+            row-gap: 8px;
+            margin-top: 24px;
+        }
+        .first_block div:last-child div:first-child{
+            width: 100%;
         }
         .seti{
             display: none;
@@ -1229,13 +1338,13 @@
             height: unset;
         }
         .core_values_info{
-            margin-top: 60px;
+            margin-top: 80px;
             width: 100%;
         }
         .core_values_info div{
             display: flex;
             flex-direction: column;
-            row-gap: 20px;
+            row-gap: 12px;
         }
         .development_process{
             display: none;
@@ -1252,6 +1361,7 @@
         }
         .test_img img{
            height: 100%;
+           width: 100%;
            object-fit: cover;
         }
         .application_img{
@@ -1268,7 +1378,8 @@
         .apl_title{
             display: flex;
             flex-direction: column;
-            row-gap: 20px;
+            row-gap: 4px;
+            
         }
         .apl_title .title{
             font-size: 24px;
@@ -1283,7 +1394,7 @@
             margin-top: 60px;
         }
         .nda_block{
-            height: 500px;
+            height: 527px;
         }
         .nda_block .main_wt_btn{
             display: inline;
@@ -1291,15 +1402,16 @@
         .comment{
             padding: 25px;
         }
-        .info_block{
-            height: fit-content;
-        }
+
         .comment_title{
             align-items: center;
         }
         .nda_block{
             row-gap: 52px;
-            height: fit-content;
+        }
+        .blocks_w{
+            flex-direction: column;
+            row-gap: 20px;
         }
         
     }
@@ -1314,7 +1426,7 @@
             padding: 25px;
         }
         .nda{
-            padding-bottom: 20px;
+            padding-bottom: 100px;
         }
         .mini_header{
             padding: 0;
@@ -1330,11 +1442,17 @@
         }
     }
     @media(max-width:330px){
-        .info_block{
-            height: fit-content;
-        }
         .comrads{
             margin-top: 360px;
+        }
+        .nda_block{
+            height: fit-content;
+            padding: 25px;
+        }
+    }
+    @media(max-width:309px){
+        .nda_block{
+            padding: 20px;
         }
     }
 </style>
