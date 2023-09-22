@@ -80,7 +80,7 @@
         width: 100%;
         max-width: 400px;
         max-height: fit-content;
-        overflow-x: hidden;
+        overflow-y: auto;
     }
     .back{
         margin-bottom: 18px;
@@ -103,6 +103,12 @@
     @media(max-width:350px){
         #dilog_content{
             padding: 30px 30px 30px 30px;
+        }
+    }
+    @media(max-height:640px){
+        #dilog_content{
+            height: 100%;
+            max-height: 100%;
         }
     }
 
