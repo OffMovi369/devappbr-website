@@ -52,10 +52,10 @@
     }
     $:{
         if(innerWidth<428){
-            test_value = test_bg_sm
+            test_value = test_sm
         }
         else{
-            test_bg_value = test_sm
+            test_bg_value = dna_bg
         }
     }
     
@@ -179,7 +179,14 @@
         },
 
     ]
-    
+
+    function scrollIntoView({ target }) {
+        const el = document.querySelector(target.getAttribute('href'));
+        if (!el) return;
+            el.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
     
 
     
@@ -193,10 +200,10 @@
                     <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false"></a>
                 </div>
                 <div class="nav_menu">
-                    <a href="" class="nav_link">О нас</a>
-                    <a href="" class="nav_link">Этапы </a>
-                    <a href="" class="nav_link">Проекты</a>
-                    <a href="" class="nav_link">Команда</a>
+                    <a href="#owners" class="nav_link" on:click|preventDefault={scrollIntoView}>О нас</a>
+                    <a href="#stages" class="nav_link" on:click|preventDefault={scrollIntoView}>Этапы </a>
+                    <a href="#project" class="nav_link" on:click|preventDefault={scrollIntoView}>Проекты</a>
+                    <a href="#comrads" class="nav_link" on:click|preventDefault={scrollIntoView}>Команда</a>
                 </div>
                 <div class="">
                     <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать MVP</button>
@@ -223,8 +230,8 @@
         <div class="first_img">
             <img src="{ block_bg }" alt="" draggable="false">
         </div>
-    </section>
-    <section bind:this={miniHeaderContainer}>
+    </section >
+    <section bind:this={miniHeaderContainer} >
         
         <div class="second_block">
             <div class="blocks_w">
@@ -254,16 +261,16 @@
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
                     <div class="">
-                        <button class="main_tr_btn">
+                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow ; $modalsStore.showModal=true}}}>
                             Рассчитать стоимость
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section>
-        <div class="third_block">
+    </section >
+    <section id="owners">
+        <div class="third_block" >
             <div class="">
                 <p class="title">Подход к разработке</p>
                 <p class="main_sm">«Мы делаем проекты, которые будут увеличивать доход наших клиентов. Это обусловлено тем, что создаем не просто функциональные приложения, а еще и эффективные для продвижения»</p>
@@ -273,7 +280,7 @@
                     </button>
                 </div>
             </div>
-            <div class="owners">
+            <div class="owners" >
                 <img   src="{ owners }" alt="" draggable="false">
                 <div class="owners_info">
                     <div class="">
@@ -384,7 +391,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section id="project">
         <Project />
     </section>
     <section>
@@ -441,7 +448,7 @@
             </div>
         </div>
     </section>
-    <section  bind:this={devContainer}>
+    <section  bind:this={devContainer} id="stages">
         <div class="development_stages">
             <p class="title">Этапы разработки</p>
             <div class="blocks">
@@ -523,7 +530,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section id="comrads">
         <div class="comrads">
             <p class="title">Команда</p>
             <div class="command">

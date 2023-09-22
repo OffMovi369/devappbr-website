@@ -33,7 +33,13 @@
     function vkOverFalse(e){
         vk_hover = false
     }
-
+    function scrollIntoView({ target }) {
+        const el = document.querySelector(target.getAttribute('href'));
+        if (!el) return;
+            el.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 
 </script>
 
@@ -58,10 +64,10 @@
             <a href="#" draggable="false"><img src="{ logo }" alt="" draggable="false"></a >
         </div>
         <div class="nav_menu">
-            <a href="" class="nav_link">О нас</a>
-            <a href="" class="nav_link">Этапы </a>
-            <a href="" class="nav_link">Проекты</a>
-            <a href="" class="nav_link">Команда</a>
+            <a href="#owners" class="nav_link" on:click|preventDefault={scrollIntoView}>О нас</a>
+            <a href="#stages" class="nav_link" on:click|preventDefault={scrollIntoView}>Этапы </a>
+            <a href="#project" class="nav_link" on:click|preventDefault={scrollIntoView}>Проекты</a>
+            <a href="#comrads" class="nav_link" on:click|preventDefault={scrollIntoView}>Команда</a>
         </div>
         <div class="calc">
             <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = CalcModalWindow ; $modalsStore.showModal=true}}}>Калькулятор продаж</button>
