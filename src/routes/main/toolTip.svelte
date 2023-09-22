@@ -4,7 +4,7 @@
     export let yScale;
 </script>
 
-<div class="tooltip" style="position: absolute; top:{yScale(points.y)-40}px; left:{xScale(points.x)}px">
+<div class="tooltip" style="position: absolute; top:{yScale(points.y)-40}px; left:{xScale(points.x)-45}px">
     <p class="result"> {points.y}</p>
 </div>
 <style>

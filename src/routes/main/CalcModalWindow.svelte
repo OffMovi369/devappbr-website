@@ -212,6 +212,9 @@
         justify-content: space-between;
         row-gap: 12px;
     }
+    .block_left{
+        row-gap: 24px;
+    }
     .input_block{
         display: flex;
         flex-direction: column;
@@ -278,8 +281,6 @@
         -webkit-appearance: none;
         margin: 0;
     }
-     .chart,
-	h2,
 
 	svg {
 		position: relative;
