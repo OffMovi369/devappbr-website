@@ -2,9 +2,9 @@
     import BaseModal from "$lib/client/BaseModal.svelte";
     import { priceFormat } from "$lib/client/priceFormat.js"
     import { fly } from 'svelte/transition';
-    let clients = 0;
-    let sales = 0;
-    let receipt = 0;
+    let clients ;
+    let sales ;
+    let receipt ;
 
     let swap =false
     let backSwap = true
@@ -67,15 +67,15 @@
                     <div class="input_block">
                         <label for="" class="input_row">
                             <p class="main_sm">Постоянные клиенты</p>
-                            <input type="number" required placeholder="Среднее кол-во" bind:value={clients}  min="0">
+                            <input type="number" required  bind:value={clients} placeholder="Среднее кол-во" min="0">
                         </label>
                         <label for="" class="input_row">
                             <p class="main_sm">Повторные продажи</p>
-                            <input type="number" required placeholder="Среднее кол-во" bind:value={sales}  min="0">
+                            <input type="number" required  bind:value={sales} placeholder="Среднее кол-во" min="0">
                         </label>
                         <label for="" class="input_row">
                             <p class="main_sm">Средний чек за сделку</p>
-                            <input type="number" required placeholder="Среднее кол-во" bind:value={receipt}  min="0">
+                            <input type="number" required placeholder="Среднее кол-во" bind:value={receipt} min="0">
                         </label>
                     </div>
                     <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false,graph=true)}>Рассчитать</button>
@@ -159,6 +159,7 @@
                                 cy={yScale(point.y)} 
                                 r="6"
                                 on:mouseenter={()=>{ hoverData= point }}
+                                tabindex="0"
                                 
                                 ></circle>
                                 
@@ -180,7 +181,12 @@
 </BaseModal>
 
 <style>
-
+    input[type='number'],
+    input[type="number"]:hover,
+    input[type="number"]:focus {
+        appearance: none;
+        -moz-appearance: textfield;
+    }
     .title_block{
         display: flex;
         flex-direction: column;
@@ -191,24 +197,25 @@
         flex-direction: column;
         transition: all .2s ease-out;
         width: 100%;
-        max-width: 323px;
+        max-width: 550px;
         justify-content: space-between;
     }
     .apl_form{
         display: flex;
-        max-width: 320px;
+        max-width: 550px;
         transition: all .2s ease-out;
     }
     .calc{
         column-gap: 130px;
         display: flex;
+        padding: 40px;
     }
     .block_right{
         display: flex;
         flex-direction: column;
         transition: all .2s ease-out;
         width: 100%;
-        max-width: 323px;
+        max-width: 550px;
         justify-content: space-between;
         row-gap: 12px;
     }
@@ -261,7 +268,6 @@
         text-align: center;
         color: var(--white-color);
         display: inline;
-
     }
     .result div:nth-child(2){
         display: flex;
@@ -329,6 +335,9 @@
         cursor: pointer;
 
 	}
+    .chart{
+        margin-top: 12px;
+    }
     @media(max-width:400px){
         .block_right{
             max-width: 300px;
@@ -351,6 +360,14 @@
         }
         .block_left{
             max-width: 270px;
+        }
+        .ressult_div{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 22px;
+        }
+        .calc{
+            padding: 30px;
         }
     }
 </style>

@@ -17,14 +17,14 @@
     bind:this={dialog}
     on:close={() => {$modalsStore.showModal = false}}
 >
-
+    <div class="back">
+        <a id="back" href="/" class="main_sm" on:click|preventDefault= {onModalClose}>
+            <img class="back" src="{arrow_back}" alt="">
+            <span>Назад </span> 
+        </a>
+    </div>
     <div id="dilog_content">
-        <div class="back">
-            <a id="back" href="/" class="main_sm" on:click|preventDefault= {onModalClose}>
-                <img class="back" src="{arrow_back}" alt="">
-                <span>Назад </span> 
-            </a>
-        </div>
+        
         <slot />
     </div>
 
@@ -40,7 +40,7 @@
 
     }
     dialog::backdrop {
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.8);
     }
     dialog[open] {
         animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -71,20 +71,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
     }
     #dilog_content{
         background-color: var(--black-color);
-        padding: 40px 40px 60px 40px;
         border-radius: 36px;
         border: 2px solid var(--brightgray-color);
         width: 100%;
-        max-width: 400px;
+        max-width: 550px;
         max-height: fit-content;
 
     }
-    .back{
-        margin-bottom: 18px;
-        
+    .back:not(.back img){
+        margin-top: 24px;
+        margin-bottom: 24px;
+        max-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     } 
     #back{
         display: flex;
@@ -101,9 +105,6 @@
         transform: translateX(-12px);
     }
     @media(max-width:350px){
-        #dilog_content{
-            padding: 30px 30px 30px 30px;
-        }
     }
     @media(max-height:900px){
         #dilog_content{

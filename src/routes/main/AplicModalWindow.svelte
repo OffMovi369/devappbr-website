@@ -1,6 +1,7 @@
 <script>
     import BaseModal from "$lib/client/BaseModal.svelte";
     import { imask } from '@imask/svelte';
+    import rectangle from "$lib/assets/rectangle.png"
 
     function accept({ detail: maskRef }) {
         value = maskRef.value;
@@ -14,27 +15,51 @@
     
 </script>
 <BaseModal title="Настройка платежной системы">
+    <div class="apl_modal_img">
+        <img src="{rectangle}" alt="">
+    </div>
     <form action="" class="apl_form">
-        <label for="" class="input_row">
-            <p class="main_sm">Имя Фамилия</p>
-            <input type="text" required placeholder="Введите имя">
-        </label>
+        
+        <div class="apl_modal_text">
+            <p class="main_sm">Разработаем приложение с минимальным функционалом бесплатно</p>
+            <p class="sm">Вы сможете ознакомиться с интерфейсом или презентовать его инвесторам</p>
+        </div>
         <label for="" class="input_row">
             <p class="main_sm">Номер телефона</p>
             <input type="tel" required {tel}
             use:imask={options}
             on:accept={accept} placeholder="+7 000 00 00 ">
         </label>
-        <button class="main_wt_btn">Оставить заявку</button>
+        <button class="main_wt_btn">Разработать MVP</button>
         <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
     </form>
 </BaseModal>
 
 <style>
+    .apl_modal_text .main_sm{
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 33px;
+        letter-spacing: 0em;
+        color: var(--white-color);
+    }
+    .apl_modal_text{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+    }
+    .sm{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0em;
+        color: var(--white-color);
+    }
     .apl_form{
         display: flex;
         flex-direction: column;
-        row-gap: 20px;
+        row-gap: 32px;
+        padding: 24px;
     }
     .input_row input{
         height: 50px;
@@ -55,7 +80,6 @@
     }
     form .main_wt_btn{
         justify-content: center;
-        margin-top: 40px;
     }
     .apl_agr{
         font-size: 14px;

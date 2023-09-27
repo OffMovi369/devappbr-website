@@ -17,6 +17,14 @@
     import ImageCompare from 'svelte-image-compare';
     import test_bg_sm from "$lib/assets/test_bg_sm.png"
     import test_sm from "$lib/assets/test_sm.png"
+    import guarantee from "$lib/assets/guarantee.png"
+    import comrads_link_bg from "$lib/assets/cd_link_bg.png"
+    import guarantee_sm from "$lib/assets/guarantee_sm.png"
+
+    import pers1 from "$lib/assets/personal/pers1.png"
+    import pers2 from "$lib/assets/personal/pers2.png"
+    import pers3 from "$lib/assets/personal/pers3.png"
+    import pers4 from "$lib/assets/personal/pers4.png"
 
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
@@ -80,6 +88,8 @@
 
     let innerWidth;
 
+    let gua_url;
+
     afterUpdate(() => {
 		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
         dev = (devContainer.offsetTop - innerHeight / 2) - 100;
@@ -119,6 +129,16 @@
             miniHeaderFlag = false
         }
     }
+    
+    $:{
+        if(innerWidth<=600){
+            gua_url = guarantee_sm
+        }
+        else{
+            gua_url = guarantee
+        }
+    }
+
     let hh = false
     setTimeout(() => {
         setTimeout(() => {
@@ -130,53 +150,51 @@
     let personal = [
         {
             id:1,
-            name:"Павел Калашников",
-            func:"Сооснователь DA&BR, Коммерческий директор",
-            sity:"г.Москва, Россия"
-            
+            name:"Иван Киселев",
+            func:"Front-end разработчик",
+            sity:"г.Москва, Россия",
+            url:pers1
         },
         {
             id:2,
-            name:"Максим Яковлев",
-            func:"Сооснователь DA&BR,Технический директор",
-            sity:"г.Будва, Черногория"
+            name:"Виталий Яковлев",
+            func:"Front-end разработчик",
+            sity:"Калифорния, США",
+            url:pers2
         },
         {
             id:3,
-            name:"Иван Киселев",
+            name:"Олег Бочко",
             func:"Front-end разработчик",
-            sity:"г.Москва, Россия"
+            sity:"г.Волковыск, Беларусь",
+            url:pers2
         },
         {
             id:4,
-            name:"Виталий Яковлев",
-            func:"Front-end разработчик",
-            sity:"Калифорния, США"
+            name:"Валерий Степаненко",
+            func:"Back-end разработчик",
+            sity:"г.Санкт-Петербург, Россия",
+            url:pers2
         },
         {
             id:5,
-            name:"Олег Бочко",
-            func:"Front-end разработчик",
-            sity:"г.Волковыск, Беларусь"
+            name:"Никита Корчагин",
+            func:"Продуктовый дизайнер",
+            sity:"г.Сланцы, Россия",
+            url: pers3
+            
         },
         {
             id:6,
-            name:"Валерий Степаненко",
-            func:"Back-end разработчик",
-            sity:"г.Санкт-Петербург, Россия"
-        },
-        {
-            id:7,
-            name:"Никита Корчагин",
-            func:"Продуктовый дизайнер",
-            sity:"г.Сланцы, Россия"
-        },
-        {
-            id:8,
             name:"Дамир Багжанов",
             func:"Project-manager",
-            sity:"г.Москва, Россия"
+            sity:"г.Москва, Россия",
+            url:pers4
         },
+        
+        
+        
+        
 
     ]
 
@@ -241,10 +259,10 @@
                 <div class="info_block">
                     <p class="title">Мы создаем продукты, которые эффективны для продвижения</p>
                     <p class="main_sm">Наши специалисты сертифицированы израильской компанией AppsFlyer</p>
-                    <div class="">
-                        <button class="main_tr_btn" >
+                    <div class="info_div_link">
+                        <a href="https://drive.google.com/file/d/1LEPSJEmce4o4TSWILB0ADRt_i2Nii_FW/view?usp=sharing" class="main_tr_btn" >
                             Сертификат AppsFlyer
-                        </button>
+                        </a>
                     </div>
                     
                 </div>
@@ -259,7 +277,12 @@
                     
                 </div>
             </div>
-            <div class="info_block test">
+            <div class="info_block test" style="
+            background-image: url({gua_url});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            ">
                 <div class="">
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
@@ -440,8 +463,8 @@
             <div class="dev_process_block">
                 {#if hh }
                     <ImageCompare 
-                    before="{slide_img_2}"
-                    after="{slide_img_1}"
+                    before="{slide_img_1}"
+                    after="{slide_img_2}"
                     contain={true}
                     offset={ 0.3 }
                     >
@@ -539,7 +562,7 @@
             <div class="command">
                 {#each personal as  person (person.id)}
                     <div class="person_card">
-                        <img src="{ person_test  }" alt="">
+                        <img src="{ person.url  }" alt="">
                         <div class="personinfo">
                             <p class="main_sm">{ person.name }</p>
                             <p class="main_sm_thin">{ person.func }</p>
@@ -547,6 +570,15 @@
                         </div>
                     </div>
                 {/each}
+                <div class="comrads_link">
+                    <img src="{comrads_link_bg}" alt="">
+                    <div class="crd_info">
+                        <p class="title">Хочешь присоединиться к команде?</p>
+                        <div class="crd_link">
+                            <a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned" class="main_wt_btn">Вакансии</a>
+                        </div>
+                    </div>
+                </div>
                 
 
             </div>
@@ -585,15 +617,50 @@
 </div>
 
 <style>
-   
+    .crd_info a{
+        display: inline;
 
+    }
+    .crd_link{
+        height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    .info_div_link a{
+        display: inline;
+    }
+    .info_div_link{
+        display: flex;
+        align-items: center;
+        height: 48px;
+    }
+    .comrads_link{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: auto;
+        grid-row-start:auto;
+        width: 550px;
+        height: 365px;
+        position: relative;
+        display: flex;
+        align-items: end;
+       
+    }
+    .comrads_link img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    
 
-
-
-
-
-
-
+    }
+    .crd_info{
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+        width: 90%;
+    }
     .nda_block{
         display: flex;
         justify-content: space-between;
@@ -1058,9 +1125,12 @@
         max-width: 300px;
         height: 365px;
         position: relative;
+        border-radius: 36px 36px 36px 0px;
+        overflow: hidden;
     }
     .person_card img{
         height: 100%;
+        object-fit: cover;
     }
     .personinfo{
         position: absolute;
@@ -1077,6 +1147,13 @@
         }
         .stages_row{
             column-gap: 12px;
+        }
+        .comrads_link{
+            width: auto;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: auto;
+            grid-row-start:auto;
         }
     }
     @media(max-width:1080px){
@@ -1159,6 +1236,16 @@
         .blocks{
             height: 2680px;
         }
+        .person_card{
+            width: 100%;
+            max-width: 365px;
+            max-height: 365px;
+        }
+        .person_card img{
+            width: 100%;
+            height: 100%;
+            object-position: center;
+        }
         .stages_row{
             flex-direction: column;
             align-items: center;
@@ -1166,6 +1253,9 @@
         }
         .fourth_block_title{
             max-width: 100%;
+        }
+        .comrads_link{
+            max-width: 365px;
         }
     }
     @media(max-width:850px){
@@ -1202,6 +1292,7 @@
             flex-direction: column;
             row-gap: 20px;
         }
+        
     }
     @media(max-width:700px){
         .mini_header_content .nav_menu{
@@ -1255,13 +1346,21 @@
         .owners_info{
             width: 100%;
         }
-        .owners{
-            display: none;
-        }
         .third_block{
             height: fit-content;
             margin-bottom: 100px;
             align-items: baseline;
+        }
+    }
+    @media(max-width:480px){
+        #owners{
+            display: none;
+        }
+        .fourth_block{
+            margin-top: 100px;
+        }
+        .row{
+            height: fit-content;
         }
     }
     @media(max-width:428px){
@@ -1327,7 +1426,7 @@
         }
         .person_card img{
             height: 365px;
-            object-fit: fill;
+            object-fit: cover;
         }
         .big_title{
             font-size: 28px;
@@ -1449,6 +1548,18 @@
         }
         .mini_header{
             padding: 0;
+        }
+        .comrads_link{
+            max-width: 100%;
+        }
+        .comrads_link img{
+            object-fit: cover;
+            border-radius: 36px 36px 36px 0px;
+            border: 2px solid var(--brightgray-color);
+        }
+        .comrads .title{
+            font-size: 24px;
+            line-height: 30px;
         }
         
     }
