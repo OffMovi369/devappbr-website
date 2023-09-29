@@ -18,6 +18,7 @@
 }
 body{
 	background-color: var(--black-color);
+	overflow-x: hidden;
 }
 * {
 	padding: 0px;

@@ -3,11 +3,17 @@
     import logo from "$lib/assets/logo.svg"
     import Icon from '@iconify/svelte';
 
+
     import own_sm_1 from "$lib/assets/own_sm_1.png"
     import own_sm_2 from "$lib/assets/own_sm_2.png"
 
     import modalsStore from "$lib/client/modalsStore";
     import CalcModalWindow from "./main/CalcModalWindow.svelte";
+
+
+
+
+
 
     let tube_hover = false
     let tg_hover = false
@@ -41,18 +47,22 @@
         });
     }
 
+
+
+
+
+
 </script>
 
 {#if $modalsStore.modalWindow}
 	<svelte:component this={$modalsStore.modalWindow}/>
 {/if}
 
-
-
 <svelte:head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+   
 </svelte:head>
 
 
@@ -345,6 +355,12 @@
         .header_content{
             padding: 20px;
         }
+        .ft_block_1{
+            padding: 0 40px;
+        }
+        .ft_block_2{
+            padding: 0 40px;
+        }
     }
     @media(max-width:1000px){
         .ft_block_1{
@@ -384,10 +400,7 @@
         }
     }
     @media(max-width:550px){
-        .map{
-            flex-direction: column;
-            row-gap: 32px;
-        }
+
         .ft_block_1{
             padding: 0  32px;
         }

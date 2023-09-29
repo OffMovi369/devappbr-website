@@ -75,7 +75,7 @@
             {/if}  
         {/each}
     </div>
-    <button class="main_tr_btn">Показать больше</button>
+    <button class="main_tr_btn" >Показать больше</button>
 </div>
 
 <style>

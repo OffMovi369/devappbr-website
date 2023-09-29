@@ -30,7 +30,6 @@
     import AplicModalWindow from './AplicModalWindow.svelte';
     import CalcModalWindow from './CalcModalWindow.svelte';
 
-    import person_test from "$lib/assets/personal_test.png"
 
     import Project from './project.svelte';
     import Slider from './slider.svelte';
@@ -91,8 +90,8 @@
     let gua_url;
 
     afterUpdate(() => {
-		map_offset = mapContainer.offsetTop - innerHeight / 2  ;
-        dev = (devContainer.offsetTop - innerHeight / 2) - 100;
+		map_offset = mapContainer.offsetTop - innerHeight / 2  + 100;
+        dev = (devContainer.offsetTop - innerHeight / 2) + 100;
         visib = (miniHeaderContainer.offsetTop - innerHeight / 2 + (hhh / 2)  + 100);
         miniClose = devlast.offsetTop - innerHeight / 2  + 300;
 	});
@@ -307,6 +306,7 @@
                 </div>
             </div>
             <div class="owners" >
+                
                 <img   src="{ owners }" alt="" draggable="false">
                 <div class="owners_info">
                     <div class="">
@@ -315,7 +315,9 @@
                     </div>
                 </div>
             </div>
+            
         </div>
+        
     </section>
     <section  bind:this={mapContainer} bind:clientHeight={ hhh }>
         <div class="fourth_block">
@@ -432,9 +434,6 @@
                 <div class="">
                     <p class="title">Мы заботимся о безопасности вашей идеи</p>
                     <p class="main_sm">Поэтому готовы подписать договор о неразглашении (NDA), только после этого приступим к созданию тестового варианта и приложения в целом</p>
-                </div>
-                <div class="">
-                    <button class="main_wt_btn">Подробнее</button>
                 </div>
             </div>
         </div>
@@ -571,7 +570,7 @@
                     </div>
                 {/each}
                 <div class="comrads_link">
-                    <img src="{comrads_link_bg}" alt="">
+                    <img src="{ comrads_link_bg }" alt="">
                     <div class="crd_info">
                         <p class="title">Хочешь присоединиться к команде?</p>
                         <div class="crd_link">
@@ -663,12 +662,15 @@
     }
     .nda_block{
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         padding: 32px;
         flex-direction:column;
         border-radius: 36px;
         border: 2px solid var(--brightgray-color);
         height:401px;
+    }
+    .nda_block div{
+        width: 60%;
     }
     .apl_form .main_wt_btn{
         justify-content: center;
@@ -832,6 +834,7 @@
     .owners img{
         width: 100%;
         object-fit: cover;
+        z-index: -1;
 
     }
     .owners{
@@ -1140,7 +1143,10 @@
         row-gap: 5px;
         padding: 20px;
     }
-
+    .application_img{
+        border-radius: 36px;
+        overflow: hidden;
+    }
     @media(max-width:1180px){
         section{
             margin: 0 32px;
@@ -1311,9 +1317,6 @@
             flex-direction: column;
             row-gap: 12px;
         }
-        .nda_block{
-            height: 500px;
-        }
         .third_block{
             flex-direction: column;
             margin-top: 100px;
@@ -1453,7 +1456,7 @@
             width: 80%;
         }
         .nda_block{
-            height: unset;
+            height: fit-content;
         }
         .core_values_info{
             margin-top: 80px;
@@ -1511,9 +1514,7 @@
         .fourth_block{
             margin-top: 60px;
         }
-        .nda_block{
-            height: 527px;
-        }
+
         .nda_block .main_wt_btn{
             display: inline;
         }
