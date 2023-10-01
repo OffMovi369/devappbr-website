@@ -1,7 +1,7 @@
 <script>
     import Icon from '@iconify/svelte'
     import block_bg from "$lib/assets/block_bg.png"
-    import owners from "$lib/assets/owners.png"
+    import owners2 from "$lib/assets/owners2.png"
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
     import stars from "$lib/assets/stars.png"
@@ -307,7 +307,7 @@
             </div>
             <div class="owners" >
                 
-                <img   src="{ owners }" alt="" draggable="false">
+                <img   src="{ owners2 }" alt="" draggable="false">
                 <div class="owners_info">
                     <div class="">
                         <p class="owner_info_txt">Основатели</p>
@@ -832,7 +832,6 @@
         text-align: center;
     }
     .owners img{
-        width: 100%;
         object-fit: cover;
         z-index: -1;
 
@@ -853,7 +852,7 @@
     }
     .owners_info div{
         position: absolute;
-        top: -130px;
+        top: -50px;
         background-color: rgba(0, 0, 0, 0.25);
         width: 530px;
         height: 35px;
@@ -885,7 +884,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 12px;
-        width: 40%;
+        width: 70%;
     }
     .third_block .main_wt_btn{
         margin-top: 12px;
@@ -1196,7 +1195,7 @@
         }
         .owners_info div{
             width: 100%;
-            top: -150px;
+            top: -80px;
         }
         .owners{
             position: unset;
@@ -1320,7 +1319,7 @@
         .third_block{
             flex-direction: column;
             margin-top: 100px;
-            row-gap: 20px;
+            row-gap: 80px;
         }
     }
     @media(max-width:600px){
@@ -1344,7 +1343,7 @@
         }
         .owners_info div{
             width: 100%;
-            top: -110px;
+            top: -80px;
         }
         .owners_info{
             width: 100%;
