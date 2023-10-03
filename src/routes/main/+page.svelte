@@ -237,11 +237,9 @@
         <div class="first_block">
             <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 2 месяца</p>
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
-            <div class="">
+            <div class="fb_link">
                 <div class="">
                     <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать тестовый вариант</button>
-                    <a href="#" class="seti"><Icon icon="mdi:youtube" color="white" width="25" height="25"/></a>
-                    <a href="#" class="seti"><Icon icon="mingcute:telegram-fill" color="white" width="25" height="25"  /></a>
                 </div>
                 <div class="dop_info">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
@@ -631,7 +629,6 @@
     .info_div_link{
         display: flex;
         align-items: center;
-        height: 48px;
     }
     .comrads_link{
         grid-column-start: 3;
@@ -778,9 +775,8 @@
     }
     .first_block div:last-child{
         display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        row-gap: 8px;
         margin-top: 12px;
     }
     .first_block div:last-child div:first-child{
@@ -1142,6 +1138,7 @@
         row-gap: 5px;
         padding: 20px;
     }
+
     .application_img{
         border-radius: 36px;
         overflow: hidden;
@@ -1277,7 +1274,7 @@
         }
         .first_block div:last-child{
             flex-direction: column;
-            row-gap: 32px;
+            row-gap: 12px;
             align-items: baseline;
         }
         .core_values{
@@ -1374,6 +1371,9 @@
             flex-direction: column;
             row-gap: 20px;
         }
+        .crd_info .main_wt_btn{
+            width: unset;
+        }
         
         .first_img{
             display: none;
@@ -1441,6 +1441,20 @@
             flex-direction: column;
             row-gap: 8px;
             margin-top: 24px;
+        }
+        .info_div_link .main_tr_btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main_tr_btn{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .blocks_w .info_block{
+            height: fit-content;
+            max-height: fit-content ;
         }
         .first_block div:last-child div:first-child{
             width: 100%;
