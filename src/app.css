@@ -311,7 +311,21 @@ legend {
 .handle{
 	margin-left: 0 !important;
 }
-
+.hamburger-inner{
+	background-color: white !important;
+	height: 2px !important;
+	width: 26px !important;
+}
+.hamburger-inner::after{
+	background-color: white !important;
+	height: 2px !important;
+	width: 26px !important;
+}
+.hamburger-inner::before{
+	background-color: white !important;
+	height: 2px !important;
+	width: 26px !important;
+}
 @media(max-width:1180px){
 	.main_sm{
 		font-size: 18px;

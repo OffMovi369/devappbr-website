@@ -2,18 +2,20 @@
     import "../app.css"
     import logo from "$lib/assets/logo.svg"
     import Icon from '@iconify/svelte';
-
+    import { Hamburger } from 'svelte-hamburgers';
+    import Menu from "./main/menu.svelte";
 
     import own_sm_1 from "$lib/assets/own_sm_1.png"
     import own_sm_2 from "$lib/assets/own_sm_2.png"
+    import up_logo from "$lib/assets/up_logo.svg" 
 
     import modalsStore from "$lib/client/modalsStore";
     import CalcModalWindow from "./main/CalcModalWindow.svelte";
+    
 
 
 
-
-
+    let open;
 
     let tube_hover = false
     let tg_hover = false
@@ -39,13 +41,7 @@
     function vkOverFalse(e){
         vk_hover = false
     }
-    function scrollIntoView({ target }) {
-        const el = document.querySelector(target.getAttribute('href'));
-        if (!el) return;
-            el.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
+    
 
 
 
@@ -71,17 +67,22 @@
 <header>
     <div class="header_content">
         <div class="header_logo">
-            <a href="#" draggable="false"><img src="{ logo }" alt="" draggable="false"></a >
+            <a href="#" draggable="false"><img src="{ up_logo }" alt="" draggable="false"></a >
         </div>
-        <div class="nav_menu">
-            <a href="#owners" class="nav_link" on:click|preventDefault={scrollIntoView}>О нас</a>
-            <a href="#stages" class="nav_link" on:click|preventDefault={scrollIntoView}>Этапы </a>
-            <a href="#project" class="nav_link" on:click|preventDefault={scrollIntoView}>Проекты</a>
-            <a href="#comrads" class="nav_link" on:click|preventDefault={scrollIntoView}>Команда</a>
+        
+        <div class="drop_menu">
+            <a href="#" class="dd"><Icon icon="mdi:youtube" color="white" width="24" height="24" /></a>
+            <a href="#" class="dd"  ><Icon icon="mingcute:telegram-fill" color="white" width="24" height="24"/></a>
+            
+            <Hamburger
+            bind:open
+            color="white" />
+
+            <Menu bind:open />
+
         </div>
-        <div class="calc">
-            <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = CalcModalWindow ; $modalsStore.showModal=true}}}>Калькулятор продаж</button>
-        </div>
+        
+
     </div>
 </header>
 <slot />
@@ -185,6 +186,9 @@
 
 
 <style>
+    .tube{
+        margin-right: 20px !important;
+    }
     .own_contact_div{
         display: flex;
         align-items: center;
@@ -232,12 +236,20 @@
     header{
         border-bottom: 1px solid var(--brightgray-color);
     }
+
     .header_content{
         max-width: 1120px;
         margin: auto;
         display: flex;
         justify-content: space-between;
-        padding: 20px 0;
+        padding: 10px 0;
+        
+    }
+    .drop_menu{
+        position: relative;
+    }
+    .drop_menu a{
+        margin-right: 20px;
     }
     .header_content:first-child{
         display: flex;
@@ -351,9 +363,10 @@
     .contants{
         height: 100px;
     }
+    
     @media(max-width:1180px){
         .header_content{
-            padding: 20px;
+            padding: 10px 30px;
         }
         .ft_block_1{
             padding: 0 40px;
@@ -385,7 +398,7 @@
     }
     @media(max-width:800px){
         .header_content{
-            padding: 20px;
+            padding: 10px 30px;
         }
         .contacts{
             flex-direction: column;
@@ -404,30 +417,9 @@
         .ft_block_1{
             padding: 0  32px;
         }
-        .header_content{
-            flex-direction: column;
-            row-gap: 20px;
-        }
-        header .nav_menu{
-            display: flex;
-        }
-        .header_logo{
-            margin-top: 40px;
-        }
-        .calc{
-            width: 100%;
-        }
-        .calc .main_wt_btn{
-            width: 100%;
-            justify-content: center;
-        }
     }
     @media(max-width:428px){
         
-        .header_content{
-            flex-direction: column;
-            row-gap: 32px;
-        }
         
         .contacts{
             flex-direction: column;
@@ -455,6 +447,9 @@
         }
         .contacts{
             row-gap: 32px;
+        }
+        .dd{
+            display: none;
         }
         
         

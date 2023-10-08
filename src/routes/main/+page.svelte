@@ -20,6 +20,7 @@
     import guarantee from "$lib/assets/guarantee.png"
     import comrads_link_bg from "$lib/assets/cd_link_bg.png"
     import guarantee_sm from "$lib/assets/guarantee_sm.png"
+    
 
     import pers1 from "$lib/assets/personal/pers1.png"
     import pers2 from "$lib/assets/personal/pers2.png"
@@ -257,7 +258,7 @@
                     <p class="title">Мы создаем продукты, которые эффективны для продвижения</p>
                     <p class="main_sm">Наши специалисты сертифицированы израильской компанией AppsFlyer</p>
                     <div class="info_div_link">
-                        <a href="https://drive.google.com/file/d/1LEPSJEmce4o4TSWILB0ADRt_i2Nii_FW/view?usp=sharing" class="main_tr_btn" >
+                        <a href="https://drive.google.com/file/d/1LEPSJEmce4o4TSWILB0ADRt_i2Nii_FW/view?usp=sharing" class="main_tr_btn" target="_blank" >
                             Сертификат AppsFlyer
                         </a>
                     </div>
@@ -753,11 +754,12 @@
         margin: auto;
     }
     .big_title{
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 700;
-        line-height: 76px;
+        line-height: 66px;
         letter-spacing: 0em;
         color: var(--white-color);
+        width: 85%;
     }
     
     .main_sm_gray{
@@ -1349,6 +1351,9 @@
             height: fit-content;
             margin-bottom: 100px;
             align-items: baseline;
+        }
+        .big_title{
+            width: 100%;
         }
     }
     @media(max-width:480px){
