@@ -24,6 +24,7 @@
 		"dotenv": "^16.3.1",
 		"frappe-gantt": "^0.6.1",
 		"gsap": "^3.12.2",
+		"node-telegram-bot-api": "^0.63.0",
 		"scrollbar": "^0.1.12",
 		"scrolltrigger": "^1.0.1",
 		"smooth-scrollbar": "^8.8.4",

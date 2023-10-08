@@ -228,7 +228,7 @@
                     <a href="#comrads" class="nav_link" on:click|preventDefault={scrollIntoView}>Команда</a>
                 </div>
                 <div class="">
-                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать MVP</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Разработать MVP"}}}}>Разработать MVP</button>
                 </div>
             </div>
         </div>
@@ -240,7 +240,7 @@
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
             <div class="fb_link">
                 <div class="">
-                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true}}}>Разработать тестовый вариант</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true;  $modalsStore.data = {type:"Разработать MVP"}}}}>Разработать тестовый вариант</button>
                 </div>
                 <div class="dop_info">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
@@ -285,7 +285,7 @@
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
                     <div class="">
-                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow ; $modalsStore.showModal=true}}}>
+                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow ; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость"}}}}>
                             Рассчитать стоимость
                         </button>
                     </div>
@@ -592,17 +592,18 @@
                     <p class="title">Разработаем приложение с минимальным функционалом бесплатно</p>
                     <p class="main_sm">Вы сможете ознакомиться с интерфейсом или презентовать его инвесторам</p>
                 </div>
-                <form action="" class="apl_form">
+                <form action="?/sendApp" method="post" class="apl_form">
                     <label for="" class="input_row">
                         <p class="main_sm">Имя Фамилия</p>
-                        <input type="text" required placeholder="Введите имя">
+                        <input name="fio" type="text" required placeholder="Введите имя">
                     </label>
                     <label for="" class="input_row">
                         <p class="main_sm">Номер телефона</p>
-                        <input type="tel" required {tel}
+                        <input name="phone" type="tel" required {tel}
                         use:imask={options}
                         on:accept={accept} placeholder="+7 000 00 00 ">
                     </label>
+                    <input type="hidden" name="type" value="Разработать MVP (последний блок)">
                     <button class="main_wt_btn">Разработать тестовый вариант</button>
                     <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
                 </form>

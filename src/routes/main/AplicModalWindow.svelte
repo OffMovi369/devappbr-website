@@ -1,6 +1,7 @@
 <script>
     import BaseModal from "$lib/client/BaseModal.svelte";
     import { imask } from '@imask/svelte';
+    import modalsStore from "$lib/client/modalsStore";
     import rectangle from "$lib/assets/rectangle.png"
 
     function accept({ detail: maskRef }) {
@@ -12,13 +13,15 @@
 	};
     let tel = '';
 
+    let type = ""
+
     
 </script>
 <BaseModal title="Настройка платежной системы">
     <div class="apl_modal_img">
         <img src="{rectangle}" alt="">
     </div>
-    <form action="" class="apl_form">
+    <form action="?/sendApp" method="post" class="apl_form">
         
         <div class="apl_modal_text">
             <p class="main_sm">Разработаем приложение с минимальным функционалом бесплатно</p>
@@ -26,10 +29,11 @@
         </div>
         <label for="" class="input_row">
             <p class="main_sm">Номер телефона</p>
-            <input type="tel" required {tel}
+            <input name="phone" type="tel" id="" required {tel}
             use:imask={options}
             on:accept={accept} placeholder="+7 000 00 00 ">
         </label>
+        <input type="hidden" name="type" bind:value={type}>
         <button class="main_wt_btn">Разработать MVP</button>
         <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
     </form>
