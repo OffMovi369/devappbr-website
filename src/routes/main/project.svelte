@@ -4,16 +4,19 @@
             id:1,
             name:"Название проекта",
             disc:"Описание проекта",
+            category: "#zalupa",
         },
         {
             id:2,
             name:"Название проекта",
             disc:"Описание проекта",
+            category: "#zalupa",
         },
         {
             id:3,
             name:"Название проекта",
             disc:"Описание проекта",
+            category: "#zalupa",
         },
 
 
@@ -71,6 +74,9 @@
                         <p class="main_sm_thin">{ project.disc }</p>
                         <button class="main_tr_btn">Подробнее</button>
                     </div>
+                    <div class="category">
+                        {project.category}
+                    </div>
                 </div>
             {/if}  
         {/each}
@@ -99,6 +105,7 @@
         border: 2px solid var(--brightgray-color);
         overflow: hidden;
         transition: all .2s ease-out;
+        position: relative;
     }
     .project_card:hover{
         border: 2px solid var(--graywhite-color);
@@ -121,6 +128,19 @@
     }
     .projects .main_tr_btn{
         justify-content: center ;
+    }
+    .category{
+        position: absolute;
+        background-color: var(--white-color);
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-family: Manrope;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 19px;
+        letter-spacing: 0em;
+        margin-top: 16px;
+        margin-left: 16px;
     }
     @media(max-width:1180px){
         .project_list{

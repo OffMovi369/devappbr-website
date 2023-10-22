@@ -433,9 +433,6 @@
             row-gap: 32px;
             column-gap: 15px;
         }
-        .end_content{
-            padding: 32px;
-        }
         .mao_ul{
             max-width: unset;
             width: 100%;
