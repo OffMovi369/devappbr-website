@@ -4,6 +4,7 @@
     import googleplay from "$lib/assets/googleplay.png"
     import qr from "$lib/assets/qr.png"
     import case_img from "$lib/assets/case_img.png"
+    import line from "$lib/assets/line.png"
 </script>
 
 <div class="case">
@@ -69,10 +70,41 @@
         <p class="main_sm">Описание</p>
     </div>
 </div>
+<div class="link_line" style="
+    background-image: url({line});
+    background-repeat: repeat-x;
+        
+">
+    <div class="line_content">
+        <div class="project_links">
+            <!-- Переменная -->
+            <a href="#">
+                <img src="{ appstore }" alt="">
+            </a>
+            <!-- Переменная -->
+            <a href="#">
+                <img src="{ googleplay }" alt="">
+            </a>
+        </div>
+        <div class="qr">
+            <div class="qr_img" style="
+            background-image: url({qr}); 
+            min-width:160px;
+            height:160px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            ">
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
     .case{
         margin: 40px 0;
+        
     }
     .main_info{
         display: flex;
@@ -156,12 +188,30 @@
     .case_right img{
         object-fit: contain;
     }
+    .link_line{
+        margin-bottom: 180px;
+        margin-top: 240px;
+    }
+    .line_content{
+        max-width: 1120px;
+        margin: 0 auto  ;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 32px;
+    }
+    .line_content .project_links{
+        margin-bottom: 0;
+    }
     @media(max-width:1180px){
         .case{
             margin: 40px 32px;
         }
         .case_left{
             width: 70%;
+        }
+        .line_content{
+            padding: 0 32px;
         }
     }
     @media(max-width:950px){
@@ -195,6 +245,10 @@
         .project_disc{
             font-size: 15px;
         }
+        .line_content .project_links{
+            flex-direction: column;
+            row-gap: 12px;
+        }
     }
     @media(max-width:445px){
         .project_name{
@@ -206,7 +260,7 @@
             line-height: 24px;
         }
         .case{
-            margin: 40px 32px;
+            margin: 40px 32px 100px 32px;
         }
         .case_left{
             width: 100%;
@@ -218,6 +272,9 @@
         .qr_img{
             height: 130px !important;
             min-width: 130px !important;
+        }
+        .link_line{
+            display: none;
         }
     }
     @media(max-width:400px){
