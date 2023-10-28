@@ -1590,6 +1590,12 @@
         .mini_header_content{
             margin: 0 12px;
         }
+        .comment_title{
+            justify-content: space-between;
+        }
+        .comment_main{
+            width: 60%;
+        }
     }
     @media(max-width:330px){
         .comrads{
