@@ -22,6 +22,10 @@
     import guarantee_sm from "$lib/assets/guarantee_sm.png"
     import comand_ling_bgsm from "$lib/assets/comand_ling_bg.png"
 
+    import com1 from "$lib/assets/commets/comment1.png"
+    import com2 from "$lib/assets/commets/comment2.png"
+    import com3 from "$lib/assets/commets/comment3.png"
+
     import pers1 from "$lib/assets/personal/pers1.png"
     import pers2 from "$lib/assets/personal/pers2.png"
     import pers3 from "$lib/assets/personal/pers3.png"
@@ -346,7 +350,7 @@
                         <div class="comment" transition:fly={{ y: -200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-
+                                    <img src="{ com1 }" alt="">
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -375,7 +379,7 @@
                         <div class="comment" transition:fly={{ x: -200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-
+                                    <img src="{ com2 }" alt="">
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -403,7 +407,7 @@
                         <div class="comment" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-
+                                    <img src="{ com3 }" alt="">
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -421,7 +425,7 @@
                                 </div>
                             </div>
                             <div class="comment_text">
-                                <p>Неоднократно пользовалась услугами этого через это приложение и остались только положительные впечатления. Водители адекватные, вежливые, не навязчивые. Я всем довольна.</p>
+                                <p>Неоднократно пользовалась услугами этого приложения и остались только положительные впечатления. Водители адекватные, вежливые, не навязчивые. Я всем довольна.</p>
                             </div>
                         </div>
                     {/if}
@@ -984,7 +988,6 @@
     .ava{
         width: 56px;
         height: 56px;
-        border: 1px solid var(--brightgray-color);
         border-radius: 50px;
     }
     .comment_title{

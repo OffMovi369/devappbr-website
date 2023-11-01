@@ -369,16 +369,13 @@
             padding: 10px 30px;
         }
         .ft_block_1{
-            padding: 0 40px;
+            padding: 0 32px;
         }
         .ft_block_2{
-            padding: 0 40px;
+            padding: 0 32px;
         }
     }
     @media(max-width:1000px){
-        .ft_block_1{
-            padding: 0  100px;
-        }
         .links_block{
             flex-direction: column-reverse;
             row-gap: 32px;
@@ -410,6 +407,20 @@
     @media(max-width:600px){
         .sns{
             width: 100%;
+        }
+        .ft_block_2{
+            padding: 0px;
+        }
+        .contacts{
+            width: 100%;
+        }
+        .own_contact_div{
+            width: 100%;
+            justify-content: space-around;
+        }
+        .quest_link{
+            width: 100%;
+            justify-content: space-around;
         }
     }
     @media(max-width:550px){
