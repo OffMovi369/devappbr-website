@@ -20,12 +20,15 @@
     import guarantee from "$lib/assets/guarantee.png"
     import comrads_link_bg from "$lib/assets/cd_link_bg.png"
     import guarantee_sm from "$lib/assets/guarantee_sm.png"
-    
+    import comand_ling_bgsm from "$lib/assets/comand_ling_bg.png"
 
     import pers1 from "$lib/assets/personal/pers1.png"
     import pers2 from "$lib/assets/personal/pers2.png"
     import pers3 from "$lib/assets/personal/pers3.png"
     import pers4 from "$lib/assets/personal/pers4.png"
+    import pers5 from "$lib/assets/personal/pers5.png"
+    import pers6 from "$lib/assets/personal/pers6.png"
+    import pers7 from "$lib/assets/personal/pers7.png"
 
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
@@ -150,38 +153,39 @@
     let personal = [
         {
             id:1,
-            name:"Иван Киселев",
+            name:"Максим Калугин",
             func:"Front-end разработчик",
-            sity:"г.Москва, Россия",
+            sity:"-",
             url:pers1
         },
         {
             id:2,
-            name:"Виталий Яковлев",
+            
+            name:"Иван Киселев",
             func:"Front-end разработчик",
-            sity:"Калифорния, США",
+            sity:"-",
             url:pers2
         },
         {
             id:3,
             name:"Олег Бочко",
             func:"Front-end разработчик",
-            sity:"г.Волковыск, Беларусь",
-            url:pers2
+            sity:"-",
+            url:pers3
         },
         {
             id:4,
-            name:"Валерий Степаненко",
-            func:"Back-end разработчик",
-            sity:"г.Санкт-Петербург, Россия",
-            url:pers2
+            name:"Артем",
+            func:"-",
+            sity:"-",
+            url:pers4
         },
         {
             id:5,
             name:"Никита Корчагин",
             func:"Продуктовый дизайнер",
             sity:"г.Сланцы, Россия",
-            url: pers3
+            url: pers5
             
         },
         {
@@ -189,7 +193,14 @@
             name:"Дамир Багжанов",
             func:"Project-manager",
             sity:"г.Москва, Россия",
-            url:pers4
+            url:pers6
+        },
+        {
+            id:7,
+            name:"Айрат Гайфуллин",
+            func:"Бизнес-ассистент",
+            sity:"г.Октябрьский, Россия",
+            url:pers7
         },
         
         
@@ -569,9 +580,21 @@
                     </div>
                 {/each}
                 <div class="comrads_link">
-                    <img src="{ comrads_link_bg }" alt="">
+                    <div class="comr_imd">
+                        {#if (innerWidth>1180)}
+                            <img src="{ comand_ling_bgsm }" alt="">
+                        {/if}
+                        {#if (innerWidth<=1180)}
+                            <img src="{ comrads_link_bg }" alt="">
+                        {/if}
+                        
+                        
+                        
+                        
+                    </div>
+                    
                     <div class="crd_info">
-                        <p class="title">Хочешь присоединиться к команде?</p>
+                        <p class="title">Актуальные вакансии</p>
                         <div class="crd_link">
                             <a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned" class="main_wt_btn">Вакансии</a>
                         </div>
@@ -633,23 +656,31 @@
         align-items: center;
     }
     .comrads_link{
-        grid-column-start: 3;
+        grid-column-start: 4;
         grid-column-end: 4;
         grid-row-start: auto;
         grid-row-start:auto;
-        width: 550px;
+        width: 265px;
         height: 365px;
         position: relative;
         display: flex;
         align-items: end;
        
     }
+    .comr_imd{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 45px 45px 45px 0px;
+        overflow: hidden;
+        border: 2px solid var(--brightgray-color);
+    }
     .comrads_link img{
         width: 100%;
         height: 100%;
         position: absolute;
         z-index: -1;
-    
+        object-fit: cover;
 
     }
     .crd_info{
@@ -1155,8 +1186,8 @@
         }
         .comrads_link{
             width: auto;
-            grid-column-start: 1;
-            grid-column-end: 3;
+            grid-column-start: 2;
+            grid-column-end: 4;
             grid-row-start: auto;
             grid-row-start:auto;
         }
@@ -1260,6 +1291,7 @@
             max-width: 100%;
         }
         .comrads_link{
+            width: 100%;
             max-width: 365px;
         }
     }
@@ -1572,11 +1604,7 @@
         .comrads_link{
             max-width: 100%;
         }
-        .comrads_link img{
-            object-fit: cover;
-            border-radius: 36px 36px 36px 0px;
-            border: 2px solid var(--brightgray-color);
-        }
+
         .comrads .title{
             font-size: 24px;
             line-height: 30px;
