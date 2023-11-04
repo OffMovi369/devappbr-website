@@ -21,6 +21,8 @@
     import comrads_link_bg from "$lib/assets/cd_link_bg.png"
     import guarantee_sm from "$lib/assets/guarantee_sm.png"
     import comand_ling_bgsm from "$lib/assets/comand_ling_bg.png"
+    import big_bg from "$lib/assets/big_bg.png"
+
 
     import com1 from "$lib/assets/commets/comment1.png"
     import com2 from "$lib/assets/commets/comment2.png"
@@ -32,11 +34,12 @@
     import pers4 from "$lib/assets/personal/pers4.png"
     import pers5 from "$lib/assets/personal/pers5.png"
     import pers6 from "$lib/assets/personal/pers6.png"
-    import pers7 from "$lib/assets/personal/pers7.png"
 
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
     import CalcModalWindow from './CalcModalWindow.svelte';
+
+    import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
 
     import Project from './project.svelte';
@@ -157,9 +160,9 @@
     let personal = [
         {
             id:1,
-            name:"Максим Калугин",
-            func:"Front-end разработчик",
-            sity:"-",
+            name:"Валерий Степаненко",
+            func:"Back-end разработчик",
+            sity:"г.Санкт-Петербург, Россия",
             url:pers1
         },
         {
@@ -167,49 +170,39 @@
             
             name:"Иван Киселев",
             func:"Front-end разработчик",
-            sity:"-",
+            sity:"г.Москва, Россия",
             url:pers2
         },
         {
             id:3,
             name:"Олег Бочко",
             func:"Front-end разработчик",
-            sity:"-",
+            sity:"г.Волковыск, Беларусь",
             url:pers3
         },
         {
             id:4,
-            name:"Артем",
-            func:"-",
-            sity:"-",
-            url:pers4
-        },
-        {
-            id:5,
             name:"Никита Корчагин",
             func:"Продуктовый дизайнер",
             sity:"г.Сланцы, Россия",
-            url: pers5
+            url: pers4
             
         },
         {
-            id:6,
-            name:"Дамир Багжанов",
-            func:"Project-manager",
-            sity:"г.Москва, Россия",
-            url:pers6
+            id:5,
+            name:"Виталий Яковлев",
+            func:"Front-end разработчик",
+            sity:"США, Калифорния",
+            url:pers5
         },
+        
         {
-            id:7,
+            id:6,
             name:"Айрат Гайфуллин",
             func:"Бизнес-ассистент",
             sity:"г.Октябрьский, Россия",
-            url:pers7
-        },
-        
-        
-        
-        
+            url:pers6
+        }    
 
     ]
 
@@ -220,10 +213,7 @@
             behavior: 'smooth'
         });
     }
-
     
-
-
 
 
     
@@ -234,7 +224,7 @@
         <div class="mini_header" transition:fly={{ y: 100, duration: 500 }}>
             <div class="mini_header_content">
                 <div>
-                    <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false"></a>
+                    <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false" use:lazyImage={{ threshold: 0.5 }}></a>
                 </div>
                 <div class="nav_menu">
                     <a href="#owners" class="nav_link" on:click|preventDefault={scrollIntoView}>О нас</a>
@@ -263,7 +253,7 @@
             </div>
         </div>
         <div class="first_img">
-            <img src="{ block_bg }" alt="" draggable="false">
+            <img  data-src ="{ block_bg }" alt =" foobar"  use:lazyImage={{ threshold: 0 }}  draggable="false">
         </div>
     </section >
     <section bind:this={miniHeaderContainer} >
@@ -321,7 +311,7 @@
             </div>
             <div class="owners" >
                 
-                <img   src="{ owners2 }" alt="" draggable="false">
+                <img  data-src ="{ owners2 }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
                 <div class="owners_info">
                     <div class="">
                         <p class="owner_info_txt">Основатели</p>
@@ -350,7 +340,7 @@
                         <div class="comment" transition:fly={{ y: -200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-                                    <img src="{ com1 }" alt="">
+                                    <img  data-src ="{ com1 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -358,7 +348,7 @@
                                     </div>
                                     
                                     <div class="comment_stats">
-                                        <img src="{ stars }" alt="" draggable="false">
+                                        <img  data-src ="{ stars }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }} draggable="false">
                                         <p class="gr_sm">9 августа 2023 г.</p>
                                         <span>
                                             <div class="point"></div>
@@ -379,7 +369,7 @@
                         <div class="comment" transition:fly={{ x: -200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-                                    <img src="{ com2 }" alt="">
+                                    <img  data-src ="{ com2 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -387,7 +377,7 @@
                                     </div>
                                     
                                     <div class="comment_stats">
-                                        <img src="{ stars }" alt="" draggable="false">
+                                        <img  data-src ="{ stars }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
                                         <p class="gr_sm">9 августа 2023 г.</p>
                                         <span>
                                             <div class="point"></div>
@@ -407,7 +397,7 @@
                         <div class="comment" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="comment_title">
                                 <div class="ava">
-                                    <img src="{ com3 }" alt="">
+                                    <img  data-src ="{ com3 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                                 </div>
                                 <div class="comment_main">
                                     <div class="comment_text">
@@ -415,7 +405,7 @@
                                     </div>
                                     
                                     <div class="comment_stats">
-                                        <img src="{ stars }" alt="" draggable="false">
+                                        <img  data-src ="{ stars }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
                                         <p class="gr_sm">9 августа 2023 г.</p>
                                         <span>
                                             <div class="point"></div>
@@ -466,7 +456,7 @@
                 </div>
             </div>
             <div class="core_values_image">
-                <img src="{ core_value_bg }" alt="">
+                <img  data-src ="{ core_value_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
             </div>
         </div>
     </section>
@@ -495,7 +485,7 @@
                     {#if flag2}
                         <div class="column_block" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="column_block_img">
-                                <img src="{ designer_bg }" alt="">
+                                <img  data-src ="{ designer_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                             </div>        
                             <div class="column_info">
                                 <div class="">
@@ -512,7 +502,7 @@
                         </div>
                         <div class="column_block" transition:fly={{ y: 200, duration: 1500 }}>
                             <div class="column_block_img">
-                                <img src="{ verst_bg  }" alt="">
+                                <img  data-src ="{ verst_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                             </div>        
                             <div class="column_info">
                                 <div class="">
@@ -528,7 +518,7 @@
                         </div>
                         <div class="column_block" transition:fly={{ y: 200, duration: 2000 }}>
                             <div class="column_block_img">
-                                <img src="{ function_bg }" alt="">
+                                <img  data-src ="{ function_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                             </div>        
                             <div class="column_info">
                                 <div class="">
@@ -549,7 +539,7 @@
                         <div class="row_block" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="row_block_content">
                                 <div class="test_img">
-                                    <img src="{ test_bg }" alt="">
+                                    <img  data-src ="{ test_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                                 </div>
                                 <div class="stages_test_text">
                                     <p class="title">Тестирование</p>
@@ -575,7 +565,7 @@
             <div class="command">
                 {#each personal as  person (person.id)}
                     <div class="person_card">
-                        <img src="{ person.url  }" alt="">
+                        <img data-src ="{ person.url }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
                         <div class="personinfo">
                             <p class="main_sm">{ person.name }</p>
                             <p class="main_sm_thin">{ person.func }</p>
@@ -585,16 +575,7 @@
                 {/each}
                 <div class="comrads_link">
                     <div class="comr_imd">
-                        {#if (innerWidth>1180)}
-                            <img src="{ comand_ling_bgsm }" alt="">
-                        {/if}
-                        {#if (innerWidth<=1180)}
-                            <img src="{ comrads_link_bg }" alt="">
-                        {/if}
-                        
-                        
-                        
-                        
+                        <img data-src ="{ big_bg }" alt =" foobar"  use:lazyImage={{ threshold: 0.5 }}>         
                     </div>
                     
                     <div class="crd_info">
@@ -636,7 +617,7 @@
                 </form>
             </div>
             <div class="application_img">
-                <img src="{ apl_bg }" alt="">
+                <img  data-src ="{ apl_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
             </div>
         </div>
     </section>
@@ -645,7 +626,6 @@
 <style>
     .crd_info a{
         display: inline;
-
     }
     .crd_link{
         height: 48px;
@@ -660,31 +640,30 @@
         align-items: center;
     }
     .comrads_link{
-        grid-column-start: 4;
+        grid-column-start: 3;
         grid-column-end: 4;
-        grid-row-start: auto;
-        grid-row-start:auto;
-        width: 265px;
+        width: 550px;
         height: 365px;
         position: relative;
         display: flex;
         align-items: end;
-       
+       border-radius: 36px 36px 36px 0px;
+       overflow: hidden;
+       object-fit: contain;
     }
     .comr_imd{
         position: absolute;
         height: 100%;
         width: 100%;
-        border-radius: 45px 45px 45px 0px;
         overflow: hidden;
-        border: 2px solid var(--brightgray-color);
+        z-index: -1;
     }
     .comrads_link img{
         width: 100%;
         height: 100%;
         position: absolute;
         z-index: -1;
-        object-fit: cover;
+        object-fit: fill;
 
     }
     .crd_info{
@@ -1188,11 +1167,9 @@
             column-gap: 12px;
         }
         .comrads_link{
-            width: auto;
-            grid-column-start: 2;
+            grid-column-start: 1;
             grid-column-end: 4;
-            grid-row-start: auto;
-            grid-row-start:auto;
+            width: 100%;
         }
     }
     @media(max-width:1080px){
@@ -1210,6 +1187,7 @@
             justify-content: end;
             align-items: end;
         }
+        
     }
     @media(max-width:1000px){
        .application_img{
@@ -1414,6 +1392,11 @@
         }
         .crd_info .main_wt_btn{
             width: unset;
+        }
+        .comr_imd{
+            width: 100%;
+            max-width: 365px;
+            object-fit: cover;
         }
         
         .first_img{

@@ -29,6 +29,7 @@
 		"scrolltrigger": "^1.0.1",
 		"smooth-scrollbar": "^8.8.4",
 		"svelte-image-compare": "^1.1.1",
+		"svelte-lazy-image": "^0.5.1",
 		"swiper": "^8.4.6"
 	}
 }

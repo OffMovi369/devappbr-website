@@ -392,16 +392,16 @@
         header .nav_menu{
             display: none;
         }
+        .contacts{
+            flex-direction: column;
+            row-gap: 20px;
+        }
     }
     @media(max-width:800px){
         .header_content{
             padding: 10px 30px;
         }
-        .contacts{
-            flex-direction: column;
-            row-gap: 20px;
-            
-        }
+        
     }
     
     @media(max-width:600px){
