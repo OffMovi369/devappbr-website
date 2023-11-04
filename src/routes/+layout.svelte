@@ -11,7 +11,7 @@
 
     import modalsStore from "$lib/client/modalsStore";
     import CalcModalWindow from "./main/CalcModalWindow.svelte";
-    
+    import AplicModalWindow from "./main/AplicModalWindow.svelte";
 
 
 
@@ -43,7 +43,13 @@
     }
     
 
-
+    function scrollIntoView({ target }) {
+        const el = document.querySelector(target.getAttribute('href'));
+        if (!el) return;
+            el.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 
 
 
@@ -96,15 +102,15 @@
                 </div>
                 <div class="links_block">
                     <div class="sns">
-                        <a class="sns_link tube" href="#" on:mouseenter={ tubeOverTrue } on:mouseout={ tubeOverFalse }>
+                        <a class="sns_link tube" href="https://www.youtube.com/@devappbroseph" on:mouseenter={ tubeOverTrue } on:mouseout={ tubeOverFalse }>
                             Youtube
                             <Icon icon="mdi:youtube"  color="{ (tube_hover == true) ? 'red' : 'white' }" />
                         </a>
-                        <a class="sns_link tg" href="#" on:mouseenter={ tgOverTrue } on:mouseout={ tgOverFalse }>
+                        <a class="sns_link tg" href="https://t.me/devappbroseph" on:mouseenter={ tgOverTrue } on:mouseout={ tgOverFalse }>
                             Telegram
                             <Icon icon="mingcute:telegram-fill" color="{ tg_hover ? 'rgba(89, 168, 215, 1)' : 'white' }"/>
                         </a>
-                        <a class="sns_link vk" href="#" on:mouseenter={ vkOverTrue } on:mouseout={ vkOverFalse }>
+                        <a class="sns_link vk" href="https://vk.com/devbroseph" on:mouseenter={ vkOverTrue } on:mouseout={ vkOverFalse }>
                             Вконтакте
                             <Icon icon="uil:vk"  color="{ vk_hover ? 'rgba(51, 117, 246, 1)' : 'white' }"/>
                         </a>
@@ -113,28 +119,28 @@
                         <div class="mao_ul">
                             <p class="main_sm">Разработка</p>
                             <ul>
-                                <li><a href="">Кейсы</a></li>
-                                <li><a href="">Ключевая ценность компании</a></li>
-                                <li><a href="">Разработка минимального продукта</a></li>
-                                <li><a href="">Расчёт стоимости</a></li>
+                                <li><a href="#project" on:click|preventDefault={scrollIntoView}>Кейсы</a></li>
+                                <li><a href="#core_values" on:click|preventDefault={scrollIntoView}>Ключевая ценность компании</a></li>
+                                <li><a href="#" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow ; $modalsStore.showModal=true}}} on:click={()=> open= false}>Разработка минимального продукта</a></li>
+                                <li><a href="#" on:click={() => {{$modalsStore.modalWindow = CalcModalWindow ; $modalsStore.showModal=true}}} on:click={()=> open= false}>Расчёт стоимости</a></li>
                             </ul>
                         </div>
                         <div class="mao_ul">
                             <p class="main_sm">Обучение</p>
                             <ul>
-                                <li><a href="">Блог в Telegram</a></li>
-                                <li><a href="">Разбор кейсов на Youtube</a></li>
-                                <li><a href="">Блог со свежими мыслями на Vc.ru</a></li>
-                                <li><a href="">Портфолио на Behance</a></li>
+                                <li><a href="https://t.me/devappbroseph">Блог в Telegram</a></li>
+                                <li><a href="https://www.youtube.com/@devappbroseph">Разбор кейсов на Youtube</a></li>
+                                <li><a href="https://vc.ru/u/1636322-pavel-kalashnikov">Блог со свежими мыслями на Vc.ru</a></li>
+                                <li><a href="https://www.behance.net/appdevelopbroseph">Портфолио на Behance</a></li>
                             </ul>
                         </div>
                         <div class="mao_ul">
                             <p class="main_sm">Другое</p>
                             <ul>
-                                <li><a href="">Вакансии</a></li>
-                                <li><a href="">Команда</a></li>
-                                <li><a href="">Проекты</a></li>
-                                <li><a href="">Подход</a></li>
+                                <li><a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned">Вакансии</a></li>
+                                <li><a href="#comrads" on:click|preventDefault={scrollIntoView}>Команда</a></li>
+                                <li><a href="#project" on:click|preventDefault={scrollIntoView}>Проекты</a></li>
+                                <li><a href="#owners" on:click|preventDefault={scrollIntoView}>Подход</a></li>
                             </ul>
                         </div>
                     </div>

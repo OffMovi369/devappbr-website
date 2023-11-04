@@ -300,7 +300,7 @@
     </section >
     <section id="owners">
         <div class="third_block" >
-            <div class="">
+            <div class="" >
                 <p class="title">Подход к разработке</p>
                 <p class="main_sm">«Мы делаем проекты, которые будут увеличивать доход наших клиентов. Это обусловлено тем, что создаем не просто функциональные приложения, а еще и эффективные для продвижения»</p>
                 <div class="">
@@ -442,7 +442,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section id="core_values">
         <div class="core_values">
             <p class="title gray_abs">Ключевые ценности</p>
             <div class="core_values_info">
@@ -657,6 +657,10 @@
         width: 100%;
         overflow: hidden;
         z-index: -1;
+    }
+    .comr_imd img{
+        height: 100% !important;
+        width: 100% !important;
     }
     .comrads_link img{
         width: 100%;
@@ -1143,8 +1147,9 @@
         overflow: hidden;
     }
     .person_card img{
-        height: 100%;
-        object-fit: cover;
+        height: 100% !important;
+        object-fit: inherit;
+        width: 100% !important;
     }
     .personinfo{
         position: absolute;
