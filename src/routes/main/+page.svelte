@@ -1148,7 +1148,7 @@
     }
     .person_card img{
         height: 100% !important;
-        object-fit: inherit;
+        object-fit: cover;
         width: 100% !important;
     }
     .personinfo{

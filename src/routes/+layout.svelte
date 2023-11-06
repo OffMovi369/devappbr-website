@@ -64,6 +64,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>DA&BR — Разработка мобильных приложений</title>
 </svelte:head>
 
 
@@ -76,8 +77,8 @@
         </div>
         
         <div class="drop_menu">
-            <a href="#" class="dd"><Icon icon="mdi:youtube" color="white" width="24" height="24" /></a>
-            <a href="#" class="dd"  ><Icon icon="mingcute:telegram-fill" color="white" width="24" height="24"/></a>
+            <a href="https://www.youtube.com/@devappbroseph" class="dd"><Icon icon="mdi:youtube" color="white" width="24" height="24" /></a>
+            <a href="https://t.me/devappbroseph" class="dd"  ><Icon icon="mingcute:telegram-fill" color="white" width="24" height="24"/></a>
             
             <Hamburger
             bind:open
