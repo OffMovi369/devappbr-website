@@ -448,7 +448,7 @@
             <div class="core_values_info">
                 <div class="">
                     <p class="title">Держим в курсе процесса разработки</p>
-                    <p class="main_sm">В начале каждого рабочего дня заказчик по желанию может получать план работ по проекту на день</p>
+                    <p class="main_sm">В начале каждого рабочего дня заказчик, по желанию, может получать план работ по проекту на день</p>
                 </div>
                 <div class="">
                     <p class="title">Помощь в презентации проекта</p>
@@ -1148,7 +1148,7 @@
     }
     .person_card img{
         height: 100% !important;
-        object-fit: inherit;
+        object-fit: cover;
         width: 100% !important;
     }
     .personinfo{

@@ -77,8 +77,8 @@
         </div>
         
         <div class="drop_menu">
-            <a href="#" class="dd"><Icon icon="mdi:youtube" color="white" width="24" height="24" /></a>
-            <a href="#" class="dd"  ><Icon icon="mingcute:telegram-fill" color="white" width="24" height="24"/></a>
+            <a href="https://www.youtube.com/@devappbroseph" class="dd" target="_blank"><Icon icon="mdi:youtube" color="white" width="24" height="24" /></a>
+            <a href="https://t.me/devappbroseph" class="dd" target="_blank" ><Icon icon="mingcute:telegram-fill" color="white" width="24" height="24"/></a>
             
             <Hamburger
             bind:open
