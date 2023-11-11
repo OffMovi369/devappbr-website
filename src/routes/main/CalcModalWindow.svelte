@@ -67,15 +67,15 @@
                     <div class="input_block">
                         <label for="" class="input_row">
                             <p class="main_sm">Постоянные клиенты</p>
-                            <input type="number" required  bind:value={clients} placeholder="Среднее кол-во" min="0">
+                            <input type="number" required  bind:value={clients} placeholder="Среднее кол-во в год" min="0">
                         </label>
                         <label for="" class="input_row">
                             <p class="main_sm">Повторные продажи</p>
-                            <input type="number" required  bind:value={sales} placeholder="Среднее кол-во" min="0">
+                            <input type="number" required  bind:value={sales} placeholder="Среднее кол-во в год" min="0">
                         </label>
                         <label for="" class="input_row">
                             <p class="main_sm">Средний чек за сделку</p>
-                            <input type="number" required placeholder="Среднее кол-во" bind:value={receipt} min="0">
+                            <input type="number" required placeholder="Средний чек" bind:value={receipt} min="0">
                         </label>
                     </div>
                     <button class="main_wt_btn" type="button" on:click={ ()=>(swap=true, backSwap=false,graph=true)}>Рассчитать</button>

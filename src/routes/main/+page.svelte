@@ -4,6 +4,7 @@
     import owners2 from "$lib/assets/owners2.png"
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
+    import { fade } from 'svelte/transition';
     import stars from "$lib/assets/stars.png"
     import dna_bg from "$lib/assets/dna_bg.png"
     import core_value_bg from "$lib/assets/core_value.png"
@@ -221,8 +222,8 @@
 <svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
 <div class="main_content">
     {#if miniHeaderFlag}
-        <div class="mini_header" transition:fly={{ y: 100, duration: 500 }}>
-            <div class="mini_header_content">
+        <div class="mini_header" >
+            <div class="mini_header_content" transition:fly={{y:100,duration: 500 }}>
                 <div>
                     <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false" use:lazyImage={{ threshold: 0.5 }}></a>
                 </div>
@@ -236,8 +237,9 @@
                     <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Разработать MVP"}}}}>Разработать MVP</button>
                 </div>
             </div>
-        </div>
+        </div>     
     {/if}
+
     
     <section class="first_sec">
         <div class="first_block">
@@ -490,11 +492,11 @@
                             <div class="column_info">
                                 <div class="">
                                     <p class="title">Дизайн</p>
-                                    <ul>
-                                        <li class="main_sm">— Сбор информации о проекте</li>
-                                        <li class="main_sm">— Генерация сценария взаимодействия с продуктом</li>
-                                        <li class="main_sm">— Разработка прототипа</li>
-                                        <li class="main_sm">— Отрисовка дизайн-макета в Figma</li>
+                                    <ul type="disc">
+                                        <li class="main_sm">Сбор информации о проекте</li>
+                                        <li class="main_sm">Генерация сценария взаимодействия с продуктом</li>
+                                        <li class="main_sm">Разработка прототипа</li>
+                                        <li class="main_sm">Отрисовка дизайн-макета в Figma</li>
                                     </ul>
                                 </div>
                                 <button class="main_gr_btn">Срок от 10 дней</button>
@@ -508,9 +510,9 @@
                                 <div class="">
                                     <p class="title">Вёрстка</p>
                                     <ul>
-                                        <li class="main_sm">— Оживляем приложение на основе дизайн-проекта</li>
-                                        <li class="main_sm">— Оптимизируем интерфейс</li>
-                                        <li class="main_sm">— Подготавливаем приложение к серверной части</li>
+                                        <li class="main_sm">Оживляем приложение на основе дизайн-проекта</li>
+                                        <li class="main_sm">Оптимизируем интерфейс</li>
+                                        <li class="main_sm">Подготавливаем приложение к серверной части</li>
                                     </ul>
                                 </div>
                                 <button class="main_gr_btn">Срок от 15 дней</button>
@@ -524,8 +526,8 @@
                                 <div class="">
                                     <p class="title">Функционал</p>
                                     <ul>
-                                        <li class="main_sm">— Применяем архитектуру с возможностью масштабирования</li>
-                                        <li class="main_sm">— Используем уже протестированные решения, ускоряя разработку и повышая качество приложения</li>
+                                        <li class="main_sm">Применяем архитектуру с возможностью масштабирования</li>
+                                        <li class="main_sm">Используем уже протестированные решения, ускоряя разработку и повышая качество приложения</li>
                                     </ul>
                                 </div>
                                 <button class="main_gr_btn">Срок от 15 дней</button>
@@ -544,8 +546,8 @@
                                 <div class="stages_test_text">
                                     <p class="title">Тестирование</p>
                                     <ul>
-                                        <li class="main_sm">— Вносим правки и исправляем ошибки</li>
-                                        <li class="main_sm">— Решаем любые проблемы, связанные с публикацией: шифрование и подозрение в рекламе, возрастной цензор</li>
+                                        <li class="main_sm">Вносим правки и исправляем ошибки</li>
+                                        <li class="main_sm">Решаем любые проблемы, связанные с публикацией: шифрование и подозрение в рекламе, возрастной цензор</li>
                                     </ul>
                                 </div>
                             </div>
@@ -750,19 +752,21 @@
         display: flex;
         justify-content: center;
         height: 64px;
-        z-index: 99;
+        z-index: 99;   
     }
+    
     .mini_header_content{
+        backdrop-filter: blur(10px) !important;
         width: 100%;
         max-width: 780px;
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 36px;
-        backdrop-filter: blur(10px);
         display: flex;
         align-items: center;
         justify-content: space-around;
-
     }
+
+
     .mini_logo{
         display: flex;
         align-items: center;
@@ -1112,6 +1116,7 @@
     }
     .test_img img{
         width: 100%;
+        height: 100% !important;
     }
     .test_btn{
         margin: 0 30px 30px 30px;
@@ -1159,10 +1164,16 @@
         row-gap: 5px;
         padding: 20px;
     }
-
+    .blocks ul{
+        padding-left: 25px;
+    }
     .application_img{
         border-radius: 36px;
         overflow: hidden;
+    }
+    .mini_header .mini_header_content{
+        backdrop-filter: blur(10px) !important;
+        z-index: 0;
     }
     @media(max-width:1180px){
         section{

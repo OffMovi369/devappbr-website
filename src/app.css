@@ -53,9 +53,6 @@ h1, h2, h3, h4, h5, h6, p {
 	font-weight: inherit;
 }
 
-ul, ul li {
-	list-style: none;
-}
 
 img {
 	vertical-align: top;
@@ -133,10 +130,6 @@ aside, nav, footer, header, section, main {
 h1, h2, h3, h4, h5, h6, p {
     font-size: inherit;
 	font-weight: inherit;
-}
-
-ul, ul li {
-	list-style: none;
 }
 
 img {
@@ -332,6 +325,9 @@ legend {
 	width: 100% !important;
 	height: 100% !important;
 	object-fit: cover !important;
+}
+.overlay{
+	background: none !important;
 }
 @media(max-width:1180px){
 	.main_sm{

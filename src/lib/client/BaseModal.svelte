@@ -16,6 +16,7 @@
 <dialog
     bind:this={dialog}
     on:close={() => {$modalsStore.showModal = false}}
+    on:click|self={() => dialog.close()}
 >
     <div class="back">
         <a id="back" href="/" class="main_sm" on:click|preventDefault= {onModalClose}>
