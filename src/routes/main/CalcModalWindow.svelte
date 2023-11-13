@@ -192,6 +192,10 @@
         flex-direction: column;
         row-gap: 12px;
     }
+    .chart svg{
+        width: 100% !important;
+        height: 100% !important;
+    }
     .block_left{
         display: flex;
         flex-direction: column;

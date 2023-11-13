@@ -23,6 +23,7 @@
     import guarantee_sm from "$lib/assets/guarantee_sm.png"
     import comand_ling_bgsm from "$lib/assets/comand_ling_bg.png"
     import big_bg from "$lib/assets/big_bg.png"
+    import feedback from "$lib/assets/feedback.png"
 
 
     import com1 from "$lib/assets/commets/comment1.png"
@@ -49,7 +50,7 @@
     import { imask } from '@imask/svelte';
     import slide_img_1 from "$lib/assets/slide_img_1.png"
     import slide_img_2 from "$lib/assets/slide_img_2.png"
-
+    import SurveyModalWindow from './SurveyModalWindow.svelte';
 
     function accept({ detail: maskRef }) {
         value = maskRef.value;
@@ -109,7 +110,7 @@
 	});
 
     $:{
-        if(  map_offset <= oh){
+        if(  map_offset <= oh +200){
             flag = true
         }
         else{
@@ -292,7 +293,7 @@
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
                     <div class="">
-                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow ; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость"}}}}>
+                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = SurveyModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость"}}}}>
                             Рассчитать стоимость
                         </button>
                     </div>
@@ -327,102 +328,35 @@
     </section>
     <section  bind:this={mapContainer} bind:clientHeight={ hhh }>
         <div class="fourth_block">
-            <div class="fourth_block_title">
-                <p class="title">Средняя оценка наших приложений – 4.7</p>
-                <p class="main_sm">Более 200 пользователей оценили наши приложения в App Store и Google Play</p>
+            <div class="fourth_block_title" style="background-image: url({feedback});
+            background-size:cover;
+            background-position:center;
+            ">
+                <div class="feeadback_title">
+                    <p class="title">4,7 — средняя оценка в AppStore и Google Play</p>
+                </div>
                 <div class="">
-                    <button class="main_tr_btn">
-                        Читать отзывы
-                    </button>
+                    <div class="count">
+                        400+
+                    </div>
+                    <p class="main_sm">оценок на площадках</p>
                 </div>
             </div>
-            <div class="feedback">
-                <div class="row" >
-                    {#if flag}
-                        <div class="comment" transition:fly={{ y: -200, duration: 1000 }}>
-                            <div class="comment_title">
-                                <div class="ava">
-                                    <img  data-src ="{ com1 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
-                                </div>
-                                <div class="comment_main">
-                                    <div class="comment_text">
-                                        <p class="comment_name">Анна</p>
-                                    </div>
-                                    
-                                    <div class="comment_stats">
-                                        <img  data-src ="{ stars }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }} draggable="false">
-                                        <p class="gr_sm">9 августа 2023 г.</p>
-                                        <span>
-                                            <div class="point"></div>
-                                            <p class="gr_sm">Bibiptrip</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment_text">
-                                <p>Регулярно пользуюсь этим сервисом. Очень удобно, что можно самостоятельно создавать поездки. Также я выбираю сама места в авто. Приложение не тормозит в процессе использования.</p>
-                            </div>
-                        </div>
-                    {/if}
-                    
+            {#if flag}
+                <div class="feedback" >
+                    <p class="title" transition:fly={{ y: 200, duration: 500 }}>Наши клиенты остаются довольными</p>
+                    <div class="" transition:fly={{ y: 200, duration: 600 }}>
+                        <p>91%</p>
+                        <p>клиентов отмечают, что новое приложение увеличило продажи бизнеса</p>
+                    </div>
+                    <div class="" transition:fly={{ y: 200, duration: 700 }}>
+                        <p>86%</p>
+                        <p>готовы рекомендовать DA&BR в качестве разработчика</p>
+                    </div>
+                    <p class="feedbackps" transition:fly={{ y: 200, duration: 800 }} >*По данным внутренних исследований</p>
                 </div>
-                <div class="row">
-                    {#if flag}
-                        <div class="comment" transition:fly={{ x: -200, duration: 1000 }}>
-                            <div class="comment_title">
-                                <div class="ava">
-                                    <img  data-src ="{ com2 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
-                                </div>
-                                <div class="comment_main">
-                                    <div class="comment_text">
-                                        <p class="comment_name">Ирина</p>
-                                    </div>
-                                    
-                                    <div class="comment_stats">
-                                        <img  data-src ="{ stars }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
-                                        <p class="gr_sm">9 августа 2023 г.</p>
-                                        <span>
-                                            <div class="point"></div>
-                                            <p class="gr_sm">BeLoved</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment_text">
-                                <p>Удобное приложение для двоих. Напоминания, множество целей и совместный архив. Много интересных фишек)</p>
-                            </div>
-                        </div>
-                    {/if}
-                </div>
-                <div class="row">
-                    {#if flag}
-                        <div class="comment" transition:fly={{ y: 200, duration: 1000 }}>
-                            <div class="comment_title">
-                                <div class="ava">
-                                    <img  data-src ="{ com3 }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
-                                </div>
-                                <div class="comment_main">
-                                    <div class="comment_text">
-                                        <p class="comment_name">Ирина</p>
-                                    </div>
-                                    
-                                    <div class="comment_stats">
-                                        <img  data-src ="{ stars }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
-                                        <p class="gr_sm">9 августа 2023 г.</p>
-                                        <span>
-                                            <div class="point"></div>
-                                            <p class="gr_sm">Bibiptrip</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment_text">
-                                <p>Неоднократно пользовалась услугами этого приложения и остались только положительные впечатления. Водители адекватные, вежливые, не навязчивые. Я всем довольна.</p>
-                            </div>
-                        </div>
-                    {/if}
-                </div>
-            </div>
+            {/if}
+            
         </div>
     </section>
     <section id="project">
@@ -458,6 +392,7 @@
                 </div>
             </div>
             <div class="core_values_image">
+                <div class="image-shadow" style="background-image: url('{ core_value_bg }');"></div>
                 <img  data-src ="{ core_value_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
             </div>
         </div>
@@ -626,6 +561,20 @@
 </div>
 
 <style>
+    .image-shadow {
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        right: 5%;
+        height: 90%;
+        background-size: auto;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        border-radius: inherit;
+        -webkit-filter: blur(25px);
+        filter: blur(25px);
+        z-index: -1;
+    }
     .crd_info a{
         display: inline;
     }
@@ -914,13 +863,76 @@
         display: flex;
         justify-content: space-between;
         margin: 200px 0;
+        column-gap: 32px;
+    }
+    .fourth_block div:nth-child(2):not(.feedback){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 12px;
     }
     .fourth_block_title{
-        max-width: 470px;
+        height: 510px;
+        max-width: 550px;
         display: flex;
         flex-direction: column;
-        row-gap: 12px;
+        justify-content: end;
+        text-align: center;
+        row-gap: 22px;
+        padding-bottom: 32px;
+        border-radius: 36px;
+        border: 1px var(--brightgray-color) solid;
+    }
+    .count{
+        display: inline;
+        background-color: var(--white-color);
+        border-radius: 100px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        letter-spacing: 0em;
+        padding: 11px 25px;
+    }
+    .feeadback_title{
+        display: flex;
         justify-content: center;
+    }
+    .feeadback_title p{
+        width: 60%;
+    }
+    .feedback{
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        max-width: 470px;
+    }
+    .feedback div{
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        align-items: start !important;
+    }
+    .feedback div p:first-child{
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 66px;
+        letter-spacing: 0em;
+        color: var(--white-color);
+    }
+    .feedback div p:last-child{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: -0.01em;
+        color: var(--white-color);
+    }
+    .feedbackps{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0em;
+        color: var(--darkgray-color);
+
     }
     .fourth_block .main_tr_btn{
         margin-top: 12px;
@@ -949,10 +961,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 20px;
-    }
-    .feedback div:nth-child(2){
-        display: flex;
-
+        justify-content: space-between;
     }
     .row{
         display: flex;
@@ -1018,6 +1027,7 @@
         padding: 200px 0;
     }
     .core_values_image{
+        position: relative;
         display: flex;
         align-items: stretch;
         justify-content: stretch;
@@ -1190,7 +1200,7 @@
     }
     @media(max-width:1080px){
         .fourth_block_title{
-            max-width: 40%;
+            max-width: 45%;
         }
         .big_title{
             font-size: 48px;
@@ -1249,11 +1259,15 @@
             row-gap: 20px;
         }
         .fourth_block{
-            flex-direction: column;
+            flex-direction: column-reverse;
             row-gap: 32px;
+            align-items: center;
         }
         .feedback{
             width: 100%;
+        }
+        .fourth_block_title{
+            max-width: unset;
         }
         .feedback .row:nth-child(2){
             align-items: baseline;
@@ -1283,9 +1297,6 @@
             flex-direction: column;
             align-items: center;
             row-gap: 20px;
-        }
-        .fourth_block_title{
-            max-width: 100%;
         }
         .comrads_link{
             width: 100%;
@@ -1422,14 +1433,12 @@
             display: none;
         }
         .fourth_block{
-            flex-direction: column;
-            row-gap: 120px;
-            margin-bottom: 60px;
+            flex-direction: column-reverse;
+            row-gap: 60px;
         }
         .feedback{
             width: 100%;
             height: 100%;
-            row-gap: 20px;
         }
         .core_values{
             flex-direction: column;
@@ -1448,6 +1457,21 @@
         .column_block{
             max-width: unset;
             
+        }
+        .fourth_block_title{
+            height: 400px;
+            padding: 25px;
+        }
+        .fourth_block div:nth-child(2):not(.feedback){
+            justify-content: space-between;
+        }
+        .fourth_block div:nth-child(2):not(.feedback) .main_sm{
+            width: 40%;
+        }
+        .feeadback_title p{
+            width: unset;
+            font-size: 24px;
+            text-align: center;
         }
         .column_block_img{
             max-width: unset;
@@ -1626,6 +1650,9 @@
         .comment_main{
             width: 60%;
         }
+        .fourth_block div:nth-child(2):not(.feedback) .main_sm{
+            width: 50%;
+        }
     }
     @media(max-width:330px){
         .comrads{
@@ -1634,6 +1661,13 @@
         .nda_block{
             height: fit-content;
             padding: 25px;
+        }
+        .fourth_block div:nth-child(2):not(.feedback){
+            flex-direction: column;
+            row-gap: 12px;
+        }
+        .count{
+            padding: 11px 18px;
         }
     }
     @media(max-width:309px){
