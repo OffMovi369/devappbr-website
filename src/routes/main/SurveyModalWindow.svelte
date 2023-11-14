@@ -10,6 +10,7 @@
     import quest6 from "$lib/assets/slides/quest6.png"
     import quest7 from "$lib/assets/slides/quest7.png"
     let sl = 0;
+    import { blur } from 'svelte/transition';
 
 
     function accept({ detail: maskRef }) {
@@ -140,11 +141,11 @@
         {:else}
             {#each slides as quest (quest.id)}
                 {#if sl==quest.id && quest.id!=6}
-                    <div class="q">
-                        <div>
+                    <div class="q" >
+                        <div >
                             <img class="quest_img"  src="{quest.url}" alt="">
                         </div>
-                        <div class="survey_content" >
+                        <div class="survey_content">
                             <div class="quest_content">
                                 
                                 <div class="">
@@ -159,16 +160,36 @@
                                         </label>
                                     {/each}
                                 </div>
-                                <div class="next_quest">
-                                    <button class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
-                                    <button class="main_wt_btn next" on:click={()=>{sl++}}>Далее</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
-                {/if}     
+                    
+                {/if}
             {/each}
+            {#if sl!=6}
+                <div class="controls">
+                    <div class="progress">
+                        <div class="progress_bar">
+                            <div class="position" class:position_active={sl>=1}></div>
+                            <div class="position" class:position_active={sl>=2}></div>
+                            <div class="position" class:position_active={sl>=3}></div>
+                            <div class="position" class:position_active={sl>=4}></div>
+                            <div class="position" class:position_active={sl>=5}></div>
+                        </div>
+                        <div class="progress_stat">
+                            <p>Вопрос</p>
+                            <p>{sl}/5</p>
+                        </div>
+                    </div>
+                    <div class="next_quest">
+                        <button class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
+                        <button class="main_wt_btn next" on:click={()=>{sl++}}>Далее</button>
+                    </div>
+                </div>
+            {/if}
         {/if}
+        
         {#if (sl==6)}
             <div>
                 <img class="quest_img"  src="{quest7}" alt="">
@@ -222,7 +243,6 @@
     .q{
         display: flex;
         flex-direction: column;
-        height: 552px;
     }
     .quest_title{
         font-size: 24px;
@@ -311,5 +331,45 @@
         height: 50px;
         color: var(--white-color);
     }
-    
+    .progress{
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        padding-bottom: 12px;
+    }
+    .progress_stat{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .progress_stat p{
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 23px;
+        letter-spacing: 0em;
+        color: rgba(108, 95, 126, 1);
+    }
+    .progress_bar{
+        content: "";
+        background-color: rgba(19, 20, 28, 1);
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        display: flex;
+    }
+    .position{
+        content: "";
+        height: 4px;
+        width: 97.2px;
+        background-color: rgba(255, 255, 255, 0.15);
+        transition: all .2s ease-out;
+        margin: auto;
+        border-radius: 4px;
+    }
+    .position_active{
+        background-color: var(--white-color);
+    }
+    .controls{
+        padding: 0px 24px 24px 24px;
+    }
 </style>
