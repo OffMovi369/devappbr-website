@@ -22,6 +22,9 @@
 	};
     let tel = '';
 
+    let utm;
+
+    $: utm = $modalsStore.data.utm
 
     let slides = [
         {   
@@ -122,7 +125,7 @@
 <BaseModal title="Настройка платежной системы">
     
     
-    <form action="">
+    <form action="?/sendApp" method="post">
         {#if sl == 0}
                 <div>
                     <img class="quest_img"  src="{quest1}" alt="">
@@ -183,8 +186,8 @@
                         </div>
                     </div>
                     <div class="next_quest">
-                        <button class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
-                        <button class="main_wt_btn next" on:click={()=>{sl++}}>Далее</button>
+                        <button type="button" class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
+                        <button type="button" class="main_wt_btn next" on:click={()=>{sl++}}>Далее</button>
                     </div>
                 </div>
             {/if}
@@ -202,7 +205,7 @@
                     <div class="questions">
                         <div class="row">
                             <p class="main_sm">Имя</p>
-                            <input type="text" placeholder="Введите имя">
+                            <input type="text" name="fio" placeholder="Введите имя">
                         </div>
                         <div class="row">
                             <p class="main_sm">Номер телефона</p>
@@ -212,6 +215,9 @@
                         </div>
                     </div>
                     <div class="">
+                        <input type="hidden" name="slides" value={JSON.stringify(slides)}>
+                        <input type="hidden" name="utm" value={JSON.stringify(utm)}>
+                        <input type="hidden" name="type" value="Расчёт стоимости">
                         <button class="main_wt_btn ddd" type="submit">Получить скидку</button>
                     </div>
                     <div class="">
