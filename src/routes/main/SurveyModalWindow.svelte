@@ -10,7 +10,7 @@
     import quest6 from "$lib/assets/slides/quest6.png"
     import quest7 from "$lib/assets/slides/quest7.png"
     let sl = 0;
-    import { blur } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
 
 
     function accept({ detail: maskRef }) {
@@ -20,7 +20,7 @@
 		mask: '+{0}(000)000-00-00',
         lazy: true,
 	};
-    let tel = '';
+    let tel = ' ';
 
     let utm;
 
@@ -121,11 +121,21 @@
             ]
         },
     ]
+    let error
     function slideNext(){
+        error = false
         const element = slides[sl-1];
         if (element.value!=null){
             sl++;
         }
+        else{
+            setTimeout(() => {
+                setTimeout(() => {
+                    error = false
+                }, "2000");
+                error = true
+            }, "100");      
+        }   
     }
 </script>
 <BaseModal title="Настройка платежной системы">
@@ -178,7 +188,14 @@
             {/each}
             {#if sl!=6}
                 <div class="controls">
+                    
                     <div class="progress">
+                        <div class="error_div">
+                            {#if error}
+                                <p class="post_sm error" transition:fade>Пожалуйста, выберите вариант ответа</p>
+                            {/if}
+                        </div>
+                        
                         <div class="progress_bar">
                             <div class="position" class:position_active={sl>=1}></div>
                             <div class="position" class:position_active={sl>=2}></div>
@@ -186,6 +203,7 @@
                             <div class="position" class:position_active={sl>=4}></div>
                             <div class="position" class:position_active={sl>=5}></div>
                         </div>
+                        
                         <div class="progress_stat">
                             <p>Вопрос</p>
                             <p>{sl}/5</p>
@@ -220,7 +238,7 @@
                                 on:accept={accept} placeholder="+7 000 00 00 ">
                         </div>
                     </div>
-                    <div class="">
+                    <div class="sumbit_btn">
                         <input type="hidden" name="slides" value={JSON.stringify(slides)}>
                         <input type="hidden" name="utm" value={JSON.stringify(utm)}>
                         <input type="hidden" name="type" value="Расчёт стоимости">
@@ -236,8 +254,9 @@
 </BaseModal>
 
 <style>
+    
     .survey_content{
-        padding: 24px;
+        padding: 24px 24px 24px 24px;
     }
     .main_wt_btn{
         justify-content: center;
@@ -297,7 +316,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 12px;
-        margin: 24px 0px;
+        margin: 24px 0px 0px 0px;
         position: relative;
     }
     .question{
@@ -387,5 +406,16 @@
     }
     .input_active{
         outline: solid 1px var(--white-color);
+    }
+    .error_div{
+        height: 12px;
+        margin-bottom:  12px;
+    }
+    .error{
+        margin-top: 0px;
+        text-align: center;
+    }
+    .sumbit_btn{
+        margin-top: 20px;
     }
 </style>
