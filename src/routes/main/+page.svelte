@@ -194,7 +194,7 @@
             id:5,
             name:"Виталий Яковлев",
             func:"Front-end разработчик",
-            sity:"США, Калифорния",
+            sity:"г.Лос-Анджелес, США",
             url:pers5
         },
         
@@ -516,9 +516,9 @@
                     </div>
                     
                     <div class="crd_info">
-                        <p class="title">Актуальные вакансии</p>
+                        <p class="title">Наши стажировки</p>
                         <div class="crd_link">
-                            <a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned" class="main_wt_btn">Вакансии</a>
+                            <a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned" class="main_wt_btn" target=»_blank»>Стажировки</a>
                         </div>
                     </div>
                 </div>

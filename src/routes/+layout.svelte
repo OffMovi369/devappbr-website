@@ -97,19 +97,19 @@
         <div class="end_content">
             <div class="fast_links">
                 <div class="logo">
-                    <a href=""><img src="{ logo }" alt=""></a>
+                    <a href=""><img src="{ up_logo }" alt=""></a>
                 </div>
                 <div class="links_block">
                     <div class="sns">
-                        <a class="sns_link tube" href="https://www.youtube.com/@devappbroseph" on:mouseenter={ tubeOverTrue } on:mouseout={ tubeOverFalse }>
+                        <a class="sns_link tube" href="https://www.youtube.com/@devappbroseph" on:mouseenter={ tubeOverTrue } on:mouseout={ tubeOverFalse } target=»_blank»>
                             Youtube
                             <Icon icon="mdi:youtube"  color="{ (tube_hover == true) ? 'red' : 'white' }" />
                         </a>
-                        <a class="sns_link tg" href="https://t.me/devappbroseph" on:mouseenter={ tgOverTrue } on:mouseout={ tgOverFalse }>
+                        <a class="sns_link tg" href="https://t.me/devappbroseph" on:mouseenter={ tgOverTrue } on:mouseout={ tgOverFalse } target=»_blank»>
                             Telegram
                             <Icon icon="mingcute:telegram-fill" color="{ tg_hover ? 'rgba(89, 168, 215, 1)' : 'white' }"/>
                         </a>
-                        <a class="sns_link vk" href="https://vk.com/devbroseph" on:mouseenter={ vkOverTrue } on:mouseout={ vkOverFalse }>
+                        <a class="sns_link vk" href="https://vk.com/devbroseph" on:mouseenter={ vkOverTrue } on:mouseout={ vkOverFalse } target=»_blank»>
                             Вконтакте
                             <Icon icon="uil:vk"  color="{ vk_hover ? 'rgba(51, 117, 246, 1)' : 'white' }"/>
                         </a>
@@ -127,16 +127,16 @@
                         <div class="mao_ul">
                             <p class="main_sm">Обучение</p>
                             <ul>
-                                <li><a href="https://t.me/devappbroseph">Блог в Telegram</a></li>
-                                <li><a href="https://www.youtube.com/@devappbroseph">Разбор кейсов на Youtube</a></li>
-                                <li><a href="https://vc.ru/u/1636322-pavel-kalashnikov">Блог со свежими мыслями на Vc.ru</a></li>
-                                <li><a href="https://www.behance.net/appdevelopbroseph">Портфолио на Behance</a></li>
+                                <li><a href="https://t.me/devappbroseph" target=»_blank»>Блог в Telegram</a></li>
+                                <li><a href="https://www.youtube.com/@devappbroseph" target=»_blank»>Разбор кейсов на Youtube</a></li>
+                                <li><a href="https://vc.ru/u/1636322-pavel-kalashnikov" target=»_blank»>Блог со свежими мыслями на Vc.ru</a></li>
+                                <li><a href="https://www.behance.net/appdevelopbroseph" target=»_blank»>Портфолио на Behance</a></li>
                             </ul>
                         </div>
                         <div class="mao_ul">
                             <p class="main_sm">Другое</p>
                             <ul>
-                                <li><a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned">Вакансии</a></li>
+                                <li><a href="https://rarible.com/user/0x740b21ff585747f3bea017662a29bb840dfff28c/owned" target=»_blank»>Вакансии</a></li>
                                 <li><a href="#comrads" on:click|preventDefault={scrollIntoView}>Команда</a></li>
                                 <li><a href="#project" on:click|preventDefault={scrollIntoView}>Проекты</a></li>
                                 <li><a href="#owners" on:click|preventDefault={scrollIntoView}>Подход</a></li>

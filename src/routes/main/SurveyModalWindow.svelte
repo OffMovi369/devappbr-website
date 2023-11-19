@@ -118,6 +118,12 @@
             ]
         },
     ]
+    function slideNext(){
+        const element = slides[sl-1];
+        if (element.value!=null){
+            sl++;
+        }
+    }
 </script>
 <BaseModal title="Настройка платежной системы">
     
@@ -134,7 +140,7 @@
                             <p class="quest_title">Ответьте на 5 вопросов и получите расчет стоимости</p>
                             <p class="quest_dis">Расчет произойдет автоматически, согласно нашим алгоритмам</p>
                         </div>
-                        <button class="main_wt_btn dd" on:click={()=>{sl++}}>Начать</button>
+                        <button class="main_wt_btn dd" on:click={()=>{{sl++}}}>Начать</button>
                     </div>
                 </div>
         
@@ -155,7 +161,7 @@
                                 <div class="questions">
                                     {#each quest.questions as answer (answer.id) }
                                         <label class="question" class:input_active={ answer.answ == quest.value}>
-                                            <input type="radio" name="answers" value="{answer.answ}" bind:group={quest.value}>
+                                            <input type="radio" name="answers" value="{answer.answ}" bind:group={quest.value} required>
                                             <p class="main_sm">{answer.answ}</p>
                                         </label>
                                     {/each}
@@ -183,8 +189,8 @@
                         </div>
                     </div>
                     <div class="next_quest">
-                        <button class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
-                        <button class="main_wt_btn next" on:click={()=>{sl++}}>Далее</button>
+                        <button type="button" class="main_tr_btn prev" on:click={()=>{sl--}}>Назад</button>
+                        <button type="button" class="main_wt_btn next" on:click={slideNext}>Далее</button>
                     </div>
                 </div>
             {/if}
@@ -294,10 +300,11 @@
         position: relative;
         width: 100%;
         border-radius: 100px;
-        border: 2px var(--white-color) solid;
+        border: 1px var(--white-color) solid;
         display: flex;
         column-gap: 10px;
         align-items: center;
+        transition: all .2s ease-out;
     }
     .question input{  
         appearance: none;
@@ -371,5 +378,8 @@
     }
     .controls{
         padding: 0px 24px 24px 24px;
+    }
+    .input_active{
+        outline: solid 1px var(--white-color);
     }
 </style>
