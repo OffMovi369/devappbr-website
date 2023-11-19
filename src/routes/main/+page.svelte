@@ -52,6 +52,8 @@
     import slide_img_2 from "$lib/assets/slide_img_2.png"
     import SurveyModalWindow from './SurveyModalWindow.svelte';
 
+    export let data;
+
     function accept({ detail: maskRef }) {
         value = maskRef.value;
     }
@@ -235,7 +237,8 @@
                     <a href="#comrads" class="nav_link" on:click|preventDefault={scrollIntoView}>Команда</a>
                 </div>
                 <div class="">
-                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Разработать MVP"}}}}>Разработать MVP</button>
+                    
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Разработать MVP", utm:data.utm}}}}>Разработать MVP</button>
                 </div>
             </div>
         </div>     
@@ -248,7 +251,7 @@
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
             <div class="fb_link">
                 <div class="">
-                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true;  $modalsStore.data = {type:"Разработать MVP"}}}}>Разработать тестовый вариант</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true;  $modalsStore.data = {type:"Разработать MVP", utm:data.utm}}}}>Разработать тестовый вариант</button>
                 </div>
                 <div class="dop_info">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
@@ -293,7 +296,7 @@
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
                     <div class="">
-                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = SurveyModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость"}}}}>
+                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = SurveyModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость", utm:data.utm}}}}>
                             Рассчитать стоимость
                         </button>
                     </div>
@@ -549,6 +552,7 @@
                         on:accept={accept} placeholder="+7 000 00 00 ">
                     </label>
                     <input type="hidden" name="type" value="Разработать MVP (последний блок)">
+                    <input type="hidden" name="utm" value={JSON.stringify(data.utm)}>
                     <button class="main_wt_btn">Разработать тестовый вариант</button>
                     <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
                 </form>

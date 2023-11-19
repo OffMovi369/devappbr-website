@@ -14,6 +14,10 @@
     let tel = '';
 
     let type = ""
+    let utm;
+
+    $: type = $modalsStore.data.type
+    $: utm = $modalsStore.data.utm
 
     
 </script>
@@ -34,6 +38,7 @@
             on:accept={accept} placeholder="+7 000 00 00 ">
         </label>
         <input type="hidden" name="type" bind:value={type}>
+        <input type="hidden" name="utm" value={JSON.stringify(utm)}>
         <button class="main_wt_btn">Разработать MVP</button>
         <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
     </form>
