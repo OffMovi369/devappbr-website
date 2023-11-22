@@ -140,9 +140,6 @@
         justify-content: center;
         margin-top: auto;
     }
-    .project_info .main_sm_thin {
-        margin-bottom: 14px;
-    }
     .projects{
         display: flex;
         flex-direction: column;
