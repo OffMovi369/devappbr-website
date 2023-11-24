@@ -17,7 +17,7 @@
         {
             id:3,
             name:"Egorka - Delivery",
-            disc:"Разработали под ключ весь фронтенд для логистической компании",
+            disc:"Разработали под ключ весь фронтенд для логистической компании.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild3235-6362-4030-b061-306338653961/photo.gif",
         },
@@ -31,7 +31,42 @@
         {
             id:5,
             name:"Нейродом",
-            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
+            category: "#zalupa",
+            url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+        },
+        {
+            id:6,
+            name:"Нейродом",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
+            category: "#zalupa",
+            url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+        },
+        {
+            id:7,
+            name:"Нейродом",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
+            category: "#zalupa",
+            url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+        },
+        {
+            id:8,
+            name:"Нейродом",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
+            category: "#zalupa",
+            url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+        },
+        {
+            id:9,
+            name:"Нейродом",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
+            category: "#zalupa",
+            url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+        },
+        {
+            id:10,
+            name:"Нейродом",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
         },
@@ -46,12 +81,11 @@
     let innerHeight;
     let projectsDiv
     let pr_offset
-
+    let projectMore;
+    let n1;
     let innerWidth
     afterUpdate(() => {
 		pr_offset = projectsDiv.offsetTop - innerHeight / 2 -200;
-        
-
 	});
 
     $:{
@@ -63,11 +97,34 @@
         }
     }
     $:{ 
-        if(innerWidth <= 900){
-            projects.splice(3)
+        if(projects.length > n1 && innerWidth > 900){
+            projectMore = true;
+        }
+        else{
+            projectMore = false
+        }
+
+        if(projects.length > n1 && innerWidth <= 900){
+            projectMore = true;
+        }
+        else{
+            projectMore = false
+        }
+    }
+    $:{ 
+        if( innerWidth > 900){
+            n1=6
+        }
+        else{
+            n1=3
         }
         
+
     }
+    
+
+    
+    
 
 </script>
 
@@ -76,33 +133,66 @@
     <p class="title">Наши проекты</p>
     <div class="project_list">
         {#each projects as project (project.id)}
-            {#if flag}
-                <a href="#" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
-                    <div class="" style="
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    background-color:white">
-                        <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
-                    </div>
-                    
-                    <div class="project_info">
+            {#if innerWidth > 900 && project.id <= n1 }
+                {#if flag}
+                    <a href="#" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
                         <div class="" style="
                         height: 100%;
                         display: flex;
                         flex-direction: column;
-                        row-gap:12px;">
-                            <p class="main_sm">{ project.name }</p>
-                            <p class="main_sm_thin">{ project.disc }</p>
+                        background-color:white">
+                            <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
                         </div>
-                    </div>
-                    <!-- <div class="category">
-                        {project.category}
-                    </div> -->
-                </a>
-            {/if}  
+                        
+                        <div class="project_info">
+                            <div class="" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap:12px;">
+                                <p class="main_sm">{ project.name }</p>
+                                <p class="main_sm_thin">{ project.disc }</p>
+                            </div>
+                        </div>
+                        <!-- <div class="category">
+                            {project.category}
+                        </div> -->
+                    </a>
+                {/if}
+            {/if}
+            {#if innerWidth <= 900 && project.id <= n1  }
+                {#if flag}
+                    <a href="#" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
+                        <div class="" style="
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        background-color:white">
+                            <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
+                        </div>
+                        
+                        <div class="project_info">
+                            <div class="" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap:12px;">
+                                <p class="main_sm">{ project.name }</p>
+                                <p class="main_sm_thin">{ project.disc }</p>
+                            </div>
+                        </div>
+                        <!-- <div class="category">
+                            {project.category}
+                        </div> -->
+                    </a>
+                {/if}
+            {/if}
         {/each}
+        
     </div>
+    {#if projectMore && flag}
+        <button class="main_tr_btn" on:click={()=>{n1=n1+3}}>Показать больше</button>
+    {/if}
 </div>
 
 <style>
