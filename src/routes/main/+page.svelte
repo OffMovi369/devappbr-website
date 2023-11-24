@@ -224,8 +224,6 @@
     let dropactive2=false;
     let dropactive3=false;
     let dropactive4=false;
-
-
     
 </script>
 <svelte:head>
@@ -325,7 +323,6 @@
                 </div>
             </div>
             <div class="owners" >
-                
                 <img  data-src ="{ owners2 }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
                 <div class="owners_info">
                     <div class="">
@@ -436,7 +433,7 @@
                     {#if flag2}
                         <div class="column_block" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="column_block_img">
-                                <img  data-src ="{ designer_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
+                                <img  data-src ="{ designer_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}  >
                             </div>        
                             <div class="column_info">
                                 <div class="">
@@ -1981,10 +1978,7 @@
         }
         .development_process{
             display: none;
-        }
-        .development_stages{
-            margin-bottom: 0;
-        }
+        }   
         .stages_test_text{
             padding: 30px;
             width: 100%;
@@ -2085,6 +2079,9 @@
             font-size: 24px;
             line-height: 30px;
         }
+        .development_stages{
+            margin-bottom: 300px;
+        }
         
     }
     @media(max-width:350px){
@@ -2105,6 +2102,9 @@
         }
         .third_block .title{
             text-align: center;
+        }
+        .development_stages{
+            margin-bottom: 350px;
         }
     }
     @media(max-width:334px){
