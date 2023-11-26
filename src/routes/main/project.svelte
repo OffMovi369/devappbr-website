@@ -6,6 +6,7 @@
             disc:"В приложении отображаются текущие заявки, где находятся водители, куда им ехать и что везти, также в приложении был добавлен отвес, который взаимодействует с 1С заказчика.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild3338-3833-4335-b461-353235323766/Roman-Driver_1.gif",
+            appUrl:"https://apps.apple.com/us/app/roman-driver/id6443898823"
         },
         {
             id:2,
@@ -13,13 +14,15 @@
             disc:"Из идеи реализовали стартап - приложение для отношений, где можно вести совместный архив, цели и подарки со своим партнером.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild3065-3639-4630-b934-333839666433/BeLoved.gif",
+            appUrl:"https://apps.apple.com/us/app/beloved/id6443919068"
         },
         {
             id:3,
             name:"Egorka - Delivery",
-            disc:"Разработали под ключ весь фронтенд для логистической компании",
+            disc:"Разработали под ключ весь фронтенд для логистической компании.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild3235-6362-4030-b061-306338653961/photo.gif",
+            appUrl:"https://www.youtube.com/watch?v=exIGGHQje0U"
         },
         {
             id:4,
@@ -27,31 +30,30 @@
             disc:"К нам обратились заказчики после неудачного опыта с подрядчиками, мы исправили архитектуру приложения, а также взяли полностью под свою ответственность проект.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild6431-3331-4636-b136-386637393337/photo.gif",
+            appUrl:"https://apps.apple.com/us/app/bibiptrip-%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D1%83%D0%B9/id6443941402"
         },
         {
             id:5,
             name:"Нейродом",
-            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM",
+            disc:"Мы разработали платформу для обучения с бонусной реферальной системой. А также интегрировали alfaCRM.",
             category: "#zalupa",
             url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
+            appUrl:"https://apps.apple.com/us/app/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%B4%D0%BE%D0%BC/id1668195949"
         },
-
     ]
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
     import project_bg from "$lib/assets/project_bg.png"
-
     let oh2
     let flag = false
     let innerHeight;
     let projectsDiv
     let pr_offset
-
+    let projectMore;
+    let n1;
     let innerWidth
     afterUpdate(() => {
 		pr_offset = projectsDiv.offsetTop - innerHeight / 2 -200;
-        
-
 	});
 
     $:{
@@ -63,12 +65,30 @@
         }
     }
     $:{ 
-        if(innerWidth <= 900){
-            projects.splice(3)
+        if(projects.length > n1 && innerWidth > 900){
+            projectMore = true;
         }
-        
-    }
+        else{
+            projectMore = false
+        }
 
+        if(projects.length > n1 && innerWidth <= 900){
+            projectMore = true;
+        }
+        else{
+            projectMore = false
+        }
+    }
+    $:{ 
+        if( innerWidth > 900){
+            n1=6
+        }
+        else{
+            n1=3
+        }    
+    }
+    
+   
 </script>
 
 <svelte:window bind:scrollY={oh2} bind:innerHeight bind:innerWidth/>
@@ -76,33 +96,70 @@
     <p class="title">Наши проекты</p>
     <div class="project_list">
         {#each projects as project (project.id)}
-            {#if flag}
-                <a href="#" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
-                    <div class="" style="
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    background-color:white">
-                        <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
-                    </div>
-                    
-                    <div class="project_info">
+            {#if innerWidth > 900 && project.id <= n1 }
+                {#if flag}
+                    <a href="{project.appUrl}" target="_blank" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
                         <div class="" style="
                         height: 100%;
                         display: flex;
                         flex-direction: column;
-                        row-gap:12px;">
-                            <p class="main_sm">{ project.name }</p>
-                            <p class="main_sm_thin">{ project.disc }</p>
+                        background-color:white">
+                            <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
                         </div>
-                    </div>
-                    <!-- <div class="category">
-                        {project.category}
-                    </div> -->
-                </a>
-            {/if}  
+                        
+                        <div class="project_info">
+                            <div class="" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap:12px;">
+                                <p class="main_sm">{ project.name }</p>
+                                <p class="main_sm_thin">{ project.disc }</p>
+                                
+                            </div>
+                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">смотреть</a>
+                        </div>
+                        <!-- <div class="category">
+                            {project.category}
+                        </div> -->
+                    </a>
+                {/if}
+            {/if}
+            {#if innerWidth <= 900 && project.id <= n1  }
+                {#if flag}
+                    <a href="{project.appUrl}" target="_blank" class="project_card" transition:fly={{ y: -30, duration: 500 }}>
+                        <div class="" style="
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        background-color:white">
+                            <a class="project_img" style="background: url({project.url});background-position: center;background-size:cover;"></a>
+                        </div>
+                        
+                        <div class="project_info">
+                            <div class="" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap:12px;">
+                                <p class="main_sm">{ project.name }</p>
+                                <p class="main_sm_thin">{ project.disc }</p>
+                                
+                            </div>
+                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">смотреть</a>
+                        </div>
+                        <!-- <div class="category">
+                            {project.category}
+                        </div> -->
+                    </a>
+                {/if}
+            {/if}
         {/each}
+        
     </div>
+    {#if projectMore && flag}
+        <button class="main_tr_btn" on:click={()=>{n1=n1+3}}>Показать больше</button>
+    {/if}
 </div>
 
 <style>
@@ -127,6 +184,7 @@
     .project_card:hover{
         border: 2px solid var(--graywhite-color);
     }
+   
     .project_info{
         display: flex;
         padding: 24px;
@@ -164,6 +222,9 @@
         letter-spacing: 0em;
         margin-top: 16px;
         margin-left: 16px;
+    }
+    .project_card .main_tr_btn{
+        margin-top: 12px;
     }
     @media(max-width:1180px){
         .project_list{

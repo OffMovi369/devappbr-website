@@ -224,8 +224,6 @@
     let dropactive2=false;
     let dropactive3=false;
     let dropactive4=false;
-
-
     
 </script>
 <svelte:head>
@@ -325,7 +323,6 @@
                 </div>
             </div>
             <div class="owners" >
-                
                 <img  data-src ="{ owners2 }" alt =" foobar" draggable="false" use:lazyImage={{ threshold: 0.5 }}>
                 <div class="owners_info">
                     <div class="">
@@ -436,7 +433,7 @@
                     {#if flag2}
                         <div class="column_block" transition:fly={{ y: 200, duration: 1000 }}>
                             <div class="column_block_img">
-                                <img  data-src ="{ designer_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}>
+                                <img  data-src ="{ designer_bg }" alt =" foobar" use:lazyImage={{ threshold: 0.5 }}  >
                             </div>        
                             <div class="column_info">
                                 <div class="">
@@ -910,7 +907,7 @@
                         <p class="main_sm">Номер телефона</p>
                         <input name="phone" type="tel" required {tel}
                         use:imask={options}
-                        on:accept={accept} placeholder="+7 000 00 00 ">
+                        on:accept={accept} placeholder="+7 (993) 900-96-46 ">
                     </label>
                     <input type="hidden" name="type" value="Разработать MVP (последний блок)">
                     <input type="hidden" name="utm" value={JSON.stringify(data.utm)}>
@@ -1812,8 +1809,25 @@
         }
     }
     @media(max-width:480px){
-        #owners{
-            display: none;
+        .third_block div:first-child:not(.owners_info div){
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .third_block div:first-child:not(.owners_info div) .main_sm{
+            text-align: center;
+        }
+        .owners_info{
+            height: 50px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .owners_info div{
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            
         }
         .fourth_block{
             margin-top: 100px;
@@ -1850,16 +1864,13 @@
         .first_img{
             display: none;
         }
-        .third_block{
-            display: none;
-        }
         .fourth_block{
             flex-direction: column-reverse;
             row-gap: 60px;
         }
         .feedback{
             width: 100%;
-            height: 100%;
+            
         }
         .core_values{
             flex-direction: column;
@@ -1967,10 +1978,7 @@
         }
         .development_process{
             display: none;
-        }
-        .development_stages{
-            margin-bottom: 0;
-        }
+        }   
         .stages_test_text{
             padding: 30px;
             width: 100%;
@@ -2037,6 +2045,15 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+        .owners_info div{
+            padding: 0 12px;
+        }
+        .third_block .main_sm {
+            text-align: center;
+        }
+        #owners{
+            margin: 0 24px;
+        }
     }
     @media(max-width:400px){
         .comrads{
@@ -2062,6 +2079,9 @@
             font-size: 24px;
             line-height: 30px;
         }
+        .development_stages{
+            margin-bottom: 300px;
+        }
         
     }
     @media(max-width:350px){
@@ -2080,7 +2100,19 @@
         .fourth_block div:nth-child(2):not(.feedback) .main_sm{
             width: 50%;
         }
+        .third_block .title{
+            text-align: center;
+        }
+        .development_stages{
+            margin-bottom: 350px;
+        }
     }
+    @media(max-width:334px){
+        .owners{
+            display: none;
+        }
+    }
+
     @media(max-width:330px){
         .comrads{
             margin-top: 360px;

@@ -235,7 +235,7 @@
                             <p class="main_sm">Номер телефона</p>
                             <input name="phone" type="tel" id="" required {tel}
                                 use:imask={options}
-                                on:accept={accept} placeholder="+7 000 00 00 ">
+                                on:accept={accept} placeholder="+7 (993) 900-96-46 ">
                         </div>
                     </div>
                     <div class="sumbit_btn">

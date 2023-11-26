@@ -5,6 +5,8 @@
     import qr from "$lib/assets/qr.png"
     import case_img from "$lib/assets/case_img.png"
     import line from "$lib/assets/line.png"
+    export let data;
+    let project = data.project
 </script>
 
 <div class="case">
@@ -18,23 +20,18 @@
         <div class="case_left">
             <div class="l">
                 <div class="category">
-                    <!-- Переменная -->
-                    #Категория
+                    {project.category}
                 </div>
                 <div class="project_name">
-                    <!-- Переменная -->
-                    Название проекта в 2 строки
+                    {project.name}
                 </div>
                 <div class="project_disc">
-                    <!-- Переменная -->
-                    Описание проекта
+                    {project.disc}
                 </div>
                 <div class="project_links">
-                    <!-- Переменная -->
                     <a href="#">
                         <img src="{ appstore }" alt="">
                     </a>
-                    <!-- Переменная -->
                     <a href="#">
                         <img src="{ googleplay }" alt="">
                     </a>
@@ -51,7 +48,6 @@
                         
                     </div>
                     <div class="project_disc">
-                        <!-- Переменная -->
                         Для установки приложения наведите камеру на QR-код
                     </div>
                 </div>
@@ -64,10 +60,20 @@
         </div>
     </div>
     <div class="discription">
-        <!-- Переменная -->
-        <p class="title">Заголовок</p>
-        <!-- Переменная -->
-        <p class="main_sm">Описание</p>
+        <div class="dis_content">
+            <p class="title">Основная информация</p>
+            <!-- Переменная -->
+            <p class="main_sm">{project.mainInfo}</p>
+        </div>  
+    </div>
+    <div class="discription  right">
+        <div class="dis_content">
+            <!-- Переменная -->
+            <p class="title">Функционал</p>
+            <!-- Переменная -->
+            <p class="main_sm">{project.subInfo}</p>
+        </div>
+        
     </div>
 </div>
 <div class="link_line" style="
@@ -203,6 +209,17 @@
     .line_content .project_links{
         margin-bottom: 0;
     }
+    .dis_content{
+        max-width: 744px;
+        display: flex;
+        row-gap: 12px;
+        flex-direction: column;
+    }
+    .right{
+        align-items: end;
+        display: flex;
+        margin-top: 150px;
+    }
     @media(max-width:1180px){
         .case{
             margin: 40px 32px;
@@ -275,6 +292,9 @@
         }
         .link_line{
             display: none;
+        }
+        .main_sm{
+            font-size: 15px !important;
         }
     }
     @media(max-width:400px){
