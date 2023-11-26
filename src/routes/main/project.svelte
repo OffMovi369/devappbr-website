@@ -36,8 +36,6 @@
             url:"https://static.tildacdn.com/tild6365-6232-4435-a530-366663363833/photo.gif",
         },
 
-
-
     ]
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
@@ -65,9 +63,6 @@
         }
     }
     $:{ 
-        if(innerWidth > 900){
-            projects.splice(6)
-        }
         if(innerWidth <= 900){
             projects.splice(3)
         }
@@ -99,7 +94,6 @@
                         row-gap:12px;">
                             <p class="main_sm">{ project.name }</p>
                             <p class="main_sm_thin">{ project.disc }</p>
-                            <button class="main_tr_btn">Подробнее</button>
                         </div>
                     </div>
                     <!-- <div class="category">
@@ -109,9 +103,6 @@
             {/if}  
         {/each}
     </div>
-    {#if flag}
-        <button class="main_tr_btn" >Показать больше</button>
-    {/if}
 </div>
 
 <style>
@@ -148,9 +139,6 @@
         display: flex;
         justify-content: center;
         margin-top: auto;
-    }
-    .project_info .main_sm_thin {
-        margin-bottom: 14px;
     }
     .projects{
         display: flex;
