@@ -5,7 +5,7 @@
 <div class="postapp">
     <div class="postapp_ccontent">
         <h1 class="post_title">Благодарим за заявку.</h1>
-        <h1 class="post_title"> Мы свяжемся с Вами в ближайшее время</h1>
+        <h1 class="post_title"> Наш менеджер свяжется с Вами в ближайшее время</h1>
         <p class="post_dis">Вы можете посмотреть видео с нашими проектами или прочитать блог, в котором мы делимся нашими исследованиями</p>
         <div class="video">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-V9T6To4P54?si=fsuiJtmGqb8aT2_K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
