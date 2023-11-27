@@ -13,7 +13,7 @@ export const actions = {
         const utm = JSON.parse(data.get('utm'))
 
         await sendApp(type, {fio, phone, slides, utm})
-      
-        throw redirect(302, '/')  
+        
+        throw redirect(302, '/postapplication')  
     }
 }

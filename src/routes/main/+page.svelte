@@ -912,7 +912,7 @@
                     <input type="hidden" name="type" value="Разработать MVP (последний блок)">
                     <input type="hidden" name="utm" value={JSON.stringify(data.utm)}>
                     <button class="main_wt_btn">Разработать тестовый вариант</button>
-                    <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
+                    <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href="/policy" target="_blank"> Политикой Конфиденциальности</a></span>
                 </form>
             </div>
             <div class="application_img">

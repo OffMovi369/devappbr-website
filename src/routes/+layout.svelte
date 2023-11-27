@@ -73,7 +73,7 @@
 <header>
     <div class="header_content">
         <div class="header_logo">
-            <a href="#" draggable="false"><img src="{ up_logo }" alt="" draggable="false"></a >
+            <a href="/main" draggable="false"><img src="{ up_logo }" alt="" draggable="false"></a >
         </div>
         
         <div class="drop_menu">
@@ -97,7 +97,7 @@
         <div class="end_content">
             <div class="fast_links">
                 <div class="logo">
-                    <a href=""><img src="{ up_logo }" alt=""></a>
+                    <a href="/main"><img src="{ up_logo }" alt=""></a>
                 </div>
                 <div class="links_block">
                     <div class="sns">

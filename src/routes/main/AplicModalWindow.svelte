@@ -40,7 +40,7 @@
         <input type="hidden" name="type" bind:value={type}>
         <input type="hidden" name="utm" value={JSON.stringify(utm)}>
         <button class="main_wt_btn">Разработать MVP</button>
-        <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href=""> Политикой Конфиденциальности</a></span>
+        <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href="/policy" target="_blank"> Политикой Конфиденциальности</a></span>
     </form>
 </BaseModal>
 
@@ -95,7 +95,7 @@
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0em;
-        text-align: left;
+        text-align: center;
         color: var(--graywhite-color);
     }
     .apl_agr a{
@@ -103,7 +103,7 @@
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0em;
-        text-align: left;
+        text-align: center;
         color: var(--graywhite-color);
         text-decoration: underline;
     }

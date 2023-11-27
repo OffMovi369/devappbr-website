@@ -137,6 +137,8 @@
             }, "100");      
         }   
     }
+
+
 </script>
 <BaseModal title="Настройка платежной системы">
     
@@ -244,9 +246,7 @@
                         <input type="hidden" name="type" value="Расчёт стоимости">
                         <button class="main_wt_btn ddd" type="submit">Получить скидку</button>
                     </div>
-                    <div class="">
-                        <p class="post_sm">Отправляя заявку, вы соглашаетесь с Политикой Конфиденциальности</p>
-                    </div>
+                    <span class="apl_agr">Отправляя заявку, вы соглашаетесь с <a href="/policy" target="_blank"> Политикой Конфиденциальности</a></span>
                 </div>
             </div>
         {/if}
@@ -417,5 +417,23 @@
     }
     .sumbit_btn{
         margin-top: 20px;
+    }
+    .apl_agr{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: var(--graywhite-color);
+        margin-top: 12px
+    }
+    .apl_agr a{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: var(--graywhite-color);
+        text-decoration: underline;
     }
 </style>
