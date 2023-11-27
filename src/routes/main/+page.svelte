@@ -1450,7 +1450,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: var(--darkgray-color);
+        color: #fff;
     }
     .core_values_info{
         width: 50%;

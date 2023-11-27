@@ -117,7 +117,7 @@
                                 <p class="main_sm_thin">{ project.disc }</p>
                                 
                             </div>
-                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">смотреть</a>
+                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">Смотреть</a>
                         </div>
                         <!-- <div class="category">
                             {project.category}
@@ -146,7 +146,7 @@
                                 <p class="main_sm_thin">{ project.disc }</p>
                                 
                             </div>
-                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">смотреть</a>
+                            <a class="main_tr_btn" target="_blank" href="{project.appUrl}">Смотреть</a>
                         </div>
                         <!-- <div class="category">
                             {project.category}
