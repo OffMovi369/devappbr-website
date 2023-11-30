@@ -254,7 +254,7 @@
     
     <section class="first_sec">
         <div class="first_block">
-            <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 2 месяца</p>
+            <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 3 месяца</p>
             <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
             <div class="fb_link">
                 <div class="">
