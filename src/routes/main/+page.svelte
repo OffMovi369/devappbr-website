@@ -254,11 +254,11 @@
     
     <section class="first_sec">
         <div class="first_block">
-            <p class="big_title">Разработаем мобильное приложение для бизнеса от 5 млн ₽ за 3 месяца</p>
-            <p class="main_sm">Окупится в течение 6 месяцев и принесет более 35% повторных продаж</p>
+            <p class="big_title">Разработаем мобильное приложение для бизнеса от 1 млн ₽ за 2 месяца</p>
+            <p class="main_sm"><b><span>Окупится</span></b>  в течение 6 месяцев и <b><span>принесет</span></b> более 35% повторных продаж</p>
             <div class="fb_link">
                 <div class="">
-                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true;  $modalsStore.data = {type:"Разработать MVP", utm:data.utm}}}}>Разработать тестовый вариант</button>
+                    <button class="main_wt_btn" on:click={() => {{$modalsStore.modalWindow = AplicModalWindow; $modalsStore.showModal=true;  $modalsStore.data = {type:"Разработать MVP", utm:data.utm}}}}>Разработать тестовый вариант бесплатно<span class="animate_line"></span></button>
                 </div>
                 <div class="dop_info">
                     <p class="main_sm_gray">*По данным внутренних исследований</p>
@@ -923,13 +923,47 @@
 </div>
 
 <style>
-    
+    .first_block span{
+        font-weight: 900;
+        font-size: 20px;
+    }
     .mi{
         font-size: 1.6rem;
         height: 26px;
         transform: rotate(-180deg);
         transition: all .2s ease-out;
         opacity: 0.2;
+    }
+    .fb_link .main_wt_btn{
+        position: relative;
+        overflow: hidden;
+    }
+    .fb_link .main_wt_btn{
+        z-index: 99;
+    }   
+    .animate_line{
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 200%;
+        z-index: -1;
+        opacity: 1;
+        /* background-color: rgb(196, 193, 193); */
+        background: linear-gradient(90deg,rgba(184, 182, 182, 0.5),     rgb(201, 200, 200));
+        transform: rotate(45deg);
+        animation-name: line;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-delay: 12s;
+    }
+    @keyframes line{
+        0%{
+            left: -20px;
+            
+        }
+        100%{
+            left: 500px;
+        }
     }
     .mi_avtive{
         transform: rotate(0deg);
