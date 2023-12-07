@@ -954,7 +954,6 @@
         animation-name: line;
         animation-duration: 2s;
         animation-iteration-count: infinite;
-        animation-delay: 12s;
     }
     @keyframes line{
         0%{
