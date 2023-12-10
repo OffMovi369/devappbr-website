@@ -354,9 +354,10 @@
                     <p class="title">Даем гарантию на сроки создания</p>
                     <p class="main_sm">Устанавливаем четкие сроки и фиксируем размер неустойки за каждый факт просрочки в договоре</p>
                     <div class="">
-                        <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = SurveyModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость", utm:data.utm}}}}>
+                        <a class="main_tr_btn" href="#showquiz-67637">Рассчитать стоимость</a>
+                        <!-- <button class="main_tr_btn" on:click={() => {{$modalsStore.modalWindow = SurveyModalWindow; $modalsStore.showModal=true; $modalsStore.data = {type:"Рассчитать стоимость", utm:data.utm}}}}>
                             Рассчитать стоимость
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
