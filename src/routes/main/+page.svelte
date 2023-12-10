@@ -5,6 +5,7 @@
     import { afterUpdate } from 'svelte';
     import { fly } from 'svelte/transition'
     import { slide } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
     import stars from "$lib/assets/stars.png"
     import dna_bg from "$lib/assets/dna_bg.png"
@@ -37,6 +38,7 @@
     import pers4 from "$lib/assets/personal/pers4.png"
     import pers5 from "$lib/assets/personal/pers5.png"
     import pers6 from "$lib/assets/personal/pers6.png"
+    import own_2 from "$lib/assets/own_2.png"
 
     import modalsStore from "$lib/client/modalsStore";
     import AplicModalWindow from './AplicModalWindow.svelte';
@@ -65,6 +67,8 @@
     let tel = '';
     let test_bg_value;
     let test_value;
+    let innerWidth;
+    
     $:{
         if(innerWidth<600){
             test_bg_value = test_bg_sm
@@ -101,7 +105,7 @@
     let devlast;
     let miniClose;
 
-    let innerWidth;
+   
 
     let gua_url;
 
@@ -224,15 +228,62 @@
     let dropactive2=false;
     let dropactive3=false;
     let dropactive4=false;
+
+
+
+    let visitShow = true
+    let mobbileVistit = false
+    $:{
+        if(innerWidth<=960){
+            mobbileVistit = true
+        }
+        else{
+            mobbileVistit = false
+        }
+    }
     
 </script>
 <svelte:head>
 	<link rel="stylesheet" href="https://unpkg.com/mono-icons@1.0.5/iconfont/icons.css" >
 </svelte:head>
 <svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
+
+{#if miniHeaderFlag || visitShow}
+    <div class="visit" class:mobbileVistit={mobbileVistit} transition:fly={{y:100,duration: 500 }}>
+        <div class="visit_content" >
+            {#if visitShow}
+                <div class="close" in:fade={{ delay: 200 }} out:fade>
+                    <button class="main_sm" on:click={()=>{visitShow = !visitShow}}><i class="mi mi-close"></i>Закрыть</button>
+                </div>
+                <div class="mobile_content"  in:fade={{ delay: 200 }} out:fade>
+                    <div class="studio_info" in:fade={{ delay: 200 }} out:fade>
+                        <div class="own_img">
+                            <img src="{own_2}" alt="">
+                        </div>
+                        <div class="main_sm own_name">
+                            <p>Максим Яковлев</p>
+                        </div>
+                        <div class="main_sm short_info">
+                            <p>Добро пожаловать в нашу студию разработки. Мы будем рады реализовать именно Ваш проект</p>
+                        </div>
+                    </div>
+                    <div class="studio_number" in:fade={{ delay: 200 }} out:fade>
+                        <p><a href="tel:+79939009646">8 993 900 96-46</a></p>
+                    </div>
+                </div>
+            {:else}
+                <button class="visit_closed" on:click={()=>{visitShow = !visitShow}} in:fade={{ delay: 200 }} >
+                    <img src="{own_2}" alt="">
+                </button>
+            {/if}
+        </div>
+    </div>
+{/if}
+
+
 <div class="main_content">
     {#if miniHeaderFlag}
-        <div class="mini_header" >
+        <div class="mini_header" id="mini_header">
             <div class="mini_header_content" transition:fly={{y:100,duration: 500 }}>
                 <div>
                     <a href="#" class="mini_logo"><img src="{ mini_logo }" alt="" draggable="false" use:lazyImage={{ threshold: 0.5 }}></a>
@@ -1628,6 +1679,149 @@
     }
     .feedback{
         height: 510px;
+    }
+
+
+
+
+
+    .visit{
+        margin: 0;
+        top: initial;
+        left: initial;
+        bottom: 120px;
+        right: 60px;
+        border-radius: 5px;
+        position: fixed;
+        z-index: 10000;
+        cursor: default;
+        max-width: 360px;
+    }
+    .mobbileVistit{
+        width: 100%;
+        max-width: 100%;
+        right: 0;
+        min-height: 100%;
+        height: auto;
+        border-radius: 0;
+        overflow: initial;
+        top: 0px;
+    }
+    .mobbileVistit .mobile_content{
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px) !important;
+    }
+    .mobbileVistit .close{
+        background-color: black;
+        margin-bottom: 0;
+        padding: 6px 20px;
+    }
+    .mobbileVistit .studio_info{
+        background: none;
+        backdrop-filter: unset !important;
+        border-radius: 0;
+        border:  none;
+        max-width: 500px;
+        margin: auto;
+        padding-top: 80px;
+    }
+    .mobbileVistit .studio_number p{
+        background: none;
+        backdrop-filter: unset !important;
+        border-radius: 0;
+        border:  none;
+        max-width: 500px;
+        margin: auto;
+        border-top: 1px solid ;
+    }
+    .mobbileVistit .mobile_content{
+        height: 100%;
+    }
+    .mobbileVistit .visit_content{
+        width: 100%;
+        height: 100%;
+    }
+    .mobbileVistit .visit_closed{
+        right: 50px;
+        bottom: 120px;
+    }
+    .visit_content{
+        position: relative;
+    }
+    .visit_closed {
+        border: 2px solid rgb(25, 156, 104);
+        border-radius: 100px;
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        bottom: 0px;
+        right: 20px;
+    }
+    .visit_closed img{
+        object-fit: contain;
+    }
+    .studio_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 15px 15px 15px;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px) !important;
+        border-radius: 28px 28px 0 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .own_name{
+        margin-top: 4px;
+    }
+    .own_name p{
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: var(--white-color);
+    }
+    .studio_number p{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: rgba(171, 174, 181, 1);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px) !important;
+        border-radius: 0 0 28px 28px;
+        padding: 10px 0;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .studio_number a{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: rgba(171, 174, 181, 1);
+    }
+    .close{    
+        margin-bottom: 12px;
+    }
+    .close button{
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+    .close button .mi{
+        margin-top: 6px;
+
+    }
+    .short_info{
+        margin-top: 4px;
+    }
+    .short_info p{
+        text-align: center;
     }
     @media(max-width:1180px){
         section{
