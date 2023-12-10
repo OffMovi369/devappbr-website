@@ -249,7 +249,7 @@
 <svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
 
 {#if miniHeaderFlag || visitShow}
-    <div class="visit" class:mobbileVistit={mobbileVistit} transition:fly={{y:100,duration: 500 }}>
+    <div class="visit" class:mobbileVistit={mobbileVistit && visitShow} transition:fly={{y:100,duration: 500 }}>
         <div class="visit_content" >
             {#if visitShow}
                 <div class="close" in:fade={{ delay: 200 }} out:fade>
