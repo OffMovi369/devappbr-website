@@ -420,7 +420,7 @@
         right: 60px;
         border-radius: 5px;
         position: fixed;
-        z-index: 100;
+        z-index: 10000;
         cursor: default;
         max-width: 360px;
     }
