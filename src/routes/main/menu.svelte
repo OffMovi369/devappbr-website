@@ -44,6 +44,7 @@
         padding: 24px;
         margin-top: 10px;
         width: 300px;
+        z-index: 999999;
     }
     .nav_menu{
         display: flex;

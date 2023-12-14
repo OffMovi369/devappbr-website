@@ -249,14 +249,14 @@
 <svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
 
 {#if miniHeaderFlag}
-    <div class="visit" class:mobbileVistit={mobbileVistit && visitShow} transition:fly={{y:100,duration: 500 }}>
+    <div  class:mobbileVistit={mobbileVistit} class="visit" transition:fly={{y:100,duration: 500 }}>
         <div class="visit_content" >
             {#if visitShow}
                 <div class="close" in:fade={{ delay: 200 }} out:fade>
                     <button class="main_sm" on:click={()=>{visitShow = !visitShow}}><i class="mi mi-close"></i>Закрыть</button>
                 </div>
                 <div class="mobile_content"  in:fade={{ delay: 200 }} out:fade>
-                    <div class="studio_info" in:fade={{ delay: 200 }} out:fade>
+                    <div class="studio_info" in:fade={{ delay: 200 }} out:fade> 
                         <div class="own_img">
                             <img src="{own_2}" alt="">
                         </div>
