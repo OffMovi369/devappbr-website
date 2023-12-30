@@ -231,7 +231,8 @@
 
 
 
-    let visitShow = true
+    let visitShow
+   
     let mobbileVistit = false
     $:{
         if(innerWidth<=960){
@@ -239,6 +240,15 @@
         }
         else{
             mobbileVistit = false
+        }
+    }
+
+    $:{
+        if(!mobbileVistit){
+            visitShow=true
+        }
+        else{
+            visitShow= false
         }
     }
     
@@ -249,34 +259,38 @@
 <svelte:window bind:scrollY={oh} bind:innerHeight bind:innerWidth />
 
 {#if miniHeaderFlag}
-    <div  class:mobbileVistit={mobbileVistit} class="visit" transition:fly={{y:100,duration: 500 }}>
-        <div class="visit_content" >
-            {#if visitShow}
-                <div class="close" in:fade={{ delay: 200 }} out:fade>
-                    <button class="main_sm" on:click={()=>{visitShow = !visitShow}}><i class="mi mi-close"></i>Закрыть</button>
-                </div>
-                <div class="mobile_content"  in:fade={{ delay: 200 }} out:fade>
-                    <div class="studio_info" in:fade={{ delay: 200 }} out:fade> 
-                        <div class="own_img">
-                            <img src="{own_2}" alt="">
+    <div class="vis" class:vis_deactive={!visitShow}>
+        {#if visitShow}
+            <div  class:mobbileVistit={mobbileVistit} class="visit" transition:fly={{y:100,duration: 500 }}>
+                
+                    <div class="close" in:fade={{ delay: 200 }} out:fade>
+                        <button class="main_sm" on:click={()=>{visitShow = !visitShow}}><i class="mi mi-close"></i>Закрыть</button>
+                    </div>
+                    <div class="mobile_content"  in:fade={{ delay: 200 }} out:fade>
+                        <div class="studio_info" in:fade={{ delay: 200 }} out:fade> 
+                            <div class="own_img">
+                                <img src="{own_2}" alt="">
+                            </div>
+                            <div class="main_sm own_name">
+                                <p>Максим Яковлев</p>
+                            </div>
+                            <div class="main_sm short_info">
+                                <p>Добро пожаловать в нашу студию разработки. Мы будем рады реализовать именно Ваш проект</p>
+                            </div>
                         </div>
-                        <div class="main_sm own_name">
-                            <p>Максим Яковлев</p>
-                        </div>
-                        <div class="main_sm short_info">
-                            <p>Добро пожаловать в нашу студию разработки. Мы будем рады реализовать именно Ваш проект</p>
+                        <div class="studio_number" in:fade={{ delay: 200 }} out:fade>
+                            <p><a href="tel:+79939009646">8 993 900 96-46</a></p>
                         </div>
                     </div>
-                    <div class="studio_number" in:fade={{ delay: 200 }} out:fade>
-                        <p><a href="tel:+79939009646">8 993 900 96-46</a></p>
-                    </div>
-                </div>
-            {:else}
-                <button class="visit_closed" on:click={()=>{visitShow = !visitShow}} in:fade={{ delay: 200 }} >
-                    <img src="{own_2}" alt="">
-                </button>
-            {/if}
-        </div>
+                    
+            </div>
+            
+        {:else}
+            <button class="visit_closed" on:click={()=>{visitShow = !visitShow}} in:fade={{ delay: 200 }} >
+                <img src="{own_2}" alt="">
+            </button>
+           
+        {/if}
     </div>
 {/if}
 
@@ -1683,9 +1697,6 @@
     }
 
 
-
-
-
     .visit{
         margin: 0;
         top: initial;
@@ -1694,9 +1705,24 @@
         right: 60px;
         border-radius: 5px;
         position: fixed;
-        z-index: 10000;
         cursor: default;
         max-width: 360px;
+        z-index: 99999;
+    }
+    .vis{
+        margin: 0;
+        top: initial;
+        left: initial;
+        bottom: 120px;
+        right: 60px;
+        border-radius: 5px;
+        position: fixed;
+        cursor: default;
+        max-width: 360px;
+        z-index: 99999;
+    }
+    .vis_deactive{
+        pointer-events: none;
     }
     .mobbileVistit{
         width: 100%;
@@ -1741,11 +1767,7 @@
     .mobbileVistit .visit_content{
         width: 100%;
         height: 100%;
-    }
-    .mobbileVistit .visit_closed{
-        right: 50px;
-        bottom: 120px;
-    }
+    }   
     .visit_content{
         position: relative;
     }
@@ -1757,6 +1779,8 @@
         width: 60px;
         bottom: 0px;
         right: 20px;
+        z-index: 999999;
+        pointer-events: auto;
     }
     .visit_closed img{
         object-fit: contain;
